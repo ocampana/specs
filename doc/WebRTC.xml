@@ -714,8 +714,8 @@ Server -> Device: { "method": "trickle", "params": {"session": "s1", "candidate"
             <para>At any time after obtaining a WebRTC connection, a client may request enabling a 
               pre-negotiated data channel subprotocol by creating a new data channel with the specified 
               subprotocol identifier. Device shall enable the requested data channel subprotocol only 
-              after ensuring it was negotiated during the SDP exchange. Requests for non-pre-negotiated 
-              subprotocols shall be ignored.
+              after ensuring it was negotiated during the SDP exchange; otherwise, it shall close the 
+              data channel.
             </para>
         </section>
         <section xml:id="section_data_channels_metadata">
