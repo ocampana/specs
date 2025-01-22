@@ -1,4 +1,4 @@
-openapi: 3.1.1
+openapi: 3.0.3
 info:
   title: Cloud Integration Specification
   contact:
@@ -12,113 +12,103 @@ info:
 
 components:
   schemas:
-    Base64DERencodedASN1Value:
+    base64DerEncodedAsn1Value:
       description: This schema is the equivalent of tas:Base64DERencodedASN1Value in the Security Service specification.
       type: string
       format: byte
-      examples: [ Base64DERencodedASN1Value ]
 
-    EndpointReferenceType:
+    endpointReferenceType:
       description: This schema is the equivalent of wsa:EndpointReferenceType in the WA-Addressing 1.0 specification.
       type: string
       format: uri
 
-    AuthorizationServerConfiguration:
+    authorizationServerConfiguration:
       type: object
       description: This schema is the equivalent of tas:AuthorizationServerConfigurationData
       properties:
-        ServerURI:
+        serverUri:
           description: Authorization server address
           type: string
-        ClientID:
+        clientId:
           description: Client identifier issued by the authorization server
           type: string
-        Scope:
+        scope:
           description: The requested access scope
           type: string
-        AuthorizationServerTrustAnchor:
+        authorizationServerTrustAnchors:
           items:
-            $ref: '#/components/schemas/Base64DERencodedASN1Value'
+            $ref: '#/components/schemas/base64DerEncodedAsn1Value'
           description: The list of certificates with the public keys needed to build the validation policy to validate the TLS certificate of the authorization server.
       required:
-        - ServerURI
-        - ClientID
+        - serverUri
+        - clientId
 
-    UplinkConfiguration:
+    uplinkConfiguration:
       type: object
       properties:
-        RemoteAddress:
+        remoteAddress:
           description: Uniform resource locator by which the remote client can be reached.
-          $ref: '#/components/schemas/EndpointReferenceType'
-        UserLevel:
+          $ref: '#/components/schemas/endpointReferenceType'
+        userLevel:
           description: Authorization level that will be assigned to the uplink connection.
           type: string
           enum: [Administrator, Operator, User]
-        UplinkTrustAnchor:
+        uplinkTrustAnchors:
           items:
-            $ref: '#/components/schemas/Base64DERencodedASN1Value'
+            $ref: '#/components/schemas/base64DerEncodedAsn1Value'
           description: The list of certificates with the public keys needed to build the validation policy to validate the TLS certificate of the uplink server.
       required:
-        - RemoteAddress
-        - UserLevel
+        - remoteAddress
+        - userLevel
 
-    DeviceConfiguration:
+    deviceConfiguration:
       type: object
       properties:
-        ShareToken:
+        shareToken:
           description: The share token, to prove permission to share the device.
           type: string
           format: byte
-        EndpointReferences:
+        endpointReferences:
           description: The endpoint to be notified to inform that the operation was completed. It may be more then one if the requesting cloud has redundant URIs to receive the notification.
           items:
-            $ref: '#/components/schemas/EndpointReferenceType'
-        UplinkConfiguration:
+            $ref: '#/components/schemas/endpointReferenceType'
+        uplinkConfigurations:
           description: Per-device uplink configuration
           items:
-            $ref: '#/components/schemas/UplinkConfiguration'
-        AuthorizationServerConfiguration:
+            $ref: '#/components/schemas/uplinkConfiguration'
+        authorizationServerConfigurations:
           items:
-            $ref: '#/components/schemas/AuthorizationServerConfiguration'
+            $ref: '#/components/schemas/authorizationServerConfiguration'
       required:
-        - ShareToken
-        - EndpointReferences
-        - UplinkConfiguration
-        - AuthorizationServerConfiguration
+        - shareToken
+        - endpointReferences
+        - uplinkConfigurations
+        - authorizationServerConfigurations
 
-    DeviceInformation:
+    startDeviceSharing:
       type: object
       properties:
-        ShareToken:
-          description: The share token, to know what device the public key is associated to.
-          $ref: '#/components/schemas/Base64DERencodedASN1Value'
-        DevicePublicKey:
-          description: The public key of the device.
-          $ref: '#/components/schemas/Base64DERencodedASN1Value'
-      required:
-        - ShareToken
-        - DevicePublicKey
-
-    StartDeviceSharing:
-      type: object
-      properties:
-        DeviceConfigurations:
+        deviceConfigurations:
           items:
-            $ref: '#/components/schemas/DeviceConfiguration'
+            $ref: '#/components/schemas/deviceConfiguration'
           description: For each camera requested to be shared, it is necessary to pass both the shared token and the endpoint reference.
       required:
-        - DeviceConfigurations
+        - deviceConfigurations
 
-    DeviceSharingCompleted:
+    deviceSharingCompleted:
       type: object
       properties:
-        DevicesInformation:
-          $ref: '#/components/schemas/DeviceInformation'
-          description: For each shared device, the share token and the public key will be provided.
+        shareToken:
+          description: The share token, to know what device the public key is associated to.
+          $ref: string
+        devicePublicKey:
+          description: The public key of the device.
+          $ref: '#/components/schemas/base64DerEncodedAsn1Value'
       required:
-        - DevicesInformation
+        - shareToken
+        - devicePublicKey
 
-    DeviceSharingError:
+    deviceSharingError:
       type: object
       properties:
         error:
@@ -137,7 +127,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StartDeviceSharing'
+              $ref: '#/components/schemas/startDeviceSharing'
       responses:
         '200':
           description: Success
@@ -146,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceSharingError'
+                $ref: '#/components/schemas/deviceSharingError'
 
   /deviceSharingCompleted:
     post:
@@ -157,7 +147,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeviceSharingCompleted'
+              $ref: '#/components/schemas/deviceSharingCompleted'
       responses:
         '200':
           description: Success
