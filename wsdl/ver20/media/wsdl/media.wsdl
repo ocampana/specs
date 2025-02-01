@@ -169,7 +169,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:documentation> Indicates the maximum size of the audio clip that can be uploaded, in KB.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SupportedAudioClipFormat" type="tt:StringList">
+				<xs:attribute name="SupportedAudioClipFormat" type="tt:StringAttrList">
 					<xs:annotation>
 						<xs:documentation>Enumerates the supported audio clip formats. See tr2: SupportedAudioClipFormat.</xs:documentation>
 					</xs:annotation>

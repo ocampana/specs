@@ -2192,7 +2192,7 @@
             <para>RepeatInterval [xs:int] optional - Optional time interval, in seconds, between audio clips when the audio clip is repeated.</para>
           </listitem>
 		  <listitem>
-            <para>AudioOutputLevel [xs:int] optional - Optional level to control the volume of the audio clip when it is played.</para>
+            <para>AudioOutputLevel [xs:int] optional - Optional level to control the volume of the audio clip when it is played. The device should automatically adjust the output level for a particular audio output when the parameter is outside its range.</para>
           </listitem>
 		  <listitem>
             <para>ScheduleToken [tt:ReferenceToken] optional - Optional schedule token associated with the audio clip configuration. The audio clip should be played when the configured schedule is triggered.</para>
@@ -2390,10 +2390,12 @@
           <varlistentry>
             <term>faults</term>
             <listitem>
-               <para role="param">env:Sender - ter:InvalidArgVal - ter:NoAudioClip</para>
-              <para role="text">The audio clip token does not exist.</para>
-			  <para role="param">env:Sender - ter:InvalidArgVal - ter:NoAudioOutput</para>
-              <para role="text">The audio output token does not exist.</para>
+		<para role="param">env:Sender - ter:InvalidArgVal - ter:NoAudioClip</para>
+		<para role="text">The audio clip token does not exist.</para>
+		<para role="param">env:Sender - ter:InvalidArgVal - ter:NoAudioOutput</para>
+		<para role="text">The audio output token does not exist.</para>
+		<para role="param">env:Sender - ter:InvalidArgVal - ter:PlayAudioClipError</para>
+		<para role="text">The audio clip is disabled for the play operation.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2700,12 +2702,13 @@ Topics: tns1:Monitoring/ActiveSessions/VideoEncoder
 	    <section>
         <title>Audio Clip State</title>
         <para>A device that supports AudioClipCapabilities in the GetServiceCapabilities response should generate an audio clip start event when an audio clip starts playing on the device and generate an audio clip stop event when the audio clip stops playing.</para>
-        <programlisting><![CDATA[Topic: tns1:Media/AudioClip
+        <programlisting><![CDATA[Topic: tns1:Media/AudioClip/State
 <tt:MessageDescription  IsProperty="true">
   <tt:Source>	
 	<tt:SimpleItemDescription Name="AudioOutputToken" Type="tt:ReferenceToken"/>
   </tt:Source>
   <tt:Data>
+    <tt:SimpleItemDescription Name="Token" Type="tt:ReferenceToken"/>
 	<tt:SimpleItemDescription Name="ClipName" Type="xs:string"/>
 	<tt:SimpleItemDescription Name="Playing" Type="xs:boolean"/>	
   </tt:Data>
