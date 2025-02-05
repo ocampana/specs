@@ -279,21 +279,21 @@
       <para>The share token must be a JWT and must include the following claims:</para>
       <itemizedlist>
         <listitem>
-          <para><emphasis>xaddr</emphasis>: The URI where the PCS will be accepting the incoming
+          <para><emphasis>onvif:xaddr</emphasis>: The URI where the PCS will be accepting the incoming
             requests from the OCS</para>
         </listitem>
         <listitem>
-          <para><emphasis>SerialNumber</emphasis>: The serial number of the device.</para>
+          <para><emphasis>onvif:sn</emphasis>: The serial number of the device.</para>
         </listitem>
         <listitem>
-          <para><emphasis>Model</emphasis>: The device model.</para>
+          <para><emphasis>onvif:model</emphasis>: The device model.</para>
         </listitem>
         <listitem>
-          <para><emphasis>Manufacturer</emphasis>: The manufactor of the device.</para>
+          <para><emphasis>onvif:manufacturer</emphasis>: The manufacturer of the device.</para>
         </listitem>
       </itemizedlist>
-      <para>The claims <emphasis>SerialNumber</emphasis>, <emphasis>Model</emphasis> and
-          <emphasis>Manufacturer</emphasis> shall match the values returned by GetDeviceInformation
+      <para>The claims <emphasis>onvif:sn</emphasis>, <emphasis>onvif:model</emphasis> and
+          <emphasis>onvif:manufacturer</emphasis> shall match the values returned by GetDeviceInformation
         of the Device service.</para>
       </section>
   </chapter>
