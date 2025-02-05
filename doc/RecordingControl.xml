@@ -2493,7 +2493,7 @@ secfrac = "." 1*6DIGIT</programlisting>
         Segment stability is essential for this feature: each frame must be part of exactly one segment and each segment must always be immutable in time.
         Additionnally, each segment must start with a keyframe to make it independent from the previous one. Some devices may record frames in a proprietary 
         format, so the segments won't exist until exported to the cloud storage. Since the device must be able to list them beforehand, we suggest a simple
-        algorithm to determin how many segments will be in each time range and which frames will be part of them.
+        algorithm to determine how many segments will be in each time range and which frames will be part of them.
       </para>
       <para>
         The figure <xref linkend="_refSegmentExportStabilityExample" /> illustrate how a global real time clock timestamp (that doesn't reset on device reboot 
