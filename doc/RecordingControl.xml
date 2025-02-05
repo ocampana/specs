@@ -2576,7 +2576,7 @@ secfrac = "." 1*6DIGIT</programlisting>
       </para>
       <para>
         The figure <xref linkend="_refSegmentExportStabilityExample" /> illustrate how a global real time clock timestamp (that doesn't reset on device reboot 
-        or resync on NTP) could be segmented in time ranges for the target segment duration with a modulus operation. Then each boundary of these ranges is 
+        or resync on NTP) could be segmented in time ranges for the target segment duration with a modulus operation. Then each boundary of these ranges are 
         adjusted to match the time of the next keyframe. The result is the list of segment boundaries that overlap with the original time range of the query. 
         Care should be taken not to return the most recent segment if it is incomplete (when more frames may be appended to it later, i.e.: it overlaps with the current time).
       </para>
