@@ -1539,7 +1539,7 @@
                   </entry>
                   <entry>No</entry>
                   <entry>
-                    <para>The manufacturer the device that generated the RTSP stream with the
+                    <para>The manufacturer of the device that generated the RTSP stream with the
                       digital signatures.</para>
                     <para>If this field is populated, it must match the value in the <xref linkend="section_r3s_njq_bwb"/> tag.</para>
                   </entry>
