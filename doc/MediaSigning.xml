@@ -1397,7 +1397,7 @@
       secure binding of statements of provenance data to instances of content. These provenance
       statements are called assertions in a Content Credential. They may include assertions about
       who created the content and how, when, and where it was created. </para>
-    <para>This Annex defines the assertions necessary to embed an ONVIF-compliant digitally singed
+    <para>This Annex defines the assertions necessary to embed an ONVIF-compliant digitally signed
       video feed into a C2PA complaint file.</para>
     <section>
       <title>Overview</title>
