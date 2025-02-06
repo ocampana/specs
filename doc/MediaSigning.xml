@@ -1414,7 +1414,7 @@
         </listitem>
       </itemizedlist>
       <para>Therefore, the <emphasis>org.onvif.c2pa.device</emphasis> assertion must always be
-        populated by the device, while the <emphasis>org.onvif.c2pa.client</emphasis> assertion sall
+        populated by the device, while the <emphasis>org.onvif.c2pa.client</emphasis> assertion shall
         be populated either by the client or by the device.</para>
     </section>
     <section>
