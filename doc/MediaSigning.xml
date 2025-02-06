@@ -1398,7 +1398,7 @@
       statements are called assertions in a Content Credential. They may include assertions about
       who created the content and how, when, and where it was created. </para>
     <para>This Annex defines the assertions necessary to embed an ONVIF-compliant digitally signed
-      video feed into a C2PA complaint file.</para>
+      video feed into a C2PA compliant file.</para>
     <section>
       <title>Overview</title>
       <para>The ONVIF-defined assertion are split in two group in order to be able to keep track of
