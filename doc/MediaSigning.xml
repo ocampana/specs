@@ -1562,7 +1562,7 @@
       </section>
       <section>
         <title>ONVIF client information</title>
-        <para>This assertion is used to embed in teh C2PA file informtion about the client that exported the signed video feed.</para>
+        <para>This assertion is used to embed in the C2PA file information about the client that exported the signed video feed.</para>
         <para>
           <table frame="all">
             <title>ONVIF-defined C2PA recorder assertions</title>
