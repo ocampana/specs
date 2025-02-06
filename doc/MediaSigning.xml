@@ -1401,7 +1401,7 @@
       video feed into a C2PA complaint file.</para>
     <section>
       <title>Overview</title>
-      <para>The ONVIF-defined assertion are slipt in two group in order to be able to keep track of
+      <para>The ONVIF-defined assertion are split in two group in order to be able to keep track of
         two possibiel use cases:</para>
       <itemizedlist>
         <listitem>
