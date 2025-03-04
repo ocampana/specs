@@ -7726,11 +7726,6 @@ and sample rate. </xs:documentation>
 					<xs:documentation>Token of a storage configuration.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="StorageStrategy" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Strategy to be used on how to store recordings, see tt:StorageStrategy for allowed values. If undefined, defaults to External.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="Format" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>
@@ -7767,6 +7762,11 @@ and sample rate. </xs:documentation>
 						By specifying multiple encryption entries per recording, different tracks can be encrypted with different configurations.
 						Each track shall only be contained in one encryption configuration.
 					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StorageStrategy" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Strategy to be used on how to store recordings, see tt:StorageStrategy for allowed values. If undefined, defaults to External.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first ONVIF then Vendor -->
