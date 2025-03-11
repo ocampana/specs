@@ -179,12 +179,12 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			<!--===============================-->
 			<xs:simpleType name="SupportedAudioClipFormat">
 				<xs:restriction base="xs:string">
-					<xs:enumeration value="WAV"/>
-					<xs:enumeration value="MP3"/>
-					<xs:enumeration value="OGG-Opus"/>
-					<xs:enumeration value="OGG-Vorbis"/>
-					<xs:enumeration value="OGG-Flac"/>
-					<xs:enumeration value="OGG-Speex"/>
+					<xs:enumeration value="audio/wav;codecs=g711-ulaw"/>
+					<xs:enumeration value="audio/mpeg"/>
+					<xs:enumeration value="audio/ogg;codecs=opus"/>
+					<xs:enumeration value="audio/ogg;codecs=vorbis"/>
+					<xs:enumeration value="audio/ogg;codecs=flac"/>
+					<xs:enumeration value="audio/ogg;codecs=speex"/>
 				</xs:restriction>
 			</xs:simpleType>
 			<!--==========================================-->
