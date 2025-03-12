@@ -990,14 +990,23 @@
                 </entry>
               </row>
               <row>
-                <entry><para>KeyID</para></entry>
-                <entry><para>Key identifier for the <emphasis>private_key_jwt</emphasis> authentication
-                  method</para></entry>
+                <entry>
+                  <para>KeyID</para>
+                </entry>
+                <entry>
+                  <para>Key identifier for the <emphasis>private_key_jwt</emphasis> authentication
+                    method</para>
+                </entry>
               </row>
               <row>
-                <entry><para>CertificateID</para></entry>
-                <entry><para>Certificate identifier for the
-                  <emphasis>self_signed_tls_client_auth</emphasis> and <emphasis>tls_client_auth</emphasis> authentication methods.</para></entry>
+                <entry>
+                  <para>CertificateID</para>
+                </entry>
+                <entry>
+                  <para>Certificate identifier for the
+                      <emphasis>self_signed_tls_client_auth</emphasis> and
+                      <emphasis>tls_client_auth</emphasis> authentication methods.</para>
+                </entry>
               </row>
               <row>
                 <entry>
@@ -1024,8 +1033,8 @@
                   <para>CertPathValidationPolicyID</para>
                 </entry>
                 <entry>
-                  <para>The unique identifier of the certification path validation policy to be
-                    used for validating the server certificate</para>
+                  <para>The unique identifier of the certification path validation policy to be used
+                    for validating the server certificate</para>
                 </entry>
               </row>
             </tbody>
@@ -1147,6 +1156,11 @@
             </tbody>
           </tgroup>
         </table>
+        <para>A device signaling support for tls_client_auth shall signal support for PKCS10.</para>
+        <para>A device signaling support for self_signed_tls_client_auth shall signal support for
+          SelfSignedCertificateCreation.</para>
+        <para>A device signaling support for private_key_jwt shall signal support for
+          ECCKeyPairGeneration.</para>
       </section>
     </section>
   </chapter>
@@ -4847,6 +4861,11 @@
               <row>
                 <entry>EllipticCurves</entry>
                 <entry>The list of supported elliptic curves.</entry>
+              </row>
+              <row>
+                <entry><para>AuthorizationServer.MaxConfigurations</para></entry>
+                <entry><para>If > 0, MaximumNumberOfCertificationPathValidationPolicies>=2</para></entry>
+                <entry/>
               </row>
             </tbody>
           </tgroup>
