@@ -299,16 +299,12 @@
           specifications.</para>
         <para>To uniquely identify a local service on remote client, it is recommended to have a unique client certificate installed on each local service. For example, CN field or Serial number of installed certificate could be used to uniquely identify the local service.</para>
         <para>The device shall assign any tunneled HTTP or RTSP request the UserLevel that is configured for the configuration without the need of further authentication request headers. </para>
-        <para>When a device indicates supported authorization mode as mTLS through its Capabilities,
-          then it shall support mTLS authentication in this specification.</para>
       </section>
       <section>
         <title>JWT authentication</title>
         <para>When using JWT authentication, the local service shall provide a JWT token when sending the upgrade request.</para>
         <para>The remote client shall validate the JWT token provided following the JWT specification as defined in the Core specification.</para>
         <para>The device shall assign any tunneled HTTP or RTSP request the UserLevel that is configured for the configuration without the need of further authentication request headers.</para>
-        <para>When a device indicates supported authorization mode as JWT through its Capabilities,
-          then it shall support JWT authentication in this specification.</para>
       </section>
     </section>
     <section>
