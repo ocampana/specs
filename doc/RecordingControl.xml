@@ -1692,7 +1692,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
           <listitem>
             <para role="param">Time [tt:DateTimeRange]</para>
             <para role="param">RecordingToken [tt:RecordingReference]</para>
-            <para role="param">MaxResults [xs:int]</para>
+            <para role="param">MaxResults - optional [xs:int]</para>
             <para role="text">The maximum number of results to return in one response.</para>
           </listitem>
         </varlistentry>
@@ -1753,7 +1753,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
             <para role="param">OperationToken [tt:ReferenceToken]</para>
             <para role="param">StartTime [xs:dateTime]</para>
             <para role="text">The start index for the segment results.</para>
-            <para role="param">MaxCount [xs:int]</para>
+            <para role="param">MaxResults - optional [xs:int]</para>
             <para role="text">The maximum number of segment results to be provided in the response.</para>
           </listitem>
         </varlistentry>

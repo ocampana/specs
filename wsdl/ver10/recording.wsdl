@@ -822,7 +822,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 								<xs:documentation>The start index for the segment results.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="MaxCount" type="xs:int">
+						<xs:element name="MaxResults" type="xs:int" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>The maximum number of segment results to be provided in the response.</xs:documentation>
 							</xs:annotation>
