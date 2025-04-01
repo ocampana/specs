@@ -1151,7 +1151,7 @@
         <para>A device signaling support for self_signed_tls_client_auth shall signal support for
           SelfSignedCertificateCreation.</para>
         <para>A device signaling support for private_key_jwt shall signal support for
-          ECCKeyPairGeneration.</para>
+          KeyPairGeneration.</para>
       </section>
     </section>
   </chapter>
@@ -3984,6 +3984,14 @@
               </row>
               <row>
                 <entry>
+                  <para>KeyPairGeneration</para>
+                </entry>
+                <entry>
+                  <para>Indicates support for on-board key pair generation.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
                   <para>RSAKeyLengths</para>
                 </entry>
                 <entry>
@@ -4402,17 +4410,34 @@
               </row>
               <row>
                 <entry>
-                  <para>RSAKeyPairGeneration</para>
+                  <para>KeyPairGeneration</para>
                 </entry>
                 <entry>
-                  <para>If true, the following commands shall be supported:</para>
+                  <para>If true and at least one capability between EllipticCurves and
+                    RSAKeyLenghts shall be specified and not empty.</para>
+                  <para>If true and EllipticCurves is specified, the following command shall be
+                    supported:</para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>CreateECCKeyPair</para>
+                    </listitem>
+                  </itemizedlist>
+                  <para>If true and RSAKeyLenghts is specified, the following command shall be
+                    supported:</para>
                   <itemizedlist>
                     <listitem>
                       <para>CreateRSAKeyPair</para>
                     </listitem>
                   </itemizedlist>
-                  <para>If true, the list of supported RSA key lengths as indicated by the RSAKeyLenghts capability shall not be empty.</para>
                   <para>If true, MaximumNumberOfKeys&gt;0 shall hold.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>RSAKeyPairGeneration</para>
+                </entry>
+                <entry>
+                  <para>If true, the conditions of KeyPairGeneration for RSA shall be supported.</para>
                 </entry>
               </row>
               <row>
@@ -4420,14 +4445,7 @@
                   <para>ECCKeyPairGeneration</para>
                 </entry>
                 <entry>
-                  <para>If true, the following commands shall be supported:</para>
-                  <itemizedlist>
-                    <listitem>
-                      <para>CreateECCKeyPair</para>
-                    </listitem>
-                  </itemizedlist>
-                  <para>If true, the list of supported elliptic curves indicated by the EllipticCurves capability shall not be empty.</para>
-                  <para>If true, MaximumNumberOfKeys&gt;0 shall hold.</para>
+                  <para>If true, the conditions of KeyPairGeneration for ECC shall be supported.</para>
                 </entry>
               </row>
               <row>
