@@ -2183,7 +2183,7 @@
             <para>AudioOutputToken [tt:ReferenceToken] optional, unbounded – Optional token list of physical audio outputs. If no AudioOutputToken is provided, the device should play the audio clip through all physical audio outputs.</para>
           </listitem>
           <listitem>
-            <para>Type [xs:string] - Format of the audio clip. Supported audio Clip formats are audio/wav;codecs=g711-ulaw(WAV with G711-ulaw), audio/mpeg(MP3), audio/ogg;codecs=opus, audio/ogg;codecs=vorbis, audio/ogg;codecs=flac, audio/ogg;codecs=speex.</para>
+            <para>Type [xs:string] - Format of the audio clip. Supported audio Clip formats includes audio/vnd.wave;codec=1(WAV with LPCM), audio/vnd.wave;codec=7(WAV with G711-ulaw), audio/mpeg(MP3), audio/ogg;codecs=opus, audio/ogg;codecs=vorbis, audio/ogg;codecs=flac, audio/ogg;codecs=speex.</para>
           </listitem>          
           <listitem>
             <para>RepeatCycles [xs:int] - The number of times the audio clip can be repeated when it is played. A value of 0 means no repeat (i.e., the audio clip plays once and does not repeat). A value of 1 means the audio clip plays once and repeats once after the first play. A value of -1 means the audio clip repeats infinitely after the first play until it is stopped by the user.</para>
