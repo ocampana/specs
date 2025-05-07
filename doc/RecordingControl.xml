@@ -98,7 +98,7 @@
         <author>
           <personname>Hasan Timucin Ozdemir</personname>
         </author>
-        <revremark>Added 5.21 ExportRecordedData command and corresponding capability flag in 5.24 Capabilitites 
+        <revremark>Added 5.21 ExportRecordedData command and corresponding capability flag in 5.24 Capabilitites
 Added 5.22 StopExportRecordedData
 Added 5.23 GetExportRecordedDataStatus</revremark>
       </revision>
@@ -390,7 +390,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
       <section>
         <title>External targets</title>
         <para>
-          The target interface allows configuration for devices that support recording to external storage targets. 
+          The target interface allows configuration for devices that support recording to external storage targets.
           For authentication configuration see the related storage configuration APIs of the core specification.
         </para>
         <para>
@@ -540,7 +540,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <para>
           <emphasis role="bold">AutoCreateReceiver</emphasis>: If a request includes this field set to true and no source token is provided, the device shall create a
           receiver object (through the receiver service) and assign the ReceiverReference to the
-          <emphasis role="bold">SourceToken</emphasis> field. A device shall never report this parameter in a 
+          <emphasis role="bold">SourceToken</emphasis> field. A device shall never report this parameter in a
           RecordingJobConfiguration. A device may reject a request that neither contains a SourceToken nor AutoCreateRecevier set to true.</para>
         <para>
           <emphasis role="bold">SourceTag</emphasis>: If the received RTSP stream contains multiple tracks of the same type, the <emphasis role="bold">SourceTag</emphasis> differentiates between those Tracks.</para>
@@ -552,7 +552,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <title>Event recording</title>
         <para>A device signalling support for EventRecording via its capabilities shall support
           controling recording job activity via the EventFilter with the following set of
-          parameters: 
+          parameters:
           </para>
         <variablelist>
           <varlistentry>
@@ -1496,7 +1496,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         duration on its next segment. The override duration shall not exceed 1 hour.
       </para>
       <para>
-        When a new override request is sent before the previous override has expired, the new override shall replace the 
+        When a new override request is sent before the previous override has expired, the new override shall replace the
         previous override and the new expiration shall apply.
       </para>
       <para>
@@ -1681,14 +1681,14 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <title>Recording job state changes</title>
         <para>If the state field of the RecordingJobStateInformation structure changes, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>JobState</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="true"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingJobToken" Type="tt:RecordingJobReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-    <tt:SimpleItemDescription Name="State" Type="xs:String"/> 
-    <tt:ElementItemDescription Name="Information" Type="tt:RecordingJobStateInformation"/> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="true">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingJobToken" Type="tt:RecordingJobReference"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:SimpleItemDescription Name="State" Type="xs:String"/>
+    <tt:ElementItemDescription Name="Information" Type="tt:RecordingJobStateInformation"/>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
         <para>The ElementItem Information shall be provided whenever the state of the different tracks is not unique. It can be omitted when the state of all tracks of a recording is consistent.</para>
@@ -1697,35 +1697,35 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <title>Configuration changes</title>
         <para>If the configuration of a recording is changed, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>RecordingConfiguration</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-    <tt:ElementItemDescription Name="Configuration" Type="tt:RecordingConfiguration"/> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:ElementItemDescription Name="Configuration" Type="tt:RecordingConfiguration"/>
+  </tt:Data>
 </tt:MessageDescription>]]></programlisting>
         <para>If the configuration of a track is changed, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>TrackConfiguration</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-    <tt:ElementItemDescription Name="Configuration" Type="tt:TrackConfiguration"/> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:ElementItemDescription Name="Configuration" Type="tt:TrackConfiguration"/>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
         <para>If the configuration of a recording job is changed, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>RecordingJobConfiguration</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingJobToken" Type="tt:RecordingJobReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-    <tt:ElementItemDescription Name="Configuration" Type="tt:RecordingJobConfiguration"/> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingJobToken" Type="tt:RecordingJobReference"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:ElementItemDescription Name="Configuration" Type="tt:RecordingJobConfiguration"/>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
       </section>
@@ -1733,15 +1733,15 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <title>Data deletion</title>
         <para>Whenever data is deleted, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>DeleteTrackData</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-    <tt:SimpleItemDescription Name="StartTime" Type="xsDateTime"/> 
-    <tt:SimpleItemDescription Name="EndTime" Type="xsDateTime"/> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:SimpleItemDescription Name="StartTime" Type="xsDateTime"/>
+    <tt:SimpleItemDescription Name="EndTime" Type="xsDateTime"/>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
       </section>
@@ -1749,44 +1749,44 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <title>Recording and track creation and deletion</title>
         <para>Whenever a recording is created, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/<phrase>CreateRecording</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+  </tt:Source>
+  <tt:Data>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
         <para>Whenever a recording is deleted, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/Delete<phrase>Recording</phrase></para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+  </tt:Source>
+  <tt:Data>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
         <para>Whenever a track is created, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/CreateTrack</para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/>
+  </tt:Source>
+  <tt:Data>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
         <para>Whenever a track is deleted, a device shall provide the following event:</para>
         <para>Topic: tns1:RecordingConfig/DeleteTrack</para>
-        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false"> 
-  <tt:Source> 
-    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/> 
-    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/> 
-  </tt:Source> 
-  <tt:Data> 
-  </tt:Data> 
+        <programlisting><![CDATA[<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="RecordingToken" Type="tt:RecordingReference"/>
+    <tt:SimpleItemDescription Name="TrackToken" Type="tt:TrackReference"/>
+  </tt:Source>
+  <tt:Data>
+  </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
       </section>
@@ -1954,7 +1954,7 @@ SetRecordingJobMode(JobToken, Active)
           <literal>SegmentDuration</literal> configured for the recording, the device shall close
         the open segment of this span and open a new segment for this span. When closing the open
         segment of a span and opening a new segment for this span, there shall be no time gap
-        between the two segments. Note that the actual segment duration may vary and can be plus or 
+        between the two segments. Note that the actual segment duration may vary and can be plus or
 		minus one GOP size from the configured duration because a segment must start with an I-Frame.</para>
       <para>
         The device shall generate each segment as a fragmented MP4 file according to ISO/IEC 14496-12, the ISO base media file format.
@@ -2194,13 +2194,24 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
   unsigned int(8)[16] SystemID;
   unsigned int(32) KID_count = 1;
   unsigned int(8)[16] KID;
-  unsigned int(32) DataSize;
   unsigned int(32) EncryptedKeyEntryCount;
   for (i=1; i <= EncryptedKeyEntryCount; i++) {
+    unsigned int(16) CertificateThumbprintAlgorithm;
     unsigned int(32) CertificateThumbprintSize;
     unsigned int(8)[CertificateThumbprintSize] CertificateThumbprint;
-    unsigned int(32) EncryptedKeySize;
-    unsigned int(8)[EncryptedKeySize] EncryptedKey;
+    unsigned int(16) EncryptionVersion;
+    unsigned int(32) EncryptionDataSize;
+    if (EncryptionVersion == 1) {
+      unsigned int(8)[EncryptionDataSize] EncryptedKey;
+    } else if (EncryptionVersion == 2) {
+      unsigned int(16) HpkeKem;
+      unsigned int(16) HpkeKdf;
+      unsigned int(16) HpkeAead;
+      unsigned int(8)[EncapsulatedSharedSecretSize] EncapsulatedSharedSecret;
+      unsigned int(16) EncryptedKeySize
+      unsigned int(8)[EncryptedKeySize] EncryptedKey;
+    }
+
   }
 }
             ]]></programlisting>
@@ -2214,10 +2225,42 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
             <para><literal>KID</literal> is the generated UUID by the device. This <literal>KID</literal> should be the same in all segments until the symmetric key changes.</para>
             <para><literal>DataSize</literal> is the size in bytes of all the other fields present in this box following this field.</para>
             <para><literal>EncryptedKeyEntryCount</literal> Number of entries containing encryption information required to decrypt the symmetric key. Shall be 1 or more.</para>
-            <para><literal>CertificateThumbprintSize</literal> Size of the <literal>CertificateThumbprint</literal> field. Shall be '20'.</para>
+            <para><literal>CertificateThumbprintAlgorithm</literal> defines the algorithm used to compute the thumbprint of the certificates. Those values are defined in the Security Baseline specification</para>
+            <para><literal>CertificateThumbprintSize</literal> Size of the <literal>CertificateThumbprint</literal> field.</para>
             <para><literal>CertificateThumbprint</literal> Thumbprint of the certificate used to encrypted the symmetric key (Computed using SHA-1).</para>
+            <para><literal>EncryptionVersion</literal> defines the encryption strategy used to encrypt the symmetric key for this certificate.</para>
+            <para><literal>EncryptionDataSize</literal> defines the number of bytes used by the following bytes for this certificate. The next certificates, if any, will start after this number of bytes.</para>
+            <para><literal>EncryptedKey</literal> The symmetric key (identified by <literal>KID</literal>) used for frame encryption, encrypted using the public key of the certificate according to the encryption version.</para>
+            <para><literal>HpkeKem</literal> defines the KEM algorithm identifier used to encrypt the key with the current certificate.</para>
+            <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier used to encrypt the key with the current certificate.</para>
+            <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier used to encrypt the key with the current certificate.</para>
+            <para><literal>EncapsulatedSharedSecret</literal> is the HPKE shared secret value necessary to decrypt the encrypted key according to RFC 9180.</para>
             <para><literal>EncryptedKeySize</literal> Size of the <literal>EncryptedKey</literal> field. Valid values depend on the encryption algorithm used by the certificate.</para>
-            <para><literal>EncryptedKey</literal> The symmetric key (identified by <literal>KID</literal>) used for frame encryption, encrypted using the public key of the certificate. Padding is done according to [RFC 5652].</para>
+          </section>
+          <section xml:id="_refCloudRecordingEncryptionVersion1">
+            <title>Encryption Version 1</title>
+            <para>
+              This version is defined for use when the certificate contains an RSA public key. When using this version,
+              the symmetric key is directly encrypted using the public key of the certificate and the RSA-OEAP padding scheme
+              as defined in [RFC 5652].
+            </para>
+          </section>
+          <section xml:id="_refCloudRecordingEncryptionVersion2">
+            <title>Encryption Version 2</title>
+            <para>
+              This version is defined for the use of the HPKE algorithm as defined in [RFC 9180]. It is used
+              when the certificate contains an EC public key. Using the public key of the certificate and the
+              algorithms defined in the <literal>HpkeKem</literal>, <literal>HpkeHkdf</literal>, and <literal>HpkeAead</literal> fields,
+              the <literal>EncapsulatedSharedSecret</literal> field is derived using the <literal>Base</literal> mode of HPKE.
+            </para>
+            <figure xml:id="_refHpkeEncryptionFigure">
+              <title>Encryption using HPKE algorithm</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="media/RecordingControl/hpkeEncryption.excalidraw.svg" contentwidth="150.41mm"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
           </section>
         </section>
       </section>
