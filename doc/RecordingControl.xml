@@ -2254,7 +2254,7 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
               the <literal>EncapsulatedSharedSecret</literal> field is derived using the <literal>Base</literal> mode of HPKE.
             </para>
             <figure xml:id="_refHpkeEncryptionFigure">
-              <title>Encryption using HPKE algorithm</title>
+              <title>Encryption (Left) and Decryption (Right) using the HPKE algorithm</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="media/RecordingControl/hpkeEncryption.excalidraw.svg" contentwidth="150.41mm"/>
