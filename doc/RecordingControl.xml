@@ -2234,6 +2234,7 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
             <para><literal>HpkeKem</literal> defines the KEM algorithm identifier used to encrypt the key with the current certificate.</para>
             <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier used to encrypt the key with the current certificate.</para>
             <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier used to encrypt the key with the current certificate.</para>
+            <para><literal>EncapsulatedSharedSecretSize</literal> is implicitly defined to the <literal>Nenc</literal> parameter of the <literal>HpkeKem</literal> algorithm.</para>
             <para><literal>EncapsulatedSharedSecret</literal> is the HPKE shared secret value necessary to decrypt the encrypted key according to RFC 9180.</para>
             <para><literal>EncryptedKeySize</literal> Size of the <literal>EncryptedKey</literal> field. Valid values depend on the encryption algorithm used by the certificate.</para>
           </section>
