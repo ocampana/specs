@@ -1366,6 +1366,11 @@
                     <para>State province or authority that issue the license plate.</para>
                   </entry>
                 </row>
+              <row>
+                <entry><para>Color</para></entry>
+                <entry><para>Optional background color of the license plate in case of vehicle objects.
+                  For license plate objects use color descriptor.</para></entry>
+              </row>
               </tbody>
             </tgroup>
           </table>
