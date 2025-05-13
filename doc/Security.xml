@@ -4467,7 +4467,9 @@
                     indicated by the PasswordBasedEncryptionAlgorithms capability shall include the
                     baseline specified in table Key Derivation Functions of the ONVIF Security
                     Baseline.</para>
-                  <para>If true, the list of supported password-based MAC algorithms as indicated by the PasswordBasedMACAlgorithms capability shall contain at least the algorithm <phrase>hmacWithSHA256</phrase>.</para>
+                  <para>If true, the list of supported password-based MAC algorithms as indicated by
+                    the PasswordBasedMACAlgorithms capability shall include the baseline specified
+                    in table Key Derivation Functions of the ONVIF Security Baseline.</para>
                   <para>If true, the list of supported X.509 versions as indicated by the X.509Versions capability shall contain at least the value 3.</para>
                 </entry>
               </row>
@@ -4508,7 +4510,9 @@
                       <para>The capability ECCKeyPairGeneration shall be specified.</para>
                     </listitem>
                     <listitem>
-                      <para>The list of supported signature algorithms as indicated by the SignatureAlgorithms capability shall contain at least the algorithms ECDSA-With-SHA1 and ECDSA-With-SHA256.</para>
+                      <para>The list of supported signature algorithms as indicated by the
+                        SignatureAlgorithms capability shall contain at least the algorithm defined
+                        in the security baseline.</para>
                     </listitem>
                   </itemizedlist>
                   
@@ -4642,6 +4646,15 @@
                       <para>DeleteCRL</para>
                     </listitem>
                   </itemizedlist>
+                  <para>If greater than zero, then processing X.509 CRLs that are compliant to the
+                    CRL profile defined in RFC 5280, Sect. 5 and that</para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>are complete direct CRLs as defined in RFC 5280 that are signed with the
+                        same signature key as the signature key that the CA uses to sign issued
+                        certificates</para>
+                    </listitem>
+                  </itemizedlist>
                 </entry>
               </row>
               <row>
@@ -4676,18 +4689,8 @@
                   <para>If true, the device shall support</para>
                   <itemizedlist>
                     <listitem>
-                      <para>validating certification paths containing X.509v3 certificates that are signed with signatures of type sha1-WithRSAEncryption or sha256WithRSAEncrpytion</para>
-                    </listitem>
-                    <listitem>
-                      <para>processing X.509 CRLs that are compliant to the CRL profile defined in RFC 5280, Sect. 5 and that</para>
-                      <itemizedlist>
-                        <listitem>
-                          <para>are signed with signatures of type sha1-WithRSAEncryption or, sha256WithRSAEncryption and</para>
-                        </listitem>
-                        <listitem>
-                          <para>are complete direct CRLs as defined in RFC 5280 that are signed with the same signature key as the signature key that the CA uses to sign issued certificates</para>
-                        </listitem>
-                      </itemizedlist>
+                      <para>validating certification paths containing X.509v3 certificates that are
+                        signed with signature algorithm listed in the security baseline.</para>
                     </listitem>
                   </itemizedlist>
                 </entry>
