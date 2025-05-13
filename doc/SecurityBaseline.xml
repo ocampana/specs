@@ -68,6 +68,8 @@
     <para>&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://datatracker.ietf.org/doc/html/rfc4055"/>&gt;</para>
     <para>RFC 5758 - Internet X.509 Public Key Infrastructure: Additional Algorithms and Identifiers for DSA and ECDSA</para>
     <para>&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://datatracker.ietf.org/doc/html/rfc5758"/>&gt;</para>
+    <para>RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function (HKDF)</para>
+    <para>&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://datatracker.ietf.org/doc/html/rfc5869"/>&gt;</para>
     <para>RFC 8017 - PKCS #1: RSA Cryptography Specifications Version 2.2</para>
     <para>&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://datatracker.ietf.org/doc/html/rfc8017"/>&gt;</para>
     <para>RFC 8018 - PKCS #5: Password-Based Cryptography Specification Version 2.1</para>
@@ -368,9 +370,9 @@
     </table>
   </appendix>
   <appendix>
-    <title>Recording Encryption (Informative)</title>
-    <para>This section lists the encryption baseline and links them to the relevant IANA registry.
-      The listed algorithm map to the definitions in the normative sections above. </para>
+    <title>Hybrid Public Key Encryption (Informative)</title>
+    <para>This section lists the HPKE encryption baseline and links them to the relevant IANA
+      registry. The listed algorithm map to the definitions in the normative sections above. </para>
     <para>
       <table frame="all">
         <title>HPKE KEM Identifiers</title>
@@ -424,7 +426,7 @@
           <tbody>
             <row>
               <entry><para>2</para></entry>
-              <entry><para>AEAS-256-GCM</para></entry>
+              <entry><para>AES-256-GCM</para></entry>
             </row>
           </tbody>
         </tgroup>
