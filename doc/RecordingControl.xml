@@ -1717,7 +1717,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <varlistentry>
           <term>response</term>
           <listitem>
-            <para role="param">Segment</para>
+            <para role="param">Segment optional, unbounded [trc:Segment]</para>
             <para role="text">Contains a collection of segments with some basic metadata associated with the recording.</para>
             <para role="param">HasMoreResults [xs:boolean]</para>
             <para role="text">A flag indicating that more segments are available in the specified time range.</para>
@@ -1804,7 +1804,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <varlistentry>
           <term>response</term>
           <listitem>
-            <para role="param">Segment [tt:UploadSegmentResult]</para>
+            <para role="param">Segment - optional, unbounded [trc:UploadSegmentResult]</para>
             <para role="param">HasMoreSegments [xs:boolean]</para>
             <para role="text">A value indicating that the export has reached the maximum count and a new request must be sent to query the export state of further segments.</para>
           </listitem>
@@ -2614,14 +2614,15 @@ secfrac = "." 1*6DIGIT</programlisting>
         For a given time range, this command shall always return the same segments with two exceptions: the newly recorded segments are added as they become
         available, and the deleted segments are removed from it (for example if the device had to delete them to make room for the new ones).
       </para>
-      <para>
-        The <literal>ExportRecordedSegments</literal> command starts an export operation for all segment (partially or entirely) contained in the 
-        specified time range. Multiple operations at the same time can be queued and processed sequentially. While the operation is being executed 
-        the segments must not be deleted until they are uploaded (but the following ones can be). Segments should be uploaded in chronological order.
-        Progression can be tracked with <literal>GetExportRecordedSegmentState</literal>. Operations can be cancelled at any time with <literal>StopExportRecordedSegments</literal>.
-        The segment names used shall follow <xref linkend="_refCloudRecordingSegmentObjects"/>, with <literal>counter</literal> starting 
-        at zero for the first segment of each export operation, unless the OmitSequenceNumber is set to True.
-      </para>
+      <para>The <literal>ExportRecordedSegments</literal> command requests an export operation for
+        a time-range of segments. A device shall accept multiple request but may queue and process
+        them sequentially. Segments shall be uploaded in chronological order. Progress can be
+        tracked via the AsynchronousOperationStatus event and the method
+          <literal>GetExportRecordedSegmentState</literal>. Operations can be cancelled at any time
+        with <literal>StopExportRecordedSegments</literal>. The segment names shall follow <xref
+          linkend="_refCloudRecordingSegmentObjects"/>, with <literal>counter</literal> starting at
+        zero for the first segment of each export operation, unless the OmitSequenceNumber is set to
+        True. </para>
       <para>
         Note: it is possible that the segments listed with <literal>ListRecordedSegments</literal> are not exactly the ones exported with <literal>ExportRecordedSegments</literal>
         as some segments could be deleted/added in-between the two commands being executed.

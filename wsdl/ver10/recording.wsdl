@@ -772,13 +772,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 							<xs:documentation>As defined in RFC 6381 including section 3 Codecs.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="StoragePath" type="xs:string" >
-						<xs:annotation>
-							<xs:documentation>
-								The URI which combines the storage configuration StoragePath and the segment object path.
-							</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="Status" type="trc:UploadStatus">
 						<xs:annotation>
 							<xs:documentation>See trc:UploadStatus for allowed values.</xs:documentation>
