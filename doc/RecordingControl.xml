@@ -2142,7 +2142,7 @@ secfrac = "." 1*6DIGIT</programlisting>
           When frame encryption is configured, the device shall store relevant information about the encryption keys used in the files with 'Protection system specific header' (or 'pssh') boxes [ISO/IEC 23001-7].
         </para>
         <section xml:id="_refKeyStorageStandardCenc">
-          <title>Standard CENC system</title>
+          <title>Common Encryption standard system</title>
           <para>
             When a file is frame encrypted using a <literal>Key/KID</literal> then exactly one pssh box of type 'CENC' box shall be present in the file according to [W3C 'cenc' Initialization Data Format].
             This is independent of the <literal>EncryptionMode</literal>.
