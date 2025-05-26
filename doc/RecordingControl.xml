@@ -2093,7 +2093,7 @@ secfrac = "." 1*6DIGIT</programlisting>
     <section xml:id="_refCloudRecordingFrameEncryption">
       <title>Frame encryption</title>
       <para>
-        A device signaling support for recording to an external target with frame encryption shall support writing encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
+        A device signaling support for recording to an external target with frame encryption shall support creating encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
         Each <literal>Encryption</literal> entry configured for a recording covers a distinct set of tracks for which to apply the encryption, identified by the <literal>Track</literal> element.
         If an encryption entry contains no <literal>Track</literal> elements, it covers all tracks of the recording.
         If an encryption entry contains one or more <literal>Track</literal> elements, it covers the tracks indicated by the track tokens contained in these elements.
