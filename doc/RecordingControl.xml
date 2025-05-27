@@ -2146,7 +2146,7 @@ secfrac = "." 1*6DIGIT</programlisting>
           <para>
             When a file is frame encrypted using a <literal>Key/KID</literal> then exactly one pssh box of type 'CENC' box shall be present in the file according to [W3C 'cenc' Initialization Data Format].
             This is independent of the <literal>EncryptionMode</literal>.
-            Additionnal types of 'pssh' boxes may be present to support alternative DRM systems.
+            Additional types of 'pssh' boxes may be present to support alternative DRM systems.
           </para>
           <section>
             <title>Syntax</title>
@@ -2183,7 +2183,7 @@ aligned(8) class ProtectionSystemSpecificHeaderBox extends FullBox('pssh', versi
             If tracks are encrypted using different keys, then one <literal>AsymmetricKeySystemHeaderBox</literal> will be present per <literal>KID</literal>.
           </para>
           <para>
-            Additionnal 'pssh' boxes may be present to support alternative DRM systems.
+            Additional 'pssh' boxes may be present to support alternative DRM systems.
             Note that DRM systems and client implementations are outside the scope of this specification.
           </para>
           <section>
