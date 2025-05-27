@@ -82,6 +82,12 @@
 					</xs:enumeration>
 				</xs:restriction>
 			</xs:simpleType>
+			<xs:simpleType name="KeyPairAlgorithm">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="RSA"/>
+					<xs:enumeration value="ECC"/>
+				</xs:restriction>
+			</xs:simpleType>
 			<!--===============================-->
 			<xs:simpleType name="DotDecimalOID">
 				<xs:annotation>
@@ -726,14 +732,19 @@
 						<xs:documentation>Indicates support for modifying an existing certification path or certification path validation policy.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
+				<xs:attribute name="KeyPairGeneration" type="tt:StringList">
+					<xs:annotation>
+						<xs:documentation>List of defined key pair algorithm. See tas:KeyPairAlgorithm.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 				<xs:attribute name="RSAKeyPairGeneration" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Indication that the device supports on-board RSA key pair generation.</xs:documentation>
+						<xs:documentation>Deprecated - Indication that the device supports on-board ECC key pair generation.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="ECCKeyPairGeneration" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Indication that the device supports on-board ECC key pair generation.</xs:documentation>
+						<xs:documentation>Deprecated - Indication that the device supports on-board ECC key pair generation.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="RSAKeyLengths" type="tas:RSAKeyLengths">
@@ -748,7 +759,7 @@
 				</xs:attribute>
 				<xs:attribute name="PKCS10ExternalCertificationWithRSA" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Indicates support for creating PKCS#10 requests for RSA keys and uploading the certificate obtained from a CA..</xs:documentation>
+						<xs:documentation>Deprecated - Indicates support for creating PKCS#10 requests for RSA keys and uploading the certificate obtained from a CA..</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="PKCS10" type="xs:boolean">
@@ -758,7 +769,7 @@
 				</xs:attribute>
 				<xs:attribute name="SelfSignedCertificateCreationWithRSA" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Indicates support for creating self-signed certificates for RSA keys.</xs:documentation>
+						<xs:documentation>Deprecated - Indicates support for creating self-signed certificates for RSA keys.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="SelfSignedCertificateCreation" type="xs:boolean">
@@ -778,7 +789,7 @@
 				</xs:attribute>
 				<xs:attribute name="PKCS8RSAKeyPairUpload" type="xs:boolean">
 					<xs:annotation>
-						<xs:documentation>Indicates support for uploading an RSA key pair in a PKCS#8 data structure.</xs:documentation>
+						<xs:documentation>Deprecated - Indicates support for uploading an RSA key pair in a PKCS#8 data structure.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="PKCS8" type="xs:boolean">
@@ -786,7 +797,7 @@
 						<xs:documentation>Indicates support for uploading a key pair in a PKCS#8 data structure.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="PKCS12CertificateWithRSAPrivateKeyUpload" type="xs:boolean">
+				<xs:attribute name="Deprecated - PKCS12CertificateWithRSAPrivateKeyUpload" type="xs:boolean">
 					<xs:annotation>
 						<xs:documentation>Indicates support for uploading a certificate along with an RSA private key in a PKCS#12 data structure.</xs:documentation>
 					</xs:annotation>
