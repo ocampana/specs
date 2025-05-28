@@ -88,7 +88,7 @@
         <tbody valign="top">
           <row>
             <entry>
-              <para>Assymetric Encryption</para>
+              <para>Asymmetric Encryption</para>
             </entry>
             <entry>
               <para>Encryption with public and private key pair.</para>
@@ -117,7 +117,7 @@
   </chapter>
   <chapter>
     <title>Overview</title>
-    <para>The content of this is document bases on state of the art technology as published by the American institute NIST and the German department BSI. 
+    <para>The content of this document is based on state of the art technology as published by the American institute NIST and the German department BSI. 
       Note, that any updates to this specification require a review of implications on technical, profile and addon specifications.</para>
     <para>Publication of updates must synchronized with ONVIF Technical and Technical Service Committee</para>
   </chapter>
@@ -125,7 +125,7 @@
     <title>Asymmetric Encryption Schemes and Key Agreement</title>
     <para/>
     <table xml:id="_Ref395173040">
-      <title>Assymmetric Key Schemes</title>
+      <title>Asymmetric Key Schemes</title>
       <tgroup cols="3">
         <colspec colname="c1" colwidth="52*"/>
         <colspec colname="c2" colwidth="12*"/>
