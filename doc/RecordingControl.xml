@@ -1727,7 +1727,9 @@ Change Request 2061, 2063, 2065, 2109</revremark>
           <term>faults</term>
           <listitem>
             <para role="param">env:Sender - ter:InvalidArgVal - ter:NoRecording</para>
-            <para role="text">The RecordingToken does not reference an existing recording</para>
+            <para role="text">The RecordingToken does not reference an existing recording.</para>
+            <para role="param">env:Sender - ter:InvalidArgVal - ter:NoStorage</para>
+            <para role="text">The TargetConfiguration does not reference an existing storage configuration.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
