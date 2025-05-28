@@ -2093,10 +2093,10 @@ secfrac = "." 1*6DIGIT</programlisting>
     <section xml:id="_refCloudRecordingFrameEncryption">
       <title>Frame encryption</title>
       <para>
-        A device signaling support for recording to an external target with frame encryption shall support creating encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
+        A device signaling support for recording with frame encryption via EncryptionEntryLimit shall support creating encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
         Each <literal>Encryption</literal> entry configured for a recording covers a distinct set of tracks for which to apply the encryption, identified by the <literal>Track</literal> element.
-        If an encryption entry contains no <literal>Track</literal> elements, it covers all tracks of the recording.
-        If an encryption entry contains one or more <literal>Track</literal> elements, it covers the tracks indicated by the track tokens contained in these elements.
+        If an encryption entry does not contain any <literal>Track</literal> element, all tracks of the recording shall be encrypted using the same encryption entry.
+        If an encryption entry contains one or more <literal>Track</literal> elements, specified tracks indicated by the track tokens of the recording shall be encrypted using the encryption entry.
         The device shall encrypt the covered tracks with the scheme given by the <literal>Mode</literal> configured for the encryption entry:
       </para>
       <para>
@@ -2127,7 +2127,7 @@ secfrac = "." 1*6DIGIT</programlisting>
         The device shall include a Standard CENC PSSH box according to <xref linkend="_refKeyStorageStandardCenc" />.
       </para>
       <para>
-        When using <literal>AsymmetricEncryption</literal> then the device shall generate a <literal>KID/Key</literal> pair and encrypt the <literal>Key</literal> with each certificate public key defined in the configuration. The encrypted keys shall be stored in the file using the Asymmetric key system PSSH box as defined in <xref linkend="_refKeyStorageKeyRotationSystem" />.
+        When using <literal>AsymmetricEncryption</literal> then the device shall generate a <literal>KID/Key</literal> pair and encrypt the <literal>Key</literal> with each certificate defined in the configuration. The encrypted keys shall be stored in the file using the Asymmetric key system PSSH box as defined in <xref linkend="_refKeyStorageKeyRotationSystem" />.
         When <literal>KeyRotationDuration</literal> is set then the device shall generate a new <literal>KID/Key</literal> pair at the specified time interval, but still use the current key until the segment is finished.
         New segments shall use the latest generated <literal>Key</literal> for its encryption.
       </para>
