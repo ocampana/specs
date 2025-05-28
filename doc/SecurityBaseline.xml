@@ -153,11 +153,6 @@
             <entry><para/></entry>
           </row>
           <row>
-            <entry><para>sha256WithRSAEncrpytion</para></entry>
-            <entry><para>4096</para></entry>
-            <entry><para>RSA Baseline</para></entry>
-          </row>
-          <row>
             <entry><para>EC Diffie-Hellman</para></entry>
             <entry><para>> 250 Bit</para></entry>
             <entry/>
