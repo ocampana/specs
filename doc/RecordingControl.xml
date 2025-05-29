@@ -189,6 +189,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
   </chapter>
   <chapter>
     <title>Normative references</title>
+    <para role="reference">IANA Algorithm registry for Hybrid Public Key Encryption (HPKE) &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iana.org/assignments/hpke/hpke.xhtml" />&gt;</para>
     <para role="reference">ISO/IEC 14496-12:2022 — Information technology — Coding of audio-visual objects — Part 12: ISO base media file format &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/83102.html" />&gt;</para>
     <para role="reference">ISO/IEC 14496-14:2020 — Information technology — Coding of audio-visual objects — Part 14: MP4 file format &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/79110.html" />&gt;</para>
     <para role="reference">ISO/IEC 23000-19:2020 — Information technology — Multimedia application format (MPEG-A) — Part 19: Common media application format (CMAF) for segmented media &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/79106.html" />&gt;</para>
@@ -196,6 +197,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
     <para role="reference">ISO 8601-1:2019 — Date and time — Representations for information interchange — Part 1: Basic rules &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/70907.html" />&gt;</para>
     <para role="reference">RFC 5234 — Augmented BNF for Syntax Specifications: ABNF &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.ietf.org/rfc/rfc5234.txt" />&gt;</para>
     <para role="reference">RFC 6381 — The 'Codecs' and 'Profiles' Parameters for "Bucket" Media Types &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.ietf.org/rfc/rfc6381.txt" />&gt;</para>
+    <para role="reference">RFC 9180 — Hybrid Public Key Encryption (HPKE) &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.rfc-editor.org/rfc/rfc9180.html" />&gt;</para>
     <para role="reference">ONVIF Core Specification &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.onvif.org/specs/core/ONVIF-Core-Specification.pdf"></link>&gt;</para>
     <para role="reference">ONVIF Schedule Service Specification &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.onvif.org/specs/srv/sched/ONVIF-Scheduler-Service-Spec.pdf"></link>&gt; </para>
     <para role="reference">W3C "cenc" Initialization Data Format &lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/2016/NOTE-eme-initdata-cenc-20160915/"></link>&gt; </para>
@@ -2231,9 +2233,9 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
             <para><literal>EncryptionVersion</literal> defines the encryption strategy used to encrypt the symmetric key for this certificate.</para>
             <para><literal>EncryptionDataSize</literal> defines the number of bytes used by the following bytes for this certificate. The next certificates, if any, will start after this number of bytes.</para>
             <para><literal>EncryptedKey</literal> The symmetric key (identified by <literal>KID</literal>) used for frame encryption, encrypted using the public key of the certificate according to the encryption version.</para>
-            <para><literal>HpkeKem</literal> defines the KEM algorithm identifier used to encrypt the key with the current certificate.</para>
-            <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier used to encrypt the key with the current certificate.</para>
-            <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier used to encrypt the key with the current certificate.</para>
+            <para><literal>HpkeKem</literal> defines the KEM algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
+            <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
+            <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
             <para><literal>EncapsulatedSharedSecretSize</literal> is implicitly defined to the <literal>Nenc</literal> parameter of the <literal>HpkeKem</literal> algorithm.</para>
             <para><literal>EncapsulatedSharedSecret</literal> is the HPKE shared secret value necessary to decrypt the encrypted key according to RFC 9180.</para>
             <para><literal>EncryptedKeySize</literal> Size of the <literal>EncryptedKey</literal> field. Valid values depend on the encryption algorithm used by the certificate.</para>
