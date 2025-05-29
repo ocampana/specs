@@ -1754,7 +1754,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         StorageUri from the StorageConfiguration. By default the segments are exported to the storage that is
         configured for the recording. When the parameter StorageToken is provided this target will
         be used.</para>
-      <para>Note that a client may subsribe to tns1:Monitoring/AsynchronousOperationStatus for
+      <para>Note that a client may subscribe to tns1:Monitoring/AsynchronousOperationStatus for
         enumeration and monitoring of active and queued exports.</para>
       <variablelist role="op">
         <varlistentry>
