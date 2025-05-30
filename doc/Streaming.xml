@@ -745,6 +745,7 @@
                   <para>
                     When the device is providing the key, the SDP is required to have a media of type RTP/SAVP and a MIKEY message.
                     It's permitted to have two media fields, one with RTP/AVP and one with RTP/SAVP. The RTP/AVP track is used for an unencrypted stream.
+                    The device may advertise that it supports the key management defined in this specification by adding the <emphasis>onvif-mgmt</emphasis> attribute to the SDP.
                     <programlisting><![CDATA[v=0
 o=actionmovie 2891092738 2891092738 IN IP4 movie.example.com
 s=Action Movie
@@ -752,6 +753,7 @@ e=action@movie.example.com
 t=0 0
 c=IN IP4 movie.example.com
 a=control:rtsp://movie.example.com/action
+a=onvif-mgmt
 m=video 0 RTP/SAVP 98
 a=rtpmap:98 H264/8000
 a=key-mgmt:mikey AQAFgM0XflABAAAAAAAAAAAAA...
@@ -773,6 +775,10 @@ Transport: RTP/SAVP/UDP;unicast
 KeyMgmt: prot=mikey;uri="";data="AQAFAP1td9ABAADCD1UcAAAAAAoAAdOOGc75XD0BAAAAGAABAQEBE
 AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAAC8A"
 ]]></programlisting>
+                  </para>
+                  <para>
+                    The SSRC is a required component for SRTP encryption and must be specified during the RTSP session setup.
+                    The SSRC shall be provided in the transport header of the RTSP SETUP response as described in RFC 2326 Section 12.39.
                   </para>
                 </section>
                 <section>
