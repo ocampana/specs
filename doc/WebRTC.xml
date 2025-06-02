@@ -381,6 +381,34 @@
           </varlistentry>
       </variablelist>
       </section>
+      <section xml:id="section_unregister">
+        <title>unregister</title>
+	<para> A client or device may send this to a signaling server before closing the WebSocket
+	  connection, indicating that the closing of the WebSocket is intentional and that it no
+	  longer wants to be registered. The main use case is to support a device or client that
+	  isn't always connected to the network. </para>
+        <variablelist role="op">
+        <varlistentry>
+          <term>request</term>
+          <listitem>
+            <para role="text">&lt;none&gt;</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>response</term>
+          <listitem>
+            <para role="text">&lt;none&gt;</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>faults</term>
+            <listitem>
+              <para role="param">404 Not Found</para>
+              <para role="text">Not registered.</para>
+            </listitem>
+          </varlistentry>
+      </variablelist>
+      </section>
     <section xml:id="section_init">
       <title>connect</title>
       <para>An ONVIF compliant signaling server and device shall support this command to establish a
