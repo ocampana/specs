@@ -216,7 +216,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 	<xs:complexType name="ClassDescriptor">
 		<xs:sequence>
 			<xs:element name="ClassCandidate" type="tt:ClassCandidate" minOccurs="0" maxOccurs="unbounded"/> <!-- Deprecated -->
-			<xs:element name="Extension" type="tt:ClassDescriptorExtension" minOccurs="0"/>  <!-- Deprecated -->
+			<xs:element name="Extension" type="tt:ClassDescriptorExtension" minOccurs="0"/>  <!-- Deprecated --> 
 			<xs:element name="Type" type="tt:StringLikelihood" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>For well-defined values see tt:ObjectType. Other type definitions like tt:VehicleType may be applied as well.</xs:documentation>
