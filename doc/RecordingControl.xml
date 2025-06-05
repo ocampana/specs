@@ -1751,7 +1751,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         export. Finally a Deleted event shall be emitted to signal completion or aborting of the
         operation when e.g. StopExportRecordedSegments has been executed. A device signaling support 
         for SegmentExport shall support this function.</para>
-      <para>An event shall be raised for each segment being uploaded to the Object Storage, which means the 
+      <para>An event shall be raised after each segment is uploaded to the Object Storage, which means the 
         ArrayOfFileProgress shall have only a single element each time. The FileProgress element shall have the FileName 
         element be the path as defined in the Object Storage annex appended to the
         StorageUri from the StorageConfiguration.</para>
