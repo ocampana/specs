@@ -2083,7 +2083,7 @@
               conformant device shall support this command for backward compatibility reasons. For
               backward compatibility with older clients a device shall not return a fault if the
               requested key ID is not in the keystore because it may have been deleted together with
-              the certificate.ignore the command if the associated key was </para>
+              the certificate. </para>
             <para>If a reference exists for the specified key, a device may produce the
               corresponding fault. If there is a key under the requested key ID stored in the
               keystore and the key could not be deleted, a device shall produce a KeyDeletion fault.
