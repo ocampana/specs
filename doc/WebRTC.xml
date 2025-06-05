@@ -352,7 +352,9 @@
         <title>register</title>
         <para> A signaling server shall expect this command to be sent once before any other command
           is sent over the WebSocket connection. The signaling server shall verify the validity of
-          the access token. Token details are outside of the scope of this specification.</para>
+          the access token. The access token shall encode the device or client identity but the
+          token's structure and the method used to encode the client or device identity into token
+          is out of scope of this specification.</para>
         <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -361,7 +363,7 @@
             <para role="text">Access token that authorizes the device or client.</para>
             <para role="param">id optional [string]</para>
             <para role="text">The unique ID of the device or client. This parameter is deprecated as
-                device or client identity is encoded in access token acquired out-of-band.</para>
+                access token conveys the device/client identity.</para>
             <para role="param">name optional [string]</para>
             <para role="text">The human readable name of the device or client.</para>
           </listitem>
