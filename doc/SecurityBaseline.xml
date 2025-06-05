@@ -222,10 +222,10 @@
     </table>
   </chapter>
   <chapter>
-    <title>Hash Functions and Signatures</title>
+    <title>Hash Functions</title>
     <para/>
     <table xml:id="sigTable">
-      <title>Hashes and Signatures</title>
+      <title>Hashes</title>
       <tgroup cols="3">
         <colspec colname="c1" colwidth="52*"/>
         <colspec colname="c2" colwidth="12*"/>
@@ -253,14 +253,40 @@
             <entry><para>FIPS 180-4</para></entry>
           </row>
           <row>
-            <entry><para>sha256WithRSAEncryption</para></entry>
-            <entry><para>>= 3000 Bit</para></entry>
-            <entry><para>RFC 4055</para></entry>
-          </row>
-          <row>
             <entry><para>SHA-3</para></entry>
             <entry><para>>= 256 Bit</para></entry>
             <entry><para>FIPS 202</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </chapter>
+  <chapter>
+    <title>Signatures</title>
+    <para/>
+    <table xml:id="sigTable">
+      <title>Signatures</title>
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="52*"/>
+        <colspec colname="c2" colwidth="12*"/>
+        <thead>
+          <row>
+            <entry>
+              <para>Name</para>
+            </entry>
+            <entry>
+              <para>Size</para>
+            </entry>
+            <entry>
+              <para>Reference</para>
+            </entry>
+          </row>
+        </thead>
+        <tbody valign="top">
+          <row>
+            <entry><para>sha256WithRSAEncryption</para></entry>
+            <entry><para>>= 3000 Bit</para></entry>
+            <entry><para>RFC 4055</para></entry>
           </row>
           <row>
             <entry><para>RSASSA-PSS</para></entry>
@@ -302,7 +328,7 @@
               <para>PBKDF2</para>
             </entry>
             <entry><para>RFC 8018</para></entry>
-            <entry><para>Preferred</para></entry>
+            <entry><para>Password only</para></entry>
           </row>
           <row>
             <entry>
