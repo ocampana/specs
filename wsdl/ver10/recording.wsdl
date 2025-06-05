@@ -733,7 +733,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						</xs:element>
 						<xs:element name="Alias" type="xs:string" minOccurs="0" maxOccurs="1">
 							<xs:annotation>
-								<xs:documentation>An optional alias that shall be included in the Monitoring/AsynchronousOperationStatus event.</xs:documentation>
+								<xs:documentation>An optional alias that shall be included in the Monitoring/AsynchronousOperationStatus events.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="StorageToken" type="tt:ReferenceToken" minOccurs="0" maxOccurs="1">
