@@ -1419,8 +1419,8 @@
           identified by certification path validation policy IDs, and IEEE 802.1X configurations
           shall be uniquely identified by IEEE 802.1X configuration IDs.</para>
         <para>It shall be noted that while IDs within a specific type shall be unique, no
-          requirement exists for the uniqueness of IDs across different types. For example, there
-          may be a key and a certificate in the keystore that share the same ID.</para>
+          requirement exists for the uniqueness of IDs across different types. Especially the
+          certificate and its associated key shall share the same ID.</para>
         <para>Devices may assign the ID of a deleted identified object to another, subsequently
           generated object. However, devices should avoid re-using IDs as long as possible to avoid
           race conditions on the client side.</para>
@@ -1484,8 +1484,10 @@
           operations:</para>
         <itemizedlist>
           <listitem>
-            <para>A key shall not be deleted if it is referenced by a certificate or a security
-              feature.</para>
+            <para>A certificate and its public key or keypair shall share the same ID.</para>
+          </listitem>
+          <listitem>
+            <para>Deleting a certificate implicitly deletes the associated keys.</para>
           </listitem>
           <listitem>
             <para>A certificate shall not be deleted if it is referenced by a certification path, a
@@ -2077,15 +2079,16 @@
           </section>
           <section xml:id="_Ref363540841">
             <title>DeleteKey</title>
-            <para>This operation deletes a key from the device’s keystore. An ONVIF conformant
-              device shall support this command.</para>
-            <para>Keys are uniquely identified using key IDs. If no key is stored under the
-              requested key ID in the keystore, a device shall produce an InvalidArgVal fault. If a
-              reference exists for the specified key, a device shall produce the corresponding fault
-              and shall not delete the key. If there is a key under the requested key ID stored in
-              the keystore and the key could not be deleted, a device shall produce a KeyDeletion
-              fault. If the key has the status <emphasis>generating</emphasis>, a device shall abort
-              the generation of the key and delete from the keystore all data generated for this
+            <para>This operation tries to delete a key from the device’s keystore. An ONVIF
+              conformant device shall support this command for backward compatibility reasons. For
+              backward compatibility with older clients a device shall not return a fault if the
+              requested key ID is not in the keystore because it may have been deleted together with
+              the certificate.ignore the command if the associated key was </para>
+            <para>If a reference exists for the specified key, a device may produce the
+              corresponding fault. If there is a key under the requested key ID stored in the
+              keystore and the key could not be deleted, a device shall produce a KeyDeletion fault.
+              If the key has the status <emphasis>generating</emphasis>, a device shall abort the
+              generation of the key and delete from the keystore all data generated for this
               key.</para>
             <para>After a key is successfully deleted, the device may assign its former ID to other
               keys.</para>
@@ -2110,7 +2113,7 @@
                   <para role="param">ter:Receiver - ter:Action - ter:KeyDeletionFailed</para>
                   <para role="text"> Deleting the key with the requested KeyID failed.</para>
                   <para role="param">ter:Sender - ter:InvalidArgVal - ter:KeyID</para>
-                  <para role="text"> No key is stored under the requested KeyID.</para>
+                  <para role="text">Deprectead: No key is stored under the requested KeyID.</para>
                   <para role="param">ter:Sender - ter:InvalidArgVal - ter:ReferenceExists</para>
                   <para role="text"> A reference exists for the object that is to be deleted.</para>
                 </listitem>
@@ -2263,9 +2266,9 @@
             <para>The generated certificate shall not contain a unique identifier as specified in
               RFC 5280, Sect. 4.1.2.8. The device shall not mark the generated certificate as
               trusted.</para>
-            <para>Certificates are uniquely identified using certificate IDs. If the command was
-              successful, the device generates a new ID for the generated certificate and returns
-              this ID.</para>
+            <para>The resulting certificate will  get the key ID assigned as certificate ID. If a
+              certificate already existed with this ID the device shall replace the existing
+              certificate.</para>
             <para>If the device does not have enough storage capacity for storing the certificate to
               be created, the maximum number of certificates reached fault shall be produced and no
               certificate shall be generated.</para>
@@ -2723,7 +2726,8 @@
               produced.</para>
             <para>The certificate shall be returned in DER encoding.</para>
             <para>It shall be noted that this command does not return the private key that is
-              associated with the public key in the certificate.</para>
+              associated with the public key in the certificate but only a boolean flag whether such
+              a key is present in the key store.</para>
             <variablelist role="op">
               <varlistentry>
                 <term>request</term>
@@ -2795,10 +2799,8 @@
           </section>
           <section>
             <title>DeleteCertificate</title>
-            <para>This operation deletes a certificate from the device’s keystore. An ONVIF
-              compliant device shall support this command.</para>
-            <para>The operation shall not delete the public key that is contained in the certificate
-              from the keystore.</para>
+            <para>This operation deletes a certificate and its associated key from the device’s
+              keystore. An ONVIF compliant device shall support this command.</para>
             <para>Certificates are uniquely identified using certificate IDs. If no certificate is
               stored under the requested certificate ID in the keystore, an InvalidArgVal fault is
               produced. If there is a certificate under the requested certificate ID stored in the
@@ -5125,15 +5127,6 @@
               </row>
               <row>
                 <entry>
-                  <para>NoPrivateKeySharing</para>
-                </entry>
-                <entry>
-                  <para>Indicates the device requires that each certificate with private key has its
-                    own unique key.</para>
-                </entry>
-              </row>
-              <row>
-                <entry>
                   <para>SetCertPath</para>
                 </entry>
                 <entry>
@@ -5469,15 +5462,6 @@
                       <para>UploadCertificateWithPrivateKeyInPKCS12</para>
                     </listitem>
                     <listitem>
-                      <para>GetCertificate</para>
-                    </listitem>
-                    <listitem>
-                      <para>GetAllCertificates</para>
-                    </listitem>
-                    <listitem>
-                      <para>DeleteCertificate</para>
-                    </listitem>
-                    <listitem>
                       <para>GetCertificationPath</para>
                     </listitem>
                     <listitem>
@@ -5509,15 +5493,6 @@
                       <para>Creating a CSR with the CreatePKCS10CSR command.</para>
                     </listitem>
                     <listitem>
-                      <para>GetCertificate</para>
-                    </listitem>
-                    <listitem>
-                      <para>GetAllCertificates</para>
-                    </listitem>
-                    <listitem>
-                      <para>DeleteCertificate</para>
-                    </listitem>
-                    <listitem>
                       <para>Uploading the certificate created for the CSR as well as the certificate
                         of the created certificate’s signer with the UploadCertificate
                         command.</para>
@@ -5535,15 +5510,6 @@
                   <itemizedlist>
                     <listitem>
                       <para>CreateSelfSignedCertificate</para>
-                    </listitem>
-                    <listitem>
-                      <para>GetCertificate</para>
-                    </listitem>
-                    <listitem>
-                      <para>GetAllCertificates</para>
-                    </listitem>
-                    <listitem>
-                      <para>DeleteCertificate</para>
                     </listitem>
                   </itemizedlist>
                   <para>If true, the following operations shall be supported:</para>

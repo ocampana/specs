@@ -159,7 +159,7 @@ This section provides common terms and definitions used in this specification.
 
 == Technical specification version requirement
 
-Implementation of ONVIF Network Interface Specifications, version 22.06 or later is required for conformance to TLS configuration add-on.
+Implementation of ONVIF Network Interface Specifications, version 25.12 or later is required for conformance to TLS configuration add-on.
 
 == Requirement levels
 
@@ -329,7 +329,7 @@ The TLSConfiguration is a set of interfaces needed to configure functionality re
 
 Device shall support the following Security Configuration Service capabilities:
 
-* *Device shall support key configuration as defined by the “RSAKeyPairGeneration” capability.*
+* *Device shall support key configuration as defined by the “KeyPairGeneration” capability.*
 * *Device shall support key generation status with both the “GetKeyStatus” function and with “tns1:Advancedsecurity/Keystore/KeyStatus” event notification.*
 * *Device shall support “MaximumNumberOfKeys” capability of at least 16 to allow flexibility in certificate configuration.*
 * *Device shall support certificate configuration as defined by each of the "SelfSignedCertificateCreationWithRSA" and the "PKCS10ExternalCertificationWithRSA" capabilities.*
@@ -340,7 +340,7 @@ Device shall support the following Security Configuration Service capabilities:
 
 ==== Client requirements
 
-* *Client shall be able to do key management using "CreateRSAKeyPair and DeleteKey " operations as described in the Security Service Specification.*
+* *Client shall be able to do key management using "CreateRSAKeyPair and CreateEccKeyPair" operations as described in the Security Service Specification.*
 * *Client shall be able to verify key status using "GetKeyStatus" service or subscribing to event tns1:Advancedsecurity/Keystore/KeyStatus as defined in the Security Service Specification.*
 * *Client shall be able to do certificate management using ", CreatePKCS10CSR, UploadCertificate, DeleteCertificate, CreateCertificationPath and DeleteCertificationPath " operations as described in the Security Service Specification.*
 * *Client shall be able to do* TLS Server Operations *using "ReplaceServerCertificateAssignment " operation as described in the Security Service Specification.*
@@ -356,13 +356,12 @@ Device shall support the following Security Configuration Service capabilities:
 | |CreateCertificationPath |Security |M
 | |CreatePKCS10CSR |Security |M
 | |CreateRSAKeyPair |Security |M
+| |CreateECCKeyPair |Security |M
 | |CreateSelfSignedCertificate |Security |M
 | |DeleteCertificate |Security |M
 | |DeleteCertificationPath |Security |M
-| |DeleteKey |Security |M
 | |GetAllCertificates |Security |M
 | |GetAllCertificationPaths |Security |M
-| |GetAllKeys |Security |M
 | |GetAssignedServerCertificates |Security |M
 | |GetCertificate |Security |M
 | |GetCertificationPath |Security |M
@@ -385,13 +384,12 @@ Device shall support the following Security Configuration Service capabilities:
 | |CreateCertificationPath |Security |M
 | |CreatePKCS10CSR |Security |M
 | |CreateRSAKeyPair |Security |M
+| |CreateECCKeyPair |Security |M
 | |CreateSelfSignedCertificate |Security |O
 | |DeleteCertificate |Security |M
 | |DeleteCertificationPath |Security |M
-| |DeleteKey |Security |M
 | |GetAllCertificates |Security |O
 | |GetAllCertificationPaths |Security |O
-| |GetAllKeys |Security |O
 | |GetAssignedServerCertificates |Security |O
 | |GetCertificate |Security |O
 | |GetCertificationPath |Security |O
