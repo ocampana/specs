@@ -54,11 +54,10 @@
         <author>
           <personname>Jean-Francois Levesque, Jose Melancon</personname>
         </author>
-        <revremark>Add requirements for device supporting ICE candidates. Add RTCP &amp; I-Frame
-          request requirements</revremark>
+        <revremark>Add requirements for device supporting ICE candidates. Add RTCP &amp; I-Frame request requirements</revremark>
       </revision>
       <revision>
-        <revnumber>25.06</revnumber>
+      <revnumber>25.06</revnumber>
         <date>June, 2025</date>
         <author>
           <personname>Tomasz Zajac</personname>

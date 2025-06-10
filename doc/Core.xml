@@ -267,11 +267,9 @@
         <revnumber>22.06</revnumber>
         <date>Jun-2022</date>
         <author>
-          <personname>Fredrik Svensson, Michael Adam, Sergey Bogdanov, Sriram
-            Bhetanabottla</personname>
+          <personname>Fredrik Svensson, Michael Adam, Sergey Bogdanov, Sriram Bhetanabottla</personname>
         </author>
-        <revremark>Restructure MQTT topic and payload sections. Include metadata filter. Add Addon
-          capability. Rename sections to show real name of service command.</revremark>
+        <revremark>Restructure MQTT topic and payload sections. Include metadata filter. Add Addon capability. Rename sections to show real name of service command.</revremark>
       </revision>
       <revision>
         <revnumber>22.12</revnumber>
@@ -279,9 +277,7 @@
         <author>
           <personname>Venkateswara Rao, Hans Busch</personname>
         </author>
-        <revremark>HTTP Digest Authentication - SHA 256 support as per [RFC 7616]. Clarify behavior
-          in case no hostname has been assigned. Unify analytics and core attribute and value
-          handling.</revremark>
+        <revremark>HTTP Digest Authentication - SHA 256 support as per [RFC 7616]. Clarify behavior in case no hostname has been assigned. Unify analytics and core attribute and value handling.</revremark>
       </revision>
       <revision>
         <revnumber>23.06</revnumber>
@@ -305,8 +301,7 @@
         <author>
           <personname>Sriram Bhetanabottla</personname>
         </author>
-        <revremark>Improve description of certificate verification policy and correct specification
-          references.</revremark>
+        <revremark>Improve description of certificate verification policy and correct specification references.</revremark>
       </revision>
       <revision>
         <revnumber>25.06</revnumber>
