@@ -307,7 +307,7 @@
         <revnumber>25.06</revnumber>
         <date>Jun-2025</date>
         <author>
-          <personname>Sriram Bhetanabottla, Kieran McCartan, Jose Melancon</personname>
+          <personname>Sriram Bhetanabottla</personname>
         </author>
         <revremark>Added storage configuration renewal.</revremark>
       </revision>

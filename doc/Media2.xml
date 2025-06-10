@@ -217,9 +217,9 @@
         <revnumber>25.06</revnumber>
         <date>Jun-2025</date>
         <author>
-          <personname>Sriram Bhetanabottla, Venki Aravapalli</personname>
+          <personname>Venki Aravapalli, Sujith Raman</personname>
         </author>
-        <revremark>Add audio clip Management. </revremark>
+        <revremark>Add audio clip Management and EQ presets.</revremark>
       </revision>
     </revhistory>
   </info>
@@ -1112,7 +1112,7 @@
           </itemizedlist>
           <para>Acoustic echo cancellation is out of ONVIF scope.</para>
         </section>
-        <section id="SetEQPreset">
+        <section xml:id="SetEQPreset">
           <title>SetEQPreset</title>
           <para>
           <para>
@@ -2345,7 +2345,7 @@
           </varlistentry>
         </variablelist>
         <para></para>
-        <para><b>Note:</b> Audio clip uploads to the device can fail in the following scenarios, and a specific HTTP error code should be returned to the client when an upload fails.</para>
+        <para><emphasis role="bold">Note:</emphasis> Audio clip uploads to the device can fail in the following scenarios, and a specific HTTP error code should be returned to the client when an upload fails.</para>
         <itemizedlist>
           <listitem>
             <para>When the upload URL has expired, the device should return an HTTP 410 error to the client.</para>
