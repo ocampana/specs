@@ -172,6 +172,14 @@
         </author>
         <revremark>Add custom claims to JWTConfiguration. Add validation policy to Dot1X configuration.</revremark>
       </revision>
+      <revision>
+        <revnumber>25.06</revnumber>
+        <date>Jun-2025</date>
+        <author>
+          <personname>Thomasz Zajac, Thomasz Chmiel</personname>
+        </author>
+        <revremark>Add custom claims. Add cert path validation to Dot1X.</revremark>
+      </revision>
     </revhistory>
   </info>
   <chapter>
