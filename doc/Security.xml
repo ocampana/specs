@@ -162,7 +162,15 @@
         <author>
           <personname>Fredrik Svensson, Sriram Bhetanabottla, Hans Busch, Jose Melancon, Sujith Raman, Kieran McCartan</personname>
         </author>
-        <revremark>Add media signing capabilities and operations. Clarify JWT and OAuth sections.  Add CertPathValidationPolicyId to AuthorizationServer &amp; StorageConfiguration. Recommend strong signature selection. Update CreateEccKeyPair and Curve name references. Add annex on TLS ciphers.</revremark>
+        <revremark>Add media signing capabilities and operations. Clarify JWT and OAuth sections. Add CertPathValidationPolicyId to AuthorizationServer &amp; StorageConfiguration. Recommend strong signature selection. Update CreateEccKeyPair and Curve name references. Add annex on TLS ciphers.</revremark>
+      </revision>
+      <revision>
+        <revnumber>25.06</revnumber>
+        <date>Jun-2025</date>
+        <author>
+          <personname>Tomasz Zajac, Tomasz Chmiel</personname>
+        </author>
+        <revremark>Add custom claims to JWTConfiguration. Add validation policy to Dot1X configuration.</revremark>
       </revision>
       <revision>
         <revnumber>25.06</revnumber>
