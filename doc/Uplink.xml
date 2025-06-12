@@ -73,8 +73,7 @@
         </author>
         <revremark>Improve certificate verification policy and correct specification references.</revremark>
       </revision>
-    </revhistory>
-    <revision>
+      <revision>
         <revnumber>25.06</revnumber>
         <date>Jun 2025</date>
         <author>
