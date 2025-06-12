@@ -43,7 +43,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 							<xs:documentation>Streaming capabilities.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="MediaSigningCapabilities" type="tr2:MediaSigningCapabilities">
+					<xs:element name="MediaSigningCapabilities" type="tr2:MediaSigningCapabilities" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Media signing capabilities.</xs:documentation>
 						</xs:annotation>
