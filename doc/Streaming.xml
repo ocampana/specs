@@ -607,7 +607,7 @@
           <title>SRTP data transfer via UDP</title>
             <para>This mode allows secure transmission of RTP packets via UDP unicast and multicast. Related documents are RFC 3711, RFC 7714 for transmission and RFC 3830, RFC 4567 for key exchange.</para>
             <para>
-            The device must list whether or not it supports SRTP streaming through the GetServiceCapabilities action's response. If the device supports SRTP streaming, the device must indicate it through the SecureRTSPStreaming parameter in the StreamingCapabilities.
+            The device shall list whether or not it supports SRTP streaming through the GetServiceCapabilities action's response. If the device supports SRTP streaming, the device shall indicate it through the SecureRTSPStreaming parameter in the StreamingCapabilities.
           </para>
           <section>
             <title>Cryptographic algorithm negotiation</title>
@@ -626,7 +626,7 @@
                 </listitem>
               </itemizedlist>
 
-              If the SecureStreamingProtocolAlgorithms parameter is present, the device must support at least one of the following algorithms:
+              If the SecureStreamingProtocolAlgorithms parameter is present, the device shall support at least one of the following algorithms:
               <itemizedlist>
                 <listitem>
                   <para>NONE</para>
@@ -647,7 +647,7 @@
             </para>
 
             <para>
-              The client may choose to configure a device to use a specific algorithm. To do so, it must set the SecureStreamingProtocolAlgorithm attribute through the following methods:
+              The client may choose to configure a device to use a specific algorithm. To do so, it shall set the SecureStreamingProtocolAlgorithm attribute through the following methods:
               <itemizedlist>
                 <listitem>
                   <para>SetAudioEncoder2Configuration</para>
@@ -662,7 +662,7 @@
             </para>
 
             <para>
-              If a device supports encryption algorithms other than AES_CM_128_SHA1_80 as defined in RFC 3711, it must also support the ConfigurationOptions and the methods listed above. 
+              If a device supports encryption algorithms other than AES_CM_128_SHA1_80 as defined in RFC 3711, it shall also support the ConfigurationOptions and the methods listed above. 
               This mechanism allows the client to choose the encryption algorithm used by the device for SRTP.
             </para>
 
@@ -672,7 +672,7 @@
               MIKEY-PK should not be used for ONVIF SRTP.
             </para>
             <para>
-              The MIKEY message must contain the following payloads:
+              The MIKEY message shall contain the following payloads:
               <itemizedlist>
                 <listitem>
                   <para>Common Header Payload</para>
@@ -680,10 +680,10 @@
                 <listitem>
                   <para>KEMAC Payload</para>
                   <para>The KEMAC payload should not be encrypted since TLS already encrypts the RTSPS channel.</para>
-                  <para>If the key type is TEK without salt and a salt must be provided, the key and the salt must be concatenated and sent in the Key data section of the payload.</para>
-                  <para>If the key type is TEK+SALT and a salt must be provided, the SALT must be in the Salt data section.</para>
-                  <para>The device and client must support TEK for AES_CM_128_SHA1_80 and TEK+SALT for other encryption algorithms.</para>
-                  <para>To keep track of key validity, The SPI/MKI must be set in the KV data. Each SRTP packet must include the MKI.</para>
+                  <para>If the key type is TEK without salt and a salt must be provided, the key and the salt shall be concatenated and sent in the Key data section of the payload.</para>
+                  <para>If the key type is TEK+SALT and a salt must be provided, the SALT shall be in the Salt data section.</para>
+                  <para>The device and client shall support TEK for AES_CM_128_SHA1_80 and TEK+SALT for other encryption algorithms.</para>
+                  <para>To keep track of key validity, The SPI/MKI shall be set in the KV data. Each SRTP packet shall include the MKI.</para>
                 </listitem>
                 <listitem>
                   <para>Security Policy Payload</para>
@@ -778,7 +778,7 @@ AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAA
 ]]></programlisting>
                   </para>
                   <para>
-                    The SSRC is a required component for SRTP encryption and must be specified during the RTSP session setup.
+                    The SSRC is a required component for SRTP encryption and shall be specified during the RTSP session setup.
                     The SSRC shall be provided in the transport header of the RTSP SETUP response as described in RFC 2326 Section 12.39.
                   </para>
                 </section>
@@ -787,7 +787,7 @@ AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAA
                   <para>
                     The client may request the use of new keys for stream encryption.
                     The SET_PARAMETER method shall be used with a MIKEY parameter to set the new encryption keys.
-                    The device must not reset the ROC when changing keys.
+                    The device shall not reset the ROC when changing keys.
                     When rekeying, the RAND value and the SP (Security Policy) payload may be omitted by the client as defined in RFC 3830 section 4.5.
                     <programlisting><![CDATA[SET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 6
@@ -805,9 +805,9 @@ AACcAIQAepekjs88g+Q7AU6LAvRsoVyn18ZW1JuXI9qht4g6+BAAAAAIA
                 <section>
                   <title>Multicast considerations</title>
                   <para>
-                    When in multicast, multiple RTSP clients must be able to retrieve changing keys as well as the SSRC and ROC of the stream.
+                    When in multicast, multiple RTSP clients shall be able to retrieve changing keys as well as the SSRC and ROC of the stream.
                     A new GET_PARAMETER request has been added to retrieve the MIKEY.
-                    This MIKEY message must contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.
+                    This MIKEY message shall contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.
                   </para>
                   <para>
                     Request:
@@ -835,7 +835,7 @@ BFAQBDgcBAQgBAQoBAQsBCgAAACcAIQAe7OzS5umZMXHqaegZC3UkDwbC5NNpj4b8+fB6MROeBAAAAA0
                 <section>
                   <title>Error management</title>
                   <para>
-                    If an error occurs during the key management, the device must return a status code 463 Key management failure as defined in RFC 4567.
+                    If an error occurs during the key management, the device shall return a status code 463 Key management failure as defined in RFC 4567.
                   </para>
                 </section>
               </section>
