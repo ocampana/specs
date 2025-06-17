@@ -693,37 +693,37 @@
                     <listitem>
                       <para>AES_CM_128_HMAC_SHA1_80</para>
                       <para>Encryption Algorithm: AES-CM</para>
-                      <para>Session Encryption Key Length: 128 bits</para>
+                      <para>Session Encryption Key Length: 16 octets</para>
                       <para>Authentication Algorithm: HMAC-SHA-1</para>
-                      <para>Session Auth Key Length: 160 bits</para>
-                      <para>Session Salt Key Length: 112 bits</para>
+                      <para>Session Auth Key Length: 20 octets</para>
+                      <para>Session Salt Key Length: 14 octets</para>
                       <para>SRTP Encryption: On</para>
                       <para>SRTCP Encryption: On</para>
-                      <para>Authnetication Tag Length: 80 bits</para>
+                      <para>Authentication Tag Length: 10 octets</para>
                       <para>SRTP PRF: AES-CM</para>
                     </listitem>
                     <listitem>
                       <para>AEAD_AES_128_GCM</para>
                       <para>Encryption Algorithm: AES-GCM</para>
-                      <para>Session Encryption Key Length: 128 bits</para>
+                      <para>Session Encryption Key Length: 16 octets</para>
                       <para>Authentication Algorithm: NULL</para>
                       <para>Session Auth Key Length: N/A</para>
-                      <para>Session Salt Key Length: 96 bits</para>
+                      <para>Session Salt Key Length: 12 octets</para>
                       <para>SRTP Encryption: On</para>
                       <para>SRTCP Encryption: On</para>
-                      <para>AEAD Authnetication Tag Length: 16 octets</para>
+                      <para>AEAD Authentication Tag Length: 16 octets</para>
                       <para>SRTP PRF: AES-CM</para>
                     </listitem>
                     <listitem>
                       <para>AEAD_AES_256_GCM</para>
                       <para>Encryption Algorithm: AES-GCM</para>
-                      <para>Session Encryption Key Length: 256 bits</para>
+                      <para>Session Encryption Key Length: 32 octets</para>
                       <para>Authentication Algorithm: NULL</para>
                       <para>Session Auth Key Length: N/A</para>
-                      <para>Session Salt Key Length: 96 bits</para>
+                      <para>Session Salt Key Length: 12 octets</para>
                       <para>SRTP Encryption: On</para>
                       <para>SRTCP Encryption: On</para>
-                      <para>AEAD Authnetication Tag Length: 16 octets</para>
+                      <para>AEAD Authentication Tag Length: 16 octets</para>
                       <para>SRTP PRF: AES-CM</para>
                     </listitem>
                   </itemizedlist>
