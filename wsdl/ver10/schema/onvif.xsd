@@ -1563,7 +1563,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			<xs:element name="PTZStatusFilterOptions" type="tt:PTZStatusFilterOptions"/>
 			<xs:element name="SecureStreamingProtocolAlgorithms" type="tt:StringAttrList" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>If secure RTSP streaming is supported, this shall return the list of supported cryptographic algorithms as defined by tr2:SrtpSecurityAlgorithms.</xs:documentation>
+					<xs:documentation>If secure RTSP streaming is supported, this shall return the list of supported cryptographic algorithms as defined by tt:SrtpSecurityAlgorithms.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
