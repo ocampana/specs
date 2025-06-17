@@ -1080,7 +1080,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 					</xs:element>
 					<xs:element name="SecureStreamingProtocolAlgorithm" type="xs:string" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Defines the cryptographic algorithm to use as defined by tr2:SrtpSecurityAlgorithms</xs:documentation>
+							<xs:documentation>Defines the cryptographic algorithm to use as defined by tt:SrtpSecurityAlgorithms</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first ONVIF then Vendor -->
