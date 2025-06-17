@@ -766,7 +766,7 @@ a=control:rtsp://movie.example.com/action/rtp_video
                   </para>
                   <para>
                     When the client is providing the key, it will add a KeyMgmt header containing the MIKEY with transport type RTP/SAVP in the SETUP.
-                    The client may a different encryption algorithm than what is configured with SetAudioEncoderConfiguration, SetMetadataConfiguration and SetVideoEncoderConfiguration for legacy reasons.
+                    The client may request a different encryption algorithm than what is configured with SetAudioEncoderConfiguration, SetMetadataConfiguration and SetVideoEncoderConfiguration for legacy reasons.
                     Newer clients should respect the encryption algorithm set in the configuration and avoid overriding it in the SETUP request.
                     The client may not change the encryption algorithm after the stream has been started.
                     <programlisting><![CDATA[SETUP rtsp://<RTSP_URI> RTSP/1.0
