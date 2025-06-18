@@ -544,7 +544,7 @@
         </varlistentry>
         <varlistentry>
           <term>AuthorizationModes</term>
-          <listitem><para>Supported authorization mode [mTLS, JWT]</para></listitem>
+          <listitem><para>Supported authorization mode [mTLS, AccessToken]</para></listitem>
         </varlistentry>
         <varlistentry>
           <term>StreamingOverUplink</term>
