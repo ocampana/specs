@@ -772,6 +772,8 @@ Change Request 2061, 2063, 2065, 2109</revremark>
             <para role="text">The configuration is invalid.</para>
             <para role="param">env:Sender - ter:InvalidArgVal - ter:NoRecording</para>
             <para role="text">The RecordingToken does not reference an existing recording.</para>
+            <para role="param">env:Sender - ter:InvalidArgVal - ter:AmbiguousConfiguration</para>
+            <para role="text">Key/KID and AsymmetricEncryption are mutually exclusive configuration parameters</para>
           </listitem>
         </varlistentry>
         <varlistentry>
