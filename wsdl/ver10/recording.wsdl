@@ -132,7 +132,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="OverrideSegmentDurationSupported" type="xs:boolean">
+				<xs:attribute name="OverrideSegmentDuration" type="xs:boolean">
 					<xs:annotation>
 						<xs:documentation>
 							Indicates if the device supports the OverrideSegmentDuration command.
