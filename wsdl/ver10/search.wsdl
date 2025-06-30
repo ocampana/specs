@@ -460,8 +460,8 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:element name="EndPoint" type="xs:dateTime">
 							<xs:annotation><xs:documentation>End time for the search.</xs:documentation></xs:annotation>
 						</xs:element>
-						<xs:element name="RecordingToken" type="tt:RecordingReference" minOccurs="0">
-							<xs:annotation><xs:documentation>Token for the recording to search.</xs:documentation></xs:annotation>
+						<xs:element name="RecordingToken" type="tt:RecordingReference" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation><xs:documentation>This element contains a list of recording tokens to search.</xs:documentation></xs:annotation>
 						</xs:element>
 						<xs:element name="Text" type="xs:string">
 							<xs:annotation><xs:documentation>Natural language description for the search (e.g., "person with red hat").</xs:documentation></xs:annotation>
@@ -531,8 +531,8 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:element name="EndPoint" type="xs:dateTime">
 							<xs:annotation><xs:documentation>End time for the search.</xs:documentation></xs:annotation>
 						</xs:element>
-						<xs:element name="RecordingToken" type="tt:RecordingReference" minOccurs="0">
-							<xs:annotation><xs:documentation>Token for the recording to search.</xs:documentation></xs:annotation>
+						<xs:element name="RecordingToken" type="tt:RecordingReference" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation><xs:documentation>This element contains a list of recording tokens to search.</xs:documentation></xs:annotation>
 						</xs:element>
 						<xs:element name="TargetImageURI" type="xs:anyURI">
 						<xs:annotation><xs:documentation>The target image to be searched in LocalStorage URI format.</xs:documentation></xs:annotation>

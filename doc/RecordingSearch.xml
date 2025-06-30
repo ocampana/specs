@@ -1347,7 +1347,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="param">EndPoint [xs:dateTime]</para>
             <para role="text">The point of time where the search will stop.</para>
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
-            <para role="text">Token for the recording to search.</para>
+            <para role="text">This element contains a list of recording tokens to search.</para>
             <para role="param">Text [xs:string]</para>
             <para role="text">Natural language description for the search.</para>
             <para role="param">Likelihood - optional [xs:float]</para>
@@ -1433,7 +1433,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="param">EndPoint [xs:dateTime]</para>
             <para role="text">The point of time where the search will stop.</para>
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
-            <para role="text">Token for the recording to search.</para>
+            <para role="text">This element contains a list of recording tokens to search.</para>
             <para role="param">TargetImageURI [xs:anyURI]</para>
             <para role="text">URI of the image used for the search.</para>
             <para role="param">MaxMatches - optional [xs:int]</para>
