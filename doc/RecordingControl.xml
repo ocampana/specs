@@ -1674,7 +1674,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>OverrideSegmentDurationSupported</term>
+          <term>OverrideSegmentDuration</term>
           <listitem>
             <para>Indicates that the device supports the OverrideSegmentDuration command.</para>
           </listitem>
