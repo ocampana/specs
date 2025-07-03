@@ -1144,6 +1144,7 @@
 					</xs:element>
 					<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>	   <!-- first ONVIF then Vendor -->
 				</xs:sequence>
+				<xs:anyAttribute processContents="lax"/>
 			</xs:complexType>
 			<!--===============================-->
 			<xs:element name="GetJWTConfiguration">
