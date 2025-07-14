@@ -1321,8 +1321,8 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
       </variablelist>
     </section>
     <section>
-      <title>FindImagebyNL</title>
-      <para>FindImagebyNL starts a search session, looking for video records based on a natural language description of the content, such as "a person wearing a red hat" or "a blue car". Results from the search are acquired using the GetNLSearchResults request, specifying the search token returned from this request.</para>
+      <title>SearchImageByNL</title>
+      <para>SearchImageByNL starts a search session, looking for video records based on a natural language description of the content, such as "a person wearing a red hat" or "a blue car". Results from the search are acquired using the GetNLSearchResults request, specifying the search token returned from this request.</para>
       <para>The device shall continue searching until one of the following occurs:</para>
       <itemizedlist>
         <listitem>
@@ -1347,7 +1347,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="param">EndPoint [xs:dateTime]</para>
             <para role="text">The point of time where the search will stop.</para>
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
-            <para role="text">This element contains a list of recording tokens to search.</para>
+            <para role="text">Token for the recording to search.</para>
             <para role="param">Text [xs:string]</para>
             <para role="text">Natural language description for the search.</para>
             <para role="param">Likelihood - optional [xs:float]</para>
@@ -1383,7 +1383,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
     
     <section>
       <title>GetNLSearchResults</title>
-      <para>GetNLSearchResults acquires the results from a natural language search session previously initiated by a FindImagebyNL operation. The response shall not include results already returned in previous requests for the same session.</para>
+      <para>GetNLSearchResults acquires the results from a natural language search session previously initiated by a SearchImageByNL operation. The response shall not include results already returned in previous requests for the same session.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -1422,8 +1422,8 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
     </section>
     
     <section>
-      <title>FindImagebyImage</title>
-      <para>FindImagebyImage starts a search session, looking for video records based on a provided image. Results from the search are acquired using the GetImageSearchResults request, specifying the search token returned from this request.</para>
+      <title>SerachImagebyImage</title>
+      <para>SerachImagebyImage starts a search session, looking for video records based on a provided image. Results from the search are acquired using the GetImageSearchResults request, specifying the search token returned from this request.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -1433,9 +1433,9 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="param">EndPoint [xs:dateTime]</para>
             <para role="text">The point of time where the search will stop.</para>
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
-            <para role="text">This element contains a list of recording tokens to search.</para>
+            <para role="text">Token for the recording to search.</para>
             <para role="param">TargetImageURI [xs:anyURI]</para>
-            <para role="text">URI of the image used for the search.</para>
+            <para role="text">the TargetImageURI is the result returned from SearchImageByNL.</para>
             <para role="param">MaxMatches - optional [xs:int]</para>
             <para role="text">The search ends after MaxMatches.</para>
             <para role="param">KeepAliveTime [xs:duration]</para>
@@ -1466,7 +1466,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
     </section>    
     <section>
       <title>GetImageSearchResults</title>
-      <para>GetImageSearchResults acquires the results from an image-based search session previously initiated by a FindImagebyImage operation. The response shall not include results already returned in previous requests for the same session.</para>
+      <para>GetImageSearchResults acquires the results from an image-based search session previously initiated by a SerachImagebyImage operation. The response shall not include results already returned in previous requests for the same session.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
