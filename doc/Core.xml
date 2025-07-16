@@ -6648,6 +6648,38 @@ tns1:Device/OperationMode/UploadInitiated
 ]]></programlisting>
       </section>
       <section>
+        <title>Sensor Event Topics</title>
+        <para>ONVIF defines the following topics related to sensor data:</para>
+        <itemizedlist>
+          <listitem>
+            <para>tns1:Device/Sensor/[SensorType] - Generic sensor event topic</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/temperature/High - Temperature too high event</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/temperature/Low - Temperature too low event</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/humidity/High - Humidity too high event</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/humidity/Low - Humidity too low event</para>
+          </listitem>
+        </itemizedlist>
+        
+        <para>The structure of sensor event messages is as follows:</para>
+        <programlisting><![CDATA[<tt:Message UtcTime="2025-07-15T14:30:00Z" PropertyOperation="Changed">
+  <tt:Source>
+    <tt:SimpleItem Name="SensorType" Value="temperature"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:SimpleItem Name="SensorValue" Value="35.5"/>
+    <tt:SimpleItem Name="SensorUnit" Value="°C"/>
+  </tt:Data>
+</tt:Message>]]></programlisting>
+      </section>
+      <section>
         <title>Liquid level</title>
         <para>If measurements of the level of the liquid inside a washer tank are supported, a device should signal whether the level is under the warning threshold using the LowLiquid event.</para>
         <programlisting><![CDATA[Topic: tns1:Monitoring/Washer/LiquidLow
@@ -8168,6 +8200,31 @@ http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet
         <para>The output shall be generated according above described rules.</para>
         <section xml:id="_Ref19678957">
           <title>Example</title>
+          
+          <para>Example temperature sensor event JSON payload:</para>
+          <programlisting>{
+  "UtcTime": "2025-07-15T14:30:00Z",
+  "Source": {
+    "SensorType": "temperature"
+  },
+  "Data": {
+    "SensorValue": 35.5,
+    "SensorUnit": "°C"
+  }
+}</programlisting>
+
+          <para>Example humidity sensor event JSON payload:</para>
+          <programlisting>{
+  "UtcTime": "2025-07-15T14:30:00Z",
+  "Source": {
+    "SensorType": "humidity"
+  },
+  "Data": {
+    "SensorValue": 75.5,
+    "SensorUnit": "%RH"
+  }
+}</programlisting>
+          
           <para>The XML example response from PullMessages listed in Section <xref
               linkend="ev_PullMessageResp"/> contains two messages which are mapped to the following
             corresponding MQTT topics and JSON payload. In these examples TopicPrefix has been set

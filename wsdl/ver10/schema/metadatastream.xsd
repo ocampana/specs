@@ -434,7 +434,29 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 	<xs:complexType name="MetadataStreamExtension2">
 		<xs:sequence>
 			<xs:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- Add sensor data stream element -->
+			<xs:element name="SensorDataStream" type="tt:SensorDataStream" minOccurs="0"/>
 		</xs:sequence>
+		<xs:anyAttribute processContents="lax"/>
+	</xs:complexType>
+
+	<!-- Sensor data stream definition -->
+	<xs:complexType name="SensorDataStream">
+		<xs:sequence>
+			<xs:element name="SensorData" type="tt:SensorData" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax"/>
+	</xs:complexType>
+
+	<xs:complexType name="SensorData">
+		<xs:sequence>
+			<xs:element name="SensorType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SensorValue" type="xs:float" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SensorUnit" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+		<xs:attribute name="UtcTime" type="xs:dateTime" use="required"/>
 		<xs:anyAttribute processContents="lax"/>
 	</xs:complexType>
 	<xs:complexType name="AudioAnalyticsStream">
