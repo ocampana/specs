@@ -381,6 +381,14 @@
             </row>
             <row>
               <entry valign="middle">
+                <para>KEMAC</para>
+              </entry>
+              <entry valign="middle">
+                <para>Key Encryption and Message Authentication Code</para>
+              </entry>
+            </row>
+            <row>
+              <entry valign="middle">
                   <para>MIKEY</para>
               </entry>
               <entry valign="middle">
@@ -401,6 +409,14 @@
               </entry>
               <entry valign="middle">
                 <para>Moving Picture Experts Group - 4</para>
+              </entry>
+            </row>
+            <row>
+              <entry valign="middle">
+                <para>PRF</para>
+              </entry>
+              <entry valign="middle">
+                <para>Pseudo-Random Function</para>
               </entry>
             </row>
             <row>
