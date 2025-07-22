@@ -607,13 +607,12 @@
           <title>SRTP data transfer via UDP</title>
             <para>This mode allows secure transmission of RTP packets via UDP unicast and multicast. Related documents are RFC 3711, RFC 7714 for transmission and RFC 3830, RFC 4567 for key exchange.</para>
             <para>
-            The device shall list whether or not it supports SRTP streaming through the GetServiceCapabilities action's response. If the device supports SRTP streaming, the device shall indicate it through the SecureRTSPStreaming parameter in the StreamingCapabilities.
-          </para>
+              The device shall indicate SRTP streaming support through the SecureRTSPStreaming parameter within StreamingCapabilities in the GetServiceCapabilities response.
+            </para>
           <section>
             <title>Cryptographic algorithm negotiation</title>
             <para>
-              The device may list which SRTP cryptographic algorithms it supports through the Media2 wsdl.
-              Each encoder can list the algorithms it supports through the SecureStreamingProtocolAlgorithms element present in:
+              The device shall list supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service video encoder, audio encoder and metadata configuration elements as listed below:
               <itemizedlist>
                 <listitem>
                   <para>AudioEncoder2ConfigurationOptions</para>
@@ -646,17 +645,27 @@
                   <para>AEAD_AES_256_GCM</para>
                 </listitem>
               </itemizedlist>
-              If the device supports SRTP streaming through the SecureRTSPStreaming parameter, but does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_SHA1_80 algorithm as defined in RFC 3711.
+              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_SHA1_80 algorithm as defined in RFC 3711.
             </para>
 
             <para>
-              The client may choose to configure a device to use a specific algorithm. To do so, it shall set the SecureStreamingProtocolAlgorithm attribute through the following methods:
+              If the device supports encryption algorithms for secure streaming other than AES_CM_128_SHA1_80 (as specified in RFC 3711), it shall:
               <itemizedlist>
                 <listitem>
-                  <para>SetAudioEncoder2Configuration</para>
+                  <para>Provide a list of the supported algorithms through the ConfigurationOptions structure.</para>
                 </listitem>
                 <listitem>
-                  <para>SetVideoEncoder2Configuration</para>
+                  <para>Allow a specific algorithm to be configured using the SecureStreamingProtocolAlgorithm attribute.</para>
+                </listitem>
+              </itemizedlist>
+
+              The specific algorithim shall be configurable through the following methods:
+              <itemizedlist>
+                <listitem>
+                  <para>SetAudioEncoderConfiguration</para>
+                </listitem>
+                <listitem>
+                  <para>SetVideoEncoderConfiguration</para>
                 </listitem>
                 <listitem>
                   <para>SetMetadataConfiguration</para>
@@ -665,7 +674,6 @@
             </para>
 
             <para>
-              If a device supports encryption algorithms other than AES_CM_128_SHA1_80 as defined in RFC 3711, it shall also support the ConfigurationOptions and the methods listed above. 
               This mechanism allows the client to choose the encryption algorithm used by the device for SRTP.
             </para>
 
