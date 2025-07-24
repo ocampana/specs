@@ -81,11 +81,6 @@
 						<xs:documentation>List of sensor types supported by the device.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SensorMQTTSupport" type="xs:boolean">
-					<xs:annotation>
-						<xs:documentation>Indicates whether the device supports MQTT sensor data publication.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
 				<xs:anyAttribute processContents="lax"/>
 			</xs:complexType>
 			<xs:element name="Capabilities" type="tan:Capabilities"/>
