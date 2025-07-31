@@ -2952,9 +2952,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
   }]
 }</programlisting>
       </section>
-    </section>
-    
-    <section xml:id="sensor_example">
+
+      <section xml:id="sensor_example">
       <title>Sensor Data Examples</title>
       
       <para>Temperature data will be published under this topic:</para>
@@ -2986,6 +2985,7 @@ xmlns:acme="http://www.acme.com/schema"&gt;
         "SensorUnit": "%RH"
       }
     }</programlisting>
+    </section>
     </section>
   </chapter>
   <chapter>
