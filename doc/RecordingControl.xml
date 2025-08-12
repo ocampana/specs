@@ -1742,18 +1742,19 @@ Change Request 2061, 2063, 2065, 2109</revremark>
     </section>
     <section>
       <title>ExportRecordedSegments</title>
-      <para>Request an export of the selected time range from existing locally recorded data. As
-        such an operation could take longer, this method immediately returns an operation token. The
+      <para>Request an export for the specified time range from existing locally recorded data. As
+        such an operation can take long time, this method immediately returns an operation token. The
         device shall emit events as defined in section 8.9.7 Asynchronous Operation Status of the
-        ONVIF Core specification. The device shall include the Alias parameter in the event if provided in the request.
+        ONVIF Core specification. The device shall include the Alias parameter in the event if 
+        provided in the request.
         The Initialized event shall be emitted when returning the operation token.
         Progress updates shall be sent to inform clients about the progress of the
         export. Finally a Deleted event shall be emitted to signal completion or aborting of the
-        operation when e.g. StopExportRecordedSegments has been executed. A device signaling support 
-        for SegmentExport shall support this function.</para>
+        operation when StopExportRecordedSegments has been executed.
+        A device signaling support for SegmentExport shall support this function.</para>
       <para>An event shall be raised after each segment is uploaded to the Object Storage, which means the 
-        ArrayOfFileProgress shall have only a single element each time. The FileProgress element shall have the FileName 
-        element be the path as defined in the Object Storage annex appended to the
+        ArrayOfFileProgress shall have only a single element each time. The FileProgress element shall 
+        have the FileName element be the path as defined in the Object Storage annex appended to the
         StorageUri from the StorageConfiguration.</para>
       <para>By default the segments are exported to the storage that is configured for the recording. 
         When the parameter StorageToken is provided this target will be used.</para>
