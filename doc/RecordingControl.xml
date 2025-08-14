@@ -749,6 +749,9 @@ Change Request 2061, 2063, 2065, 2109</revremark>
     <section>
       <title>SetRecordingConfiguration</title>
       <para>SetRecordingConfiguration shall change the configuration of a recording</para>
+      <para>
+        <literal>Key/KID</literal> and <literal>AsymmetricEncryption</literal> elements of the encryption entry are mutually exclusive.
+      </para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -2094,14 +2097,19 @@ secfrac = "." 1*6DIGIT</programlisting>
         </mediaobject>
       </figure>
     </section>
-    <section xml:id="_refCloudRecordingFrameEncryption">
-      <title>Frame encryption</title>
+    <section xml:id="_refCloudRecordingEncryption">
+      <title>Encryption</title>
       <para>
-        A device signaling support for recording with frame encryption via EncryptionEntryLimit shall support creating encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
-        Each <literal>Encryption</literal> entry configured for a recording covers a distinct set of tracks for which to apply the encryption, identified by the <literal>Track</literal> element.
-        If an encryption entry does not contain any <literal>Track</literal> element, all tracks of the recording shall be encrypted using the same encryption entry.
-        If an encryption entry contains one or more <literal>Track</literal> elements, specified tracks indicated by the track tokens of the recording shall be encrypted using the encryption entry.
-        The device shall encrypt the covered tracks with the scheme given by the <literal>Mode</literal> configured for the encryption entry:
+        A device signaling support for encrypted recording via <literal>SupportedEncryptionModes</literal> shall support
+        creating encrypted files according to ISO/IEC 23001-7 (common encryption in ISO base media file format files).
+        Each <literal>Encryption</literal> entry configured for a recording covers a distinct set of tracks for which
+        to apply the encryption, identified by the <literal>Track</literal> element.
+        If an encryption entry does not contain any <literal>Track</literal> element, all tracks of the recording shall
+        be encrypted using the same encryption entry.
+        If an encryption entry contains one or more <literal>Track</literal> elements, specified tracks indicated by the
+        track tokens of the recording shall be encrypted using the encryption entry.
+        The device shall encrypt the covered tracks with the scheme given by the <literal>Mode</literal> configured for
+        the encryption entry:
       </para>
       <para>
         <variablelist>
@@ -2122,9 +2130,6 @@ secfrac = "." 1*6DIGIT</programlisting>
             </listitem>
           </varlistentry>
         </variablelist>
-      </para>
-      <para>
-        <literal>Key/KID</literal> and <literal>AsymmetricEncryption</literal> elements of the encryption entry are mutually exclusive.
       </para>
       <para>
         When using <literal>Key/KID</literal> then the device shall interpret the configured <literal>KID</literal> for the encryption entry as a 16-byte hexadecimal value and use this value as the key identifier.
