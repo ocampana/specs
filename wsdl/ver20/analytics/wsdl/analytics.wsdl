@@ -71,16 +71,6 @@
 						<xs:documentation>Indication what kinds of method that the device support for sending image, acceptable values are defined in tt:ImageSendingType.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SensorDataSupport" type="xs:boolean">
-					<xs:annotation>
-						<xs:documentation>Indicates whether the device supports sensor data metadata.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="SensorTypesSupported" type="tt:StringList">
-					<xs:annotation>
-						<xs:documentation>List of sensor types supported by the device.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
 				<xs:anyAttribute processContents="lax"/>
 			</xs:complexType>
 			<xs:element name="Capabilities" type="tan:Capabilities"/>
@@ -412,6 +402,16 @@
 				<xs:attribute name="Type" type="xs:QName" use="required">
 					<xs:annotation>
 						<xs:documentation>Reference to an AnalyticsModule Type.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="SensorDataSupport" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Indicates whether the device supports sensor data metadata.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="SensorTypesSupported" type="tt:StringList">
+					<xs:annotation>
+						<xs:documentation>List of sensor types supported by the device.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:anyAttribute/>
