@@ -404,12 +404,12 @@
 						<xs:documentation>Reference to an AnalyticsModule Type.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SensorDataSupport" type="xs:boolean">
+				<xs:attribute name="SensorDataSupport" type="xs:boolean" use="optional">
 					<xs:annotation>
 						<xs:documentation>Indicates whether the device supports sensor data metadata.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SensorTypesSupported" type="tt:StringList">
+				<xs:attribute name="SensorTypesSupported" type="tt:StringList" use="optional">
 					<xs:annotation>
 						<xs:documentation>List of sensor types supported by the device.</xs:documentation>
 					</xs:annotation>
