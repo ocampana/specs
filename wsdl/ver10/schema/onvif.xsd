@@ -710,11 +710,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 							<xs:documentation>The rtsp session timeout for the related video stream</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="SecureStreamingProtocolAlgorithm" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>The cryptographic algorithm used as defined by tt:SrtpSecurityAlgorithms</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first Vendor then ONVIF -->
 				</xs:sequence>
 				<xs:attribute name="GuaranteedFrameRate" type="xs:boolean">
@@ -849,11 +844,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 				<xs:documentation>
 					Indicates the support for the GuaranteedFrameRate attribute on the VideoEncoderConfiguration element.
 				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="SecureStreamingProtocolAlgorithms" type="tt:StringAttrList" use="optional">
-			<xs:annotation>
-				<xs:documentation>If secure RTSP streaming is supported, this shall return the list of supported cryptographic algorithms as defined by tt:SrtpSecurityAlgorithms.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:anyAttribute processContents="lax"/>
@@ -1289,11 +1279,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 							<xs:documentation>The rtsp session timeout for the related audio stream</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="SecureStreamingProtocolAlgorithm" type="xs:string" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>The cryptographic algorithm used as defined by tt:SrtpSecurityAlgorithms</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first Vendor then ONVIF -->
 				</xs:sequence>
 				<xs:anyAttribute processContents="lax"/>
@@ -1336,12 +1321,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 				<xs:annotation>
 					<xs:documentation>List of supported Sample Rates in kHz for the specified Encoding</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="SecureStreamingProtocolAlgorithms" type="tt:StringAttrList" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>If secure RTSP streaming is supported, this shall return the list of supported cryptographic algorithms as defined by tt:SrtpSecurityAlgorithms.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+			</xs:element>>
 			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first Vendor then ONVIF -->
 		</xs:sequence>
 		<xs:anyAttribute processContents="lax"/>
