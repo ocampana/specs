@@ -628,7 +628,7 @@
           <section>
             <title>Cryptographic algorithm negotiation</title>
             <para>
-              The device shall list supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service video encoder, audio encoder and metadata configuration elements as listed below:<footnote xml:id="__FN_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
+              The device shall list supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service video encoder, audio encoder and metadata configuration elements as listed below:<footnote xml:id="__FN1_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
               <itemizedlist>
                 <listitem>
                   <para>AudioEncoder2ConfigurationOptions</para>
@@ -642,7 +642,7 @@
               </itemizedlist> If the SecureStreamingProtocolAlgorithms parameter is present, the
               device shall support at least one of the following algorithms: <itemizedlist>
                 <listitem>
-                  <para>NONE<footnoteref linkend="__FN_ONVIF_SPEC__"/></para>
+                  <para>NONE<footnote xml:id="__FN2_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                   <para>NONE is a special case, where the media is listed as RTP/AVP instead of
                     RTP/SAVP and where MIKEY is unused altogether.</para>
                   <para> This it to allow the use of RTSPS without using an SRTP encrypted media
@@ -650,20 +650,20 @@
                     same TLS protected channel as the RTSP control messages. </para>
                 </listitem>
                 <listitem>
-                  <para>AES_CM_128_HMAC_SHA1_80<footnote xml:id="__FN_RFC_3711__"><para>As defined in RFC 3711.</para></footnote></para>
+                  <para>AES_CM_128_HMAC_SHA1_80<footnote xml:id="__FN1_RFC_3711__"><para>As defined in RFC 3711.</para></footnote></para>
                 </listitem>
                 <listitem>
-                  <para>AEAD_AES_128_GCM<footnote xml:id="__FN_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
+                  <para>AEAD_AES_128_GCM<footnote xml:id="__FN1_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
                 </listitem>
                 <listitem>
-                  <para>AEAD_AES_256_GCM<xref linkend="__FN_RFC_7714__"/></para>
+                  <para>AEAD_AES_256_GCM<footnote xml:id="__FN2_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
                 </listitem>
               </itemizedlist>
               If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_SHA1_80 algorithm as defined in RFC 3711.
             </para>
 
             <para>
-              If the device supports encryption algorithms for secure streaming other than AES_CM_128_SHA1_80 (as specified in RFC 3711), it shall:<xref linkend="__FN_ONVIF_SPEC__"/>
+              If the device supports encryption algorithms for secure streaming other than AES_CM_128_SHA1_80, it shall:<footnote xml:id="__FN3_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
               <itemizedlist>
                 <listitem>
                   <para>Provide a list of the supported algorithms through the ConfigurationOptions structure.</para>
@@ -693,9 +693,10 @@
             <para>
                 MIKEY is used for key management with SRTP. The device shall support MIKEY as defined in RFC 3830 for key management.
                 One exception is that, in RFC 3830, support for MIKEY-PSK and MIKEY-PK are listed mandatory. For ONVIF SRTP, only MIKEY-PSK support is defined and mandatory.
-                MIKEY-PK should not be used for ONVIF SRTP.<xref linkend="__FN_ONVIF_SPEC__"/>
+                MIKEY-PK should not be used for ONVIF SRTP.<footnote xml:id="__FN4_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
             </para>
-            <para> The MIKEY message shall contain the following payloads: <itemizedlist>
+            <para> The MIKEY message shall contain the following payloads:<footnote xml:id="__FN1_RFC_3830__"><para>RFC 3830 MIKEY specification.</para></footnote>
+              <itemizedlist>
                 <listitem>
                   <para>Common Header Payload</para>
                 </listitem>
@@ -705,19 +706,19 @@
                     RTSPS channel.</para>
                   <para>If the key type is TEK without salt and a salt must be provided, the key and
                     the salt shall be concatenated and sent in the Key data section of the
-                    payload.</para>
+                    payload.<footnote xml:id="__FN5_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                   <para>If the key type is TEK+SALT and a salt must be provided, the SALT shall be
                     in the Salt data section.</para>
                   <para>The device and client shall support TEK for AES_CM_128_SHA1_80 and TEK+SALT
-                    for other encryption algorithms.<xref linkend="__FN_ONVIF_SPEC__"/></para>
+                    for other encryption algorithms.<footnote xml:id="__FN6_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                   <para>To keep track of key validity, The SPI/MKI shall be set in the KV data. Each
-                    SRTP packet shall include the MKI.<xref linkend="__FN_ONVIF_SPEC__"/></para>
+                    SRTP packet shall include the MKI.<footnote xml:id="__FN7_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                 </listitem>
                 <listitem>
                   <para>Security Policy Payload</para>
                   <para> Specifies the encryption parameters to be used by the streams. <itemizedlist>
                       <listitem>
-                        <para>AES_CM_128_HMAC_SHA1_80<xref linkend="__FN_RFC_3711__"/></para>
+                        <para>AES_CM_128_HMAC_SHA1_80<footnote xml:id="__FN2_RFC_3711__"><para>As defined in RFC 3711.</para></footnote></para>
                         <para>Encryption Algorithm: AES-CM</para>
                         <para>Session Encryption Key Length: 16 octets</para>
                         <para>Authentication Algorithm: HMAC-SHA-1</para>
@@ -729,7 +730,7 @@
                         <para>SRTP PRF: AES-CM</para>
                       </listitem>
                       <listitem>
-                        <para>AEAD_AES_128_GCM<xref linkend="__FN_RFC_7714__"/></para>
+                        <para>AEAD_AES_128_GCM<footnote xml:id="__FN3_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
                         <para>Encryption Algorithm: AES-GCM</para>
                         <para>Session Encryption Key Length: 16 octets</para>
                         <para>Authentication Algorithm: NULL</para>
@@ -741,7 +742,7 @@
                         <para>SRTP PRF: AES-CM</para>
                       </listitem>
                       <listitem>
-                        <para>AEAD_AES_256_GCM<xref linkend="__FN_RFC_7714__"/></para>
+                        <para>AEAD_AES_256_GCM<footnote xml:id="__FN4_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
                         <para>Encryption Algorithm: AES-GCM</para>
                         <para>Session Encryption Key Length: 32 octets</para>
                         <para>Authentication Algorithm: NULL</para>
@@ -757,7 +758,7 @@
               </itemizedlist></para>
               <section>
                 <title>Key management through RTSP</title>
-                  <para>The key management extensions for SDP and RTSP (RFC 4567) allow for key
+                  <para>The key management extensions for SDP and RTSP (RFC 4567) allows for key
                 management through RTSP. Note: All MIKEY messages must not contain line breaks. The
                 examples below are formatted for readability. </para>
                   <section>
@@ -769,7 +770,8 @@
                   with RTP/AVP and one with RTP/SAVP. The RTP/AVP track is used for an unencrypted
                   stream. The device may advertise that it supports the key management defined in
                   this specification by adding the <emphasis>onvif-keymgmt</emphasis> attribute to
-                  the SDP. <programlisting><![CDATA[v=0
+                  the SDP.<footnote xml:id="__FN8_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
+                  <programlisting><![CDATA[v=0
 o=actionmovie 2891092738 2891092738 IN IP4 movie.example.com
 s=Action Movie
 e=action@movie.example.com
@@ -786,13 +788,14 @@ a=rtpmap:99 H264/90000
 a=control:rtsp://movie.example.com/action/rtp_video
 ]]></programlisting></para>
                   <para>When the client is providing the key, it will add a KeyMgmt header
-                  containing the MIKEY with transport type RTP/SAVP in the SETUP. The client may
-                  request a different encryption algorithm than what is configured with
+                  containing the MIKEY with transport type RTP/SAVP in the SETUP.<footnote xml:id="__FN1_RFC_4567__"><para>As defined in RFC 4567.</para></footnote> 
+                  The client may request a different encryption algorithm than what is configured with
                   SetAudioEncoderConfiguration, SetMetadataConfiguration and
                   SetVideoEncoderConfiguration for legacy reasons. Newer clients should respect the
                   encryption algorithm set in the configuration and avoid overriding it in the SETUP
                   request. The client may not change the encryption algorithm after the stream has
-                  been started. <programlisting><![CDATA[SETUP rtsp://<RTSP_URI> RTSP/1.0
+                  been started.<footnote xml:id="__FN9_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
+                  <programlisting><![CDATA[SETUP rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 2
 User-Agent: OmnicastRTSPClient/1.0
 Transport: RTP/SAVP/UDP;unicast
@@ -800,7 +803,7 @@ KeyMgmt: prot=mikey;uri="";data="AQAFAP1td9ABAADCD1UcAAAAAAoAAdOOGc75XD0BAAAAGAA
 AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAAC8A"
 ]]></programlisting> The SSRC is a required component for SRTP encryption and shall be specified
                   during the RTSP session setup. The SSRC shall be provided in the transport header
-                  of the RTSP SETUP response as described in RFC 2326 Section 12.39. </para>
+                  of the RTSP SETUP response.<footnote xml:id="__FN1_RFC_2326__"><para>As described in RFC 2326 Section 12.39.</para></footnote></para>
                 </section>
                 <section>
                   <title>Client Re-Keying with MIKEY</title>
@@ -808,7 +811,7 @@ AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAA
                   SET_PARAMETER method shall be used with a MIKEY parameter to set the new
                   encryption keys. The device shall not reset the ROC when changing keys. When
                   rekeying, the RAND value and the SP (Security Policy) payload may be omitted by
-                  the client as defined in RFC 3830 section 4.5. <programlisting><![CDATA[SET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
+                  the client.<footnote xml:id="__FN2_RFC_3830__"><para>As defined in RFC 3830 section 4.5. </para></footnote><programlisting><![CDATA[SET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 6
 Session: 15405670
 User-Agent: OmnicastRTSPClient/1.0
@@ -824,7 +827,7 @@ AACcAIQAepekjs88g+Q7AU6LAvRsoVyn18ZW1JuXI9qht4g6+BAAAAAIA
                   <para>
                     When in multicast, multiple RTSP clients shall be able to retrieve changing keys as well as the SSRC and ROC of the stream.
                     A new GET_PARAMETER request has been added to retrieve the MIKEY.
-                    This MIKEY message shall contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.
+                    This MIKEY message shall contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.<footnote xml:id="__FN10_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
                   </para>
                   <para> Request: <programlisting><![CDATA[GET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 4
@@ -844,7 +847,7 @@ BFAQBDgcBAQgBAQoBAQsBCgAAACcAIQAe7OzS5umZMXHqaegZC3UkDwbC5NNpj4b8+fB6MROeBAAAAA0
                 <section>
                   <title>Error management</title>
                   <para>
-                    If an error occurs during the key management, the device shall return a status code 463 Key management failure as defined in RFC 4567.
+                    If an error occurs during the key management, the device shall return a status code 463 Key management failure.<footnote xml:id="__FN2_RFC_4567__"><para>As described in RFC 4567.</para></footnote>
                   </para>
                 </section>
               </section>
