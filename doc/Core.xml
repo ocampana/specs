@@ -6745,7 +6745,7 @@ Event description:
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/temperature/High
 Event description:
-<tt:MessageDescription IsProperty="true">
+<tt:MessageDescription IsProperty="false">
   <tt:Source>
     <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
   </tt:Source>
@@ -6759,7 +6759,7 @@ Event description:
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/temperature/Low
 Event description:
-<tt:MessageDescription IsProperty="true">
+<tt:MessageDescription IsProperty="false">
   <tt:Source>
     <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
   </tt:Source>
@@ -6773,7 +6773,7 @@ Event description:
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/humidity/High
 Event description:
-<tt:MessageDescription IsProperty="true">
+<tt:MessageDescription IsProperty="false">
   <tt:Source>
     <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
   </tt:Source>
@@ -6787,7 +6787,7 @@ Event description:
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/humidity/Low
 Event description:
-<tt:MessageDescription IsProperty="true">
+<tt:MessageDescription IsProperty="false">
   <tt:Source>
     <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
   </tt:Source>
