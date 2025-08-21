@@ -362,8 +362,6 @@
             <para role="param">authorization [string]</para>
             <para role="text">Access token that authorizes the device or client.</para>
             <para role="param">id optional [string]</para>
-            <para role="text">The unique ID of the device or client. This parameter is deprecated as
-                access token conveys the device/client identity.</para>
             <para role="param">name optional [string]</para>
             <para role="text">The human readable name of the device or client.</para>
           </listitem>
@@ -725,3 +723,4 @@ Server -> Device: { "method": "trickle", "params": {"session": "s1", "candidate"
     <para/>
   </appendix>
 </book>
+
