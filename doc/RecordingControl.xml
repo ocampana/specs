@@ -2140,8 +2140,8 @@ secfrac = "." 1*6DIGIT</programlisting>
       <section xml:id="_refW3CpsshFormat">
         <title>CENC Initialization Data Format</title>
         <para>
-          All encrypted segments shall include one pssh box following the [W3C 'cenc' Initialization Data Format].
-          Additional types of 'pssh' boxes may be present to support alternative DRM systems.
+          All encrypted segments shall include one PSSH box following the [W3C 'cenc' Initialization Data Format].
+          Additional types of 'PSSH' boxes may be present to support alternative DRM systems.
         </para>
         <section>
           <title>Syntax</title>
@@ -2171,22 +2171,22 @@ aligned(8) class ProtectionSystemSpecificHeaderBox extends FullBox('pssh', versi
       <section xml:id="_refAsymmetricKeySystem">
         <title>Asymmetric key system</title>
         <para>
-          When <literal>AsymmetricEncryption</literal> is set, the device shall generate a <literal>Key/KID</literal> pair
-          and encrypt each segment with that generated key. If the <literal>KeyRotationDuration</literal> is set,
-          then the device shall generate a new <literal>Key/KID</literal> pair at the specified time interval,
+          When <literal>AsymmetricEncryption</literal> is set, the device shall generate its own key
+          and encrypt each segment with it. A KID shall also be generated for use in the PSSH boxes. If the <literal>KeyRotationDuration</literal> is set,
+          then the device shall generate a new Key and KID at the specified time interval,
           but still use the current key until the segment is finished. New segments shall use the latest generated
           <literal>Key</literal> for its encryption.
         </para>
         <para>
-          The device shall also include in each segment a pssh box containing the information needed to play the segment.
-          This box contains the encrypted symmetric key and the list of certificates that can be used to decrypt it.
+          The device shall also include in each segment an <literal>AsymmetricKeySystemHeaderBox</literal> PSSH box containing the information needed to play the segment.
+          This box contains the KID, the encrypted symmetric key and the list of certificates that can be used to decrypt it.
           The symmetric key is encrypted once for each configured certificate using their public key.
           The client needs access to at least one of the certificates' private key to decrypt it, either directly or through a key server.
           The client can then decrypt the frames using this symmetric key.
           If tracks are encrypted using different keys, then one <literal>AsymmetricKeySystemHeaderBox</literal> shall be present per <literal>KID</literal>.
         </para>
         <para>
-          Additional 'pssh' boxes may be present to support alternative DRM systems.
+          Additional 'PSSH' boxes may be present to support alternative DRM systems.
           Note that DRM systems and client implementations are outside the scope of this specification.
         </para>
         <section>
