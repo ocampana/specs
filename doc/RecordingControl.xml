@@ -2204,8 +2204,8 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
     unsigned int(8)[CertificateThumbprintSize] CertificateThumbprint;
     unsigned int(8) EncryptionVersion;
     if (EncryptionVersion == 1) {
-      unsigned int(32) EncryptionDataSize;
-      unsigned int(8)[EncryptionDataSize] EncryptedKey;
+      unsigned int(16) EncryptedKeySize;
+      unsigned int(8)[EncryptedKeySize] EncryptedKey;
     } else if (EncryptionVersion == 2) {
       unsigned int(16) HpkeKem;
       unsigned int(16) HpkeKdf;
@@ -2230,7 +2230,6 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
           <para><literal>CertificateThumbprintSize</literal> Size of the <literal>CertificateThumbprint</literal> field.</para>
           <para><literal>CertificateThumbprint</literal> Thumbprint of the certificate used to encrypted the symmetric key.</para>
           <para><literal>EncryptionVersion</literal> defines the encryption strategy used to encrypt the symmetric key for this certificate.</para>
-          <para><literal>EncryptionDataSize</literal> defines the number of bytes used by the following bytes for this certificate. The next certificates, if any, will start after this number of bytes.</para>
           <para><literal>EncryptedKey</literal> The symmetric key (identified by <literal>KID</literal>) used for frame encryption, encrypted using the public key of the certificate according to the encryption version.</para>
           <para><literal>HpkeKem</literal> defines the KEM algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
           <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
