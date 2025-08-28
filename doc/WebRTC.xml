@@ -64,6 +64,14 @@
         </author>
         <revremark>Added data channels.</revremark>
       </revision>
+			<revision>
+			<revnumber>25.12</revnumber>
+        <date>Dec, 2025</date>
+        <author>
+          <personname>Henrik Hein</personname>
+        </author>
+        <revremark>Added extend method and capabilities.</revremark>
+      </revision>
     </revhistory>
   </info>
   <chapter xml:id="chapter_txt_v12_v5b">
@@ -283,9 +291,10 @@
       <emphasis role="italic">client</emphasis> and a <emphasis role="italic">device</emphasis> 
       with the intention of establishing a WebRTC peer-to-peer connection between the
       client and a device. The messages are always sent via the <emphasis>signaling
-        server</emphasis> called <emphasis>server</emphasis> from now on. Once a peer-to-peer
+        server</emphasis>, called <emphasis>server</emphasis> from now on. Once a peer-to-peer
       connection has been established the connection with the server can be dropped without
       affecting the peer-to-peer connection.</para>
+    <para>A WebRTC signaling server may enforce expiration on active sessions by using the ExpiryTime property of the connect command. In such scenarios, the client shall maintain the connection with the signaling <emphasis>server</emphasis> and send extend command periodically before the session expires.</para>
     <figure xml:id="_Ref493258797">
       <title>Signaling flow sequence diagram</title>
       <mediaobject>
@@ -347,7 +356,41 @@
           </tgroup>
         </table>
       </para>
-      <para>The following sections specify the parameters of the individual commands.</para>
+      <section xml:id="section_capabilities">
+        <title>Session Capabilities</title>
+        <para>When calling connect command, an optional parameter called capabilities may be returned. The capabilities parameter will inform the client of the functionality available in the session. Below we list the possible capabilities</para>
+        <table frame="all">
+          <title>Capabilities</title>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="2.0*"/>
+            <colspec colname="c2" colnum="2" colwidth="8.0*"/>
+            <thead>
+              <row>
+                <entry><para>Capability</para></entry>
+                <entry><para>Functionality</para></entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><para>subProtocols</para></entry>
+                <entry><para>SubProtocols are supported, read section <xref linkend="section_data_channels"/>. As
+
+                    Sub-protocols are added before capabilities, some implementations may support this
+
+                    without it being part of the capabilities. Support of these capabilities can be seen within the invite
+
+                    command received.</para></entry>
+              </row>
+              <row>
+                <entry><para>extend</para></entry>
+                <entry><para>The Connect command will return an expiry time parameter. It is possible to call the extend command
+
+                    before the expiry time ends to extend the session. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
       <section xml:id="section_register">
         <title>register</title>
         <para> A signaling server shall expect this command to be sent once before any other command
@@ -363,6 +406,10 @@
             <para role="text">The unique ID of the device or client.</para>
             <para role="param">name optional [string]</para>
             <para role="text">The human readable name of the device or client.</para>
+            <para role="param">capabilities optional [string[]]</para>
+            <para role="text">Capabilities of the device. This should only be used by the device and
+                the possible values can be found in the section <xref linkend="section_capabilities"
+                />.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -408,6 +455,13 @@
             <para role="text">The ID assigned by the signaling server to the session.</para>
             <para role="param">iceServers optional unbounded [RTCIceServer]</para>
             <para role="text">List of STUN and TURN servers provided by the signaling server to be used for this session.</para>
+            <para role="param">expiryTimeSeconds optional [integer]</para>
+            <para role="text">The time represented in seconds before the session ends. If this is returned, the
+
+              extend command is also supported.</para>
+            <para role="param">capabilities optional [string[]]</para>
+            <para role="text">A list of capabilities supported for a session.</para>
+
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -510,12 +564,52 @@
       <para>If everything works as it should, a peer-to-peer WebRTC session can be set up between
         client and device. After the session has been established the client can terminate the
         WebSocket session to the signaling server and the peer-to-peer connection will not be
-          affected.</para>
+        affected. The only reason to keep the connection to the server is if the client needs to extend the session.</para>
     </section>
+    <section xml:id="section_extend">
+      <title>extend</title>
+      <para>This command updates a session if more time is required. If an expiryTime is given
+          during the connect command response, the session will timeout. It is possible to request
+          an extension by sending a new authorization token and an expiryTime to the signaling
+          server.</para>
+      <variablelist role="op">
+        <varlistentry>
+          <term>request</term>
+          <listitem>
+            <para role="param">session [string]</para>
+            <para role="text">The ID assigned by the signaling server to the session. </para>
+            <para role="param">authorization optional [string]</para>
+            <para role="text">Access token that authorizes the client.</para>
+            <para role="param">expiryTimeSeconds optional [integer]</para>
+            <para role="text">The requested time represented in seconds to extend the session. If not populated, the
+
+                signaling server will extend with its default value.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>response</term>
+          <listitem>
+            <para role="param">expiryTimeSeconds [integer]</para>
+            <para role="text">The time represented in seconds a session has been extended by.</para>
+
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>faults</term>
+          <listitem>
+            <para role="param">401 Authorization failed</para>
+            <para role="text">The authorization token cannot be verified. The authorization token may not include the required claims, or has expired.</para>
+
+            <para role="param">403 Forbidden</para>
+            <para role="text">The client is not authorized to connect to the provided peer.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>  
     <section xml:id="section_error_notification">
       <title>error</title>
       <para>An ONVIF compliant signaling server, device and client shall support sending or receiving notifications signaling that an error has occurred.</para>
-      <para>This message is a [JSON-RPC] "Request notification" and shall include [JSON-RPC] "Error object" in its <literal>params</literal> field.</para>
+			<para>This message is a [JSON-RPC] "Response" or "Notification" and shall contain [JSON-RPC] "Error object". If the error is not connected to a request, but sent as a notification, the id has to be null.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -634,6 +728,13 @@ Server -> Device: { "method": "trickle", "params": {"session": "s1", "candidate"
 Client -> Server: { "method": "trickle", "params": {"session": "s1", "candidate": {...}}}
 Server -> Device: { "method": "trickle", "params": {"session": "s1", "candidate": {...}}}
 ...
+Client -> Server: { "method": "extend", "params": {"session": "s1", "authorization": "...", 
+                "id": 4}
+Server -> Client: { "error": {"code": -32601, "message": "Method not found"}, "id": "4"}
+...
+Device -> Server: { "error": {"code": 1001, "message": "Insufficient resources"}, "id": null}
+Server -> Client: { "error": {"code": 1001, "message": "Insufficient resources"}, "id": null}
+
 ]]></programlisting>
     </section>
     </section>
