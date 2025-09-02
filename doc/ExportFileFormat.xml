@@ -251,7 +251,7 @@
     <section>
       <title>Use case 2: Forensic analysis at court</title>
       <para>A court receives video clips from a grocery store, a street surveillance system and a metro operator. All three videos are shown in the court’s approved video player.</para>
-      <para>The judges want to see the suspect in all three video clips with exact time information. They also want to have information when the video clips have been exported and whether the video sequence is complete and authentic. Further, they preferably also want to validate the videos authenticity and provenance using ONVIF Media Signing.</para>
+      <para>The judges want to see the suspect in all three video clips with exact time information. They also want to have information when the video clips have been exported and whether the video sequence is complete and authentic. Further, they preferably also want to validate the authenticity and provenance of videos using ONVIF Media Signing.</para>
     </section>
     <section>
       <title>Use case 3: Playback at players not equipped according to the present specification</title>
