@@ -425,6 +425,13 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			</xs:element>
 			<xs:element name="Extension" type="tt:RotateExtension" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attribute name="Mirror" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>When enabled, the video will be flipped horizontally. If applied alongside rotation, the mirror effect shall be executed after the rotation. Additionally,<br/> 
+				when Mirror is enabled and Reverse=Auto is set in PTControlDirection or if the device doesn’t support Reverse in PTControlDirection, the device shall automatically adjust the pan direction. 
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:anyAttribute processContents="lax"/>
 	</xs:complexType>
 	<!--===============================-->
@@ -560,8 +567,13 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 		</xs:sequence>
 		<xs:attribute name="Reboot" type="xs:boolean">
 			<xs:annotation>
-				<xs:documentation>Signals if a device requires a reboot after changing the rotation.
-				If a device can handle rotation changes without rebooting this value shall be set to false.</xs:documentation>
+				<xs:documentation>Signals if a device requires a reboot after changing the rotation or mirror.
+				If a device can handle rotation changes or mirror changes without rebooting this value shall be set to false.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Mirror" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Signals if video source mirroring is supported.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:anyAttribute processContents="lax"/>
