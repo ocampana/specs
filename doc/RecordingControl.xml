@@ -2210,6 +2210,8 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
       unsigned int(16) HpkeKem;
       unsigned int(16) HpkeKdf;
       unsigned int(16) HpkeAead;
+      unsigned int(16) InfoSize;
+      unsigned int(8)[InfoSize] Info;
       unsigned int(8)[EncapsulatedSharedSecretSize] EncapsulatedSharedSecret;
       unsigned int(16) EncryptedSymmetricKeySize;
       unsigned int(8)[EncryptedSymmetricKeySize] EncryptedSymmetricKey;
@@ -2233,6 +2235,8 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
           <para><literal>HpkeKem</literal> defines the KEM algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
           <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
           <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
+          <para><literal>InfoSize</literal> is the size in bytes of the <literal>Info</literal> field.</para>
+          <para><literal>Info</literal> is the value configured by the <literal>AdditionalInfo</literal> configuration field encoded as UTF-8.</para>
           <para><literal>EncapsulatedSharedSecretSize</literal> is implicitly defined to the <literal>Nenc</literal> parameter of the <literal>HpkeKem</literal> algorithm.</para>
           <para><literal>EncapsulatedSharedSecret</literal> is the HPKE shared secret value necessary to decrypt the encrypted key according to RFC 9180.</para>
           <para><literal>EncryptedSymmetricKeySize</literal> Size of the <literal>EncryptedSymmetricKey</literal> field. Valid values depend on the encryption algorithm used by the certificate.</para>
@@ -2253,6 +2257,11 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
             when the certificate contains an EC public key. Using the public key of the certificate and the
             algorithms defined in the <literal>HpkeKem</literal>, <literal>HpkeHkdf</literal>, and <literal>HpkeAead</literal> fields,
             the <literal>EncapsulatedSharedSecret</literal> field is derived using the <literal>Base</literal> mode of HPKE.
+          </para>
+          <para>
+            The <literal>AdditionalInfo</literal> field of the <literal>AsymmetricEncryption</literal> configuration is to be
+            used as the <literal>info</literal> parameter of the HPKE key derivation function. If the field is missing,
+            the device shall use an empty string.
           </para>
           <figure xml:id="_refHpkeEncryptionFigure">
             <title>Encryption (Left) and Decryption (Right) using the HPKE algorithm</title>
