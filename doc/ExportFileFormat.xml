@@ -263,9 +263,9 @@
     <section>
       <title>Requirements to Preserve Media Signing</title>
       <para>
-        This checklist captures the essence for preserving the authenticity of ONVIF Media Signing
-        (OMS) when handling streams and exporting to MP4. Following these rules ensures that signature
-        verification remains intact and that tamper‐evident evidence can be trusted.
+        This checklist captures the essence for preserving the authenticity of ONVIF signed streaming media as specified in ONVIF Media Signing
+        (OMS) specification when exporting to MP4. Following these rules ensures that signature
+        verification remains intact and media evidence can be trusted as tamper-proof.
       </para>
       <section>
         <title>Core Rules and Bitstream Requirements</title>
