@@ -2218,11 +2218,11 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
       unsigned int(16) HpkeKem;
       unsigned int(16) HpkeKdf;
       unsigned int(16) HpkeAead;
-      unsigned int(16) InfoSize;
-      unsigned int(8)[InfoSize] Info;
       unsigned int(8)[EncapsulatedSharedSecretSize] EncapsulatedSharedSecret;
       unsigned int(16) EncryptedSymmetricKeySize;
       unsigned int(8)[EncryptedSymmetricKeySize] EncryptedSymmetricKey;
+      unsigned int(16) InfoSize;
+      unsigned int(8)[InfoSize] Info;
     }
   }
 }
