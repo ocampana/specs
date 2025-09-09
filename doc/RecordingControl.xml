@@ -2243,12 +2243,12 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
           <para><literal>HpkeKem</literal> defines the KEM algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
           <para><literal>HpkeHkdf</literal> defines the HKDF algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
           <para><literal>HpkeAead</literal> defines the AEAD algorithm identifier according to IANA used to encrypt the key with the current certificate.</para>
-          <para><literal>InfoSize</literal> is the size in bytes of the <literal>Info</literal> field.</para>
-          <para><literal>Info</literal> is the value configured by the <literal>AdditionalInfo</literal> configuration field encoded as UTF-8.</para>
           <para><literal>EncapsulatedSharedSecretSize</literal> is implicitly defined to the <literal>Nenc</literal> parameter of the <literal>HpkeKem</literal> algorithm.</para>
           <para><literal>EncapsulatedSharedSecret</literal> is the HPKE shared secret value necessary to decrypt the encrypted key according to RFC 9180.</para>
           <para><literal>EncryptedSymmetricKeySize</literal> Size of the <literal>EncryptedSymmetricKey</literal> field. Valid values depend on the encryption algorithm used by the certificate.</para>
           <para><literal>EncryptedSymmetricKey</literal> The symmetric key (identified by <literal>KID</literal>) used for frame encryption, encrypted using the public key of the certificate according to the encryption version.</para>
+          <para><literal>InfoSize</literal> is the size in bytes of the <literal>Info</literal> field.</para>
+          <para><literal>Info</literal> is the value configured by the <literal>AdditionalInfo</literal> configuration field encoded as UTF-8.</para>
         </section>
         <section xml:id="_refCloudRecordingEncryptionVersion1">
           <title>Encryption Version 1</title>
