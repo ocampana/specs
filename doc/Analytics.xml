@@ -2501,13 +2501,13 @@
           <para>Sensor data is represented through the SensorData element, which contains the following information:</para>
           <itemizedlist>
             <listitem>
-              <para>SensorType: Type of sensor (e.g., Temperature, Humidity, etc.)</para>
+              <para>Type: Type of sensor (e.g., Temperature, Humidity, etc.)</para>
             </listitem>
             <listitem>
-              <para>SensorValue: Numerical value from the sensor</para>
+              <para>Value: Numerical value from the sensor</para>
             </listitem>
             <listitem>
-              <para>SensorUnit: Unit of measurement (e.g., Celsius, Percentage, etc.)</para>
+              <para>Unit: Unit of measurement (e.g., Celsius, Percentage, etc.)</para>
             </listitem>
           </itemizedlist>
           
@@ -2520,20 +2520,20 @@
           <para>Temperature sensor data is a common type of sensor information. The metadata for temperature sensors follows the general sensor data structure with specific conventions:</para>
           <itemizedlist>
             <listitem>
-              <para>SensorType: Should be set to "temperature"</para>
+              <para>Type: Should be set to "temperature"</para>
             </listitem>
             <listitem>
-              <para>SensorUnit: Typically "°C" or "°F" or "K"</para>
+              <para>Unit: Typically "°C" or "°F" or "K" (absolute temperature)</para>
             </listitem>
             <listitem>
-              <para>SensorValue: Floating point value representing the temperature</para>
+              <para>Value: Floating point value representing the temperature</para>
             </listitem>
           </itemizedlist>
           
           <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z">
-  <tt:SensorType>temperature</tt:SensorType>
-  <tt:SensorValue>25.5</tt:SensorValue>
-  <tt:SensorUnit>°C</tt:SensorUnit>
+  <tt:Type>temperature</tt:Type>
+  <tt:Value>25.5</tt:Value>
+  <tt:Unit>°C</tt:Unit>
 </tt:SensorData>]]></programlisting>
         </section>
         
@@ -2542,13 +2542,13 @@
           <para>Humidity sensor data represents ambient humidity conditions. The metadata for humidity sensors follows the general sensor data structure with specific conventions:</para>
           <itemizedlist>
             <listitem>
-              <para>SensorType: Should be set to "humidity"</para>
+              <para>Type: Should be set to "humidity"</para>
             </listitem>
             <listitem>
-              <para>SensorValue: Floating point value representing the humidity percentage</para>
+              <para>Value: Floating point value representing the humidity percentage</para>
             </listitem>
             <listitem>
-              <para>SensorUnit: Typically "%RH" (Relative Humidity)</para>
+              <para>Unit: Typically "%RH" (absolute humidity)</para>
             </listitem>
           </itemizedlist>
           
@@ -2556,9 +2556,9 @@
           representing the amount of moisture in the air relative to what the air can hold at that temperature.</para>
           
           <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z">
-  <tt:SensorType>humidity</tt:SensorType>
-  <tt:SensorValue>65.2</tt:SensorValue>
-  <tt:SensorUnit>%RH</tt:SensorUnit>
+  <tt:Type>humidity</tt:Type>
+  <tt:Value>65.2</tt:Value>
+  <tt:Unit>%RH</tt:Unit>
 </tt:SensorData>]]></programlisting>
         </section>
         
@@ -2571,14 +2571,14 @@
     <tt:Extension>
       <tt:SensorDataStream>
         <tt:SensorData UtcTime="2025-07-15T14:30:00Z">
-          <tt:SensorType>temperature</tt:SensorType>
-          <tt:SensorValue>25.5</tt:SensorValue>
-          <tt:SensorUnit>°C</tt:SensorUnit>
+          <tt:Type>temperature</tt:Type>
+          <tt:Value>25.5</tt:Value>
+          <tt:Unit>°C</tt:Unit>
         </tt:SensorData>
         <tt:SensorData UtcTime="2025-07-15T14:30:00Z">
-          <tt:SensorType>humidity</tt:SensorType>
-          <tt:SensorValue>65.2</tt:SensorValue>
-          <tt:SensorUnit>%RH</tt:SensorUnit>
+          <tt:Type>humidity</tt:Type>
+          <tt:Value>65.2</tt:Value>
+          <tt:Unit>%RH</tt:Unit>
         </tt:SensorData>
       </tt:SensorDataStream>
     </tt:Extension>
@@ -2744,7 +2744,7 @@
               
               <row>
                 <entry><para>"SensorData"</para></entry>
-                <entry><para>SensorType</para></entry>
+                <entry><para>Type</para></entry>
                 <entry><para>ONVIF metadata from sensor data sources</para></entry>
               </row>
             </tbody>
@@ -2766,7 +2766,7 @@
             </listitem>
 
             <listitem>
-              <para>SensorType = The type of sensor (e.g., "temperature", "humidity")</para>
+              <para>Type = The type of sensor (e.g., "temperature", "humidity")</para>
             </listitem>
           </itemizedlist></para>
       </section>
@@ -2965,9 +2965,9 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <programlisting>{
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
-        "SensorType": "temperature",
-        "SensorValue": 25.5,
-        "SensorUnit": "°C"
+        "Type": "temperature",
+        "Value": 25.5,
+        "Unit": "°C"
       }
     }</programlisting>
 
@@ -2980,9 +2980,9 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <programlisting>{
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
-        "SensorType": "humidity",
-        "SensorValue": 65.2,
-        "SensorUnit": "%RH"
+        "Type": "humidity",
+        "Value": 65.2,
+        "Unit": "%RH"
       }
     }</programlisting>
     </section>

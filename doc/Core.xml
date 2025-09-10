@@ -6728,72 +6728,72 @@ Event description:
             <para>tns1:Device/Sensor/[SensorType] - Generic sensor event topic</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/temperature/High - Temperature too high event</para>
+            <para>tns1:Device/Sensor/Temperature/High - Temperature too high event</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/temperature/Low - Temperature too low event</para>
+            <para>tns1:Device/Sensor/Temperature/Low - Temperature too low event</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/humidity/High - Humidity too high event</para>
+            <para>tns1:Device/Sensor/Humidity/High - Humidity too high event</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/humidity/Low - Humidity too low event</para>
+            <para>tns1:Device/Sensor/Humidity/Low - Humidity too low event</para>
           </listitem>
         </itemizedlist>
         
         <para>The following event should be generated with true value when a temperature sensor detects a value exceeding the configured high threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/temperature/High
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/High
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
-    <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Type" Type="xs:string"/>
   </tt:Source>
   <tt:Data>
-    <tt:SimpleItemDescription Name="SensorValue" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="SensorUnit" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
+    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
         <para>The following event should be generated with true value when a temperature sensor detects a value below the configured low threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/temperature/Low
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/Low
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
-    <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Type" Type="xs:string"/>
   </tt:Source>
   <tt:Data>
-    <tt:SimpleItemDescription Name="SensorValue" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="SensorUnit" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
+    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
         <para>The following event should be generated with true value when a humidity sensor detects a value exceeding the configured high threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/humidity/High
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/High
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
-    <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Type" Type="xs:string"/>
   </tt:Source>
   <tt:Data>
-    <tt:SimpleItemDescription Name="SensorValue" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="SensorUnit" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
+    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
         <para>The following event should be generated with true value when a humidity sensor detects a value below the configured low threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/humidity/Low
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/Low
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
-    <tt:SimpleItemDescription Name="SensorType" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Type" Type="xs:string"/>
   </tt:Source>
   <tt:Data>
-    <tt:SimpleItemDescription Name="SensorValue" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="SensorUnit" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
+    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
@@ -8306,32 +8306,32 @@ http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet
           <para>The following examples show sensor event messages published via MQTT. In these examples TopicPrefix has been set to "MyDevice".</para>
           
           <para>Topic for temperature high event:</para>
-          <programlisting>MyDevice/onvif-ej/Device/Sensor/temperature/High</programlisting>
+          <programlisting>MyDevice/onvif-ej/Device/Sensor/Temperature/High</programlisting>
           
           <para>Payload for temperature high event:</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
   "Source": {
-    "SensorType": "temperature"
+    "Type": "temperature"
   },
   "Data": {
-    "SensorValue": 35.5,
-    "SensorUnit": "°C"
+    "Value": 35.5,
+    "Unit": "°C"
   }
 }</programlisting>
 
           <para>Topic for humidity high event:</para>
-          <programlisting>MyDevice/onvif-ej/Device/Sensor/humidity/High</programlisting>
+          <programlisting>MyDevice/onvif-ej/Device/Sensor/Humidity/High</programlisting>
           
           <para>Payload for humidity high event:</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
   "Source": {
-    "SensorType": "humidity"
+    "Type": "humidity"
   },
   "Data": {
-    "SensorValue": 75.5,
-    "SensorUnit": "%RH"
+    "Value": 75.5,
+    "Unit": "%RH"
   }
 }</programlisting>
         </section>
