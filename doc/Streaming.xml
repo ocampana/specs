@@ -809,7 +809,7 @@ AIBAQMBFAcBAQgBAQoBAQsBCgAAACcAIQAe30C59UrClE0e27UP5h/Wty9UL8+dfzg+2ttmmo3kBAAAA
                   <title>Client Re-Keying with MIKEY</title>
                   <para>The client may request the use of new keys for stream encryption. The
                   SET_PARAMETER method shall be used with a MIKEY parameter to set the new
-                  encryption keys. The device shall not reset the ROC when changing keys. When
+                  encryption keys. The client shall only send the new key in the mikey message, it should not send the current key. The device shall not reset the ROC when changing keys. When
                   rekeying, the RAND value and the SP (Security Policy) payload may be omitted by
                   the client.<footnote xml:id="__FN2_RFC_3830__"><para>As defined in RFC 3830 section 4.5. </para></footnote><programlisting><![CDATA[SET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 6
