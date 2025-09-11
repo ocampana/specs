@@ -827,7 +827,8 @@ AACcAIQAepekjs88g+Q7AU6LAvRsoVyn18ZW1JuXI9qht4g6+BAAAAAIA
                   <para>
                     When in multicast, multiple RTSP clients shall be able to retrieve changing keys as well as the SSRC and ROC of the stream.
                     A new GET_PARAMETER request has been added to retrieve the MIKEY.
-                    This MIKEY message shall contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.<footnote xml:id="__FN10_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
+                    This MIKEY message shall contain the <emphasis>current</emphasis> ROC, meaning the server cannot send a cached MIKEY message.
+                    When rekeying occurs, multicast clients are notified of the key change via the MKI value and can use the GET_PARAMETER request to retrieve the updated MIKEY message containing the key.<footnote xml:id="__FN10_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
                   </para>
                   <para> Request: <programlisting><![CDATA[GET_PARAMETER rtsp://<RTSP_URI> RTSP/1.0
 CSeq: 4
