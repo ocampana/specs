@@ -758,9 +758,11 @@
               </itemizedlist></para>
               <section>
                 <title>Key management through RTSP</title>
-                  <para>The key management extensions for SDP and RTSP (RFC 4567) allows for key
-                management through RTSP. Note: All MIKEY messages must not contain line breaks. The
-                examples below are formatted for readability. </para>
+                  <para>
+                      The key management extensions for SDP and RTSP (RFC 4567) allows for key management through RTSP.
+                      Note: According to RFC 3830 a MIKEY message does not contain line breaks, 
+                      they have been included in the examples below for readability.
+                  </para>
                   <section>
                   <title>Stream Initialization</title>
                   <para>Key management extensions for SDP and RTSP (RFC 4567) defines stream
