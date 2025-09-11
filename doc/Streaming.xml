@@ -659,7 +659,7 @@
                   <para>AEAD_AES_256_GCM<footnote xml:id="__FN2_RFC_7714__"><para>As defined in RFC 7714.</para></footnote></para>
                 </listitem>
               </itemizedlist>
-              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_SHA1_80 algorithm as defined in RFC 3711.
+              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_HMAC_SHA1_80 algorithm as defined in RFC 3711.
             </para>
 
             <para>
@@ -709,7 +709,7 @@
                     payload.<footnote xml:id="__FN5_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                   <para>If the key type is TEK+SALT and a salt must be provided, the SALT shall be
                     in the Salt data section.</para>
-                  <para>The device and client shall support TEK for AES_CM_128_SHA1_80 and TEK+SALT
+                  <para>The device and client shall support TEK for AES_CM_128_HMAC_SHA1_80 and TEK+SALT
                     for other encryption algorithms.<footnote xml:id="__FN6_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
                   <para>To keep track of key validity, The SPI/MKI shall be set in the KV data. Each
                     SRTP packet shall include the MKI.<footnote xml:id="__FN7_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote></para>
