@@ -6743,6 +6743,9 @@ Event description:
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/High
 Event description:
 <tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
     <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
@@ -6754,6 +6757,9 @@ Event description:
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/Low
 Event description:
 <tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
     <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
@@ -6765,6 +6771,9 @@ Event description:
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/High
 Event description:
 <tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
     <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
@@ -6776,6 +6785,9 @@ Event description:
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/Low
 Event description:
 <tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
     <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
@@ -8296,6 +8308,9 @@ http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet
           <para>Payload for temperature high event:</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
+  "Source": {
+    "SensorID": "temp_001"
+  },
   "Data": {
     "Value": 35.5,
     "Unit": "°C"
@@ -8308,6 +8323,9 @@ http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet
           <para>Payload for humidity high event:</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
+  "Source": {
+    "SensorID": "humidity_001"
+  },
   "Data": {
     "Value": 75.5,
     "Unit": "%RH"

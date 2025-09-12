@@ -2530,7 +2530,7 @@
             </listitem>
           </itemizedlist>
           
-          <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z">
+          <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="temp_001">
   <tt:Type>temperature</tt:Type>
   <tt:Value>25.5</tt:Value>
   <tt:Unit>°C</tt:Unit>
@@ -2555,7 +2555,7 @@
           <para>Humidity sensors provide continuous percentage values, typically in the range of 0-100%RH, 
           representing the amount of moisture in the air relative to what the air can hold at that temperature.</para>
           
-          <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z">
+          <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
   <tt:Type>humidity</tt:Type>
   <tt:Value>65.2</tt:Value>
   <tt:Unit>%RH</tt:Unit>
@@ -2570,12 +2570,12 @@
   <tt:Extension>
     <tt:Extension>
       <tt:SensorDataStream>
-        <tt:SensorData UtcTime="2025-07-15T14:30:00Z">
+        <tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="temp_001">
           <tt:Type>temperature</tt:Type>
           <tt:Value>25.5</tt:Value>
           <tt:Unit>°C</tt:Unit>
         </tt:SensorData>
-        <tt:SensorData UtcTime="2025-07-15T14:30:00Z">
+        <tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
           <tt:Type>humidity</tt:Type>
           <tt:Value>65.2</tt:Value>
           <tt:Unit>%RH</tt:Unit>
@@ -2956,7 +2956,7 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <section xml:id="sensor_example">
       <title>Sensor Data Examples</title>
       
-      <para>Temperature data will be published under this topic:</para>
+      <para>Temperature data will be published under this topic. For devices with multiple temperature sensors, each sensor will publish data with a unique SensorID in the payload:</para>
       
       <programlisting>MyDevice/onvif-mj/SensorData/temperature</programlisting>
       
@@ -2965,13 +2965,14 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <programlisting>{
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
+        "@SensorID": "temp_001",
         "Type": "temperature",
         "Value": 25.5,
         "Unit": "°C"
       }
     }</programlisting>
 
-      <para>Humidity data will be published under this topic:</para>
+      <para>Humidity data will be published under this topic. For devices with multiple humidity sensors, each sensor will publish data with a unique SensorID in the payload:</para>
       
       <programlisting>MyDevice/onvif-mj/SensorData/humidity</programlisting>
       
@@ -2980,6 +2981,7 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <programlisting>{
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
+        "@SensorID": "humidity_001",
         "Type": "humidity",
         "Value": 65.2,
         "Unit": "%RH"
