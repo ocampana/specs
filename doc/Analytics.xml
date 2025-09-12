@@ -2507,7 +2507,7 @@
               <para>Value: Numerical value from the sensor</para>
             </listitem>
             <listitem>
-              <para>Unit: Unit of measurement (e.g., Celsius, Percentage, etc.)</para>
+              <para>Unit: Unit of measurement (e.g., Celsius, Fahrenheit, Kelvin for temperature, RH (relative humidity) for humidity, etc.)</para>
             </listitem>
           </itemizedlist>
           
@@ -2523,7 +2523,7 @@
               <para>Type: Should be set to "temperature"</para>
             </listitem>
             <listitem>
-              <para>Unit: Typically "°C" or "°F" or "K" (absolute temperature)</para>
+              <para>Unit: Typically "°C" or "°F" or "K" ("°C"(celsius) 、"°F"(fahrenheit) 、"K"(kelvin) for absolute temperature)</para>
             </listitem>
             <listitem>
               <para>Value: Floating point value representing the temperature</para>
@@ -2548,7 +2548,7 @@
               <para>Value: Floating point value representing the humidity percentage</para>
             </listitem>
             <listitem>
-              <para>Unit: Typically "%RH" (absolute humidity)</para>
+              <para>Unit: Typically "%RH" (Relative Humidity (RH))</para>
             </listitem>
           </itemizedlist>
           
