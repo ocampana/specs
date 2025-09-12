@@ -2958,7 +2958,7 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       
       <para>Temperature data will be published under this topic. For devices with multiple temperature sensors, each sensor will publish data with a unique SensorID in the payload:</para>
       
-      <programlisting>MyDevice/onvif-mj/SensorData/temperature</programlisting>
+      <programlisting>MyDevice/onvif-mj/SensorData/Temperature</programlisting>
       
       <para>Shown below is how the sample temperature sensor data is formatted in JSON:</para>
       
@@ -2966,7 +2966,6 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
         "@SensorID": "temp_001",
-        "Type": "temperature",
         "Value": 25.5,
         "Unit": "°C"
       }
@@ -2974,7 +2973,7 @@ xmlns:acme="http://www.acme.com/schema"&gt;
 
       <para>Humidity data will be published under this topic. For devices with multiple humidity sensors, each sensor will publish data with a unique SensorID in the payload:</para>
       
-      <programlisting>MyDevice/onvif-mj/SensorData/humidity</programlisting>
+      <programlisting>MyDevice/onvif-mj/SensorData/Humidity</programlisting>
       
       <para>Shown below is how the sample humidity sensor data is formatted in JSON:</para>
       
@@ -2982,7 +2981,6 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
         "@SensorID": "humidity_001",
-        "Type": "humidity",
         "Value": 65.2,
         "Unit": "%RH"
       }
