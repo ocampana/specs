@@ -621,14 +621,16 @@
         </section>
         <section>
           <title>SRTP data transfer via UDP</title>
-            <para>This mode allows secure transmission of RTP packets via UDP unicast and multicast. Related documents are RFC 3711, RFC 7714 for transmission and RFC 3830, RFC 4567 for key exchange.</para>
-            <para>
-              The device shall indicate SRTP streaming support through the SecureRTSPStreaming parameter within StreamingCapabilities in the GetServiceCapabilities response.
-            </para>
-          <section>
+            <section>
+              <title>General requirements</title>
+              <para>A device signaling support for SecureRTSPStreaming parameter within StreamingCapabilities shall support SRTP as defined in RFC 3711, furthermore it shall support MIKEY for key exchange and management as defined in section <link linkend="srtp-mikey">MIKEY</link>.</para>
+              <para>A device listing any supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service shall behave as defined in section <link linkend="srtp-algo-negotiation">Cryptographic algorithm negotiation</link>, a device not listing supported SRTP cryptographic algorithms shall use the AES_CM_128_HMAC_SHA1_80 algorithm as defined in RFC 3711.</para>
+          </section>
+          <section id="srtp-algo-negotiation">
             <title>Cryptographic algorithm negotiation</title>
+            <para>This mechanism allows the client to choose the encryption algorithm used by the device for SRTP.</para>
             <para>
-              The device shall list supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service video encoder, audio encoder and metadata configuration elements as listed below:<footnote xml:id="__FN1_ONVIF_SPEC__"><para>ONVIF specification.</para></footnote>
+              The device shall list supported SRTP cryptographic algorithms via the SecureStreamingProtocolAlgorithms structure included in the Media2 service video encoder, audio encoder and metadata configuration elements as listed below: (ONVIF specification)
               <itemizedlist>
                 <listitem>
                   <para>AudioEncoder2ConfigurationOptions</para>
@@ -659,22 +661,11 @@
                   <para>AEAD_AES_256_GCM (RFC 7714)</para>
                 </listitem>
               </itemizedlist>
-              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall use the AES_CM_128_HMAC_SHA1_80 algorithm as defined in RFC 3711.
             </para>
 
             <para>
-              If the device supports encryption algorithms for secure streaming other than AES_CM_128_SHA1_80, it shall: (ONVIF specification)
-              <itemizedlist>
-                <listitem>
-                  <para>Provide a list of the supported algorithms through the ConfigurationOptions structure.</para>
-                </listitem>
-                <listitem>
-                  <para>Allow a specific algorithm to be configured using the SecureStreamingProtocolAlgorithm attribute.</para>
-                </listitem>
-              </itemizedlist>
-
-              The specific algorithm shall be configurable through the following methods:
-              <itemizedlist>
+                A device shall allow a specific algorithm to be configured using the SecureStreamingProtocolAlgorithm attribute. The specific algorithm shall be configurable through the following methods: (ONVIF specification)
+                <itemizedlist>
                 <listitem>
                   <para>SetAudioEncoderConfiguration</para>
                 </listitem>
@@ -685,11 +676,9 @@
                   <para>SetMetadataConfiguration</para>
                 </listitem>
               </itemizedlist></para>
-
-            <para>
-              This mechanism allows the client to choose the encryption algorithm used by the device for SRTP.
-            </para>
-
+          </section>
+          <section id="srtp-mikey">
+            <title>MIKEY</title>
             <para>
                 MIKEY is used for key management with SRTP. The device shall support MIKEY as defined in RFC 3830 for key management.
                 One exception is that, in RFC 3830, support for MIKEY-PSK and MIKEY-PK are listed mandatory. For ONVIF SRTP, only MIKEY-PSK support is defined and mandatory.
