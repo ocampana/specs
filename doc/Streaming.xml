@@ -659,7 +659,7 @@
                   <para>AEAD_AES_256_GCM (RFC 7714)</para>
                 </listitem>
               </itemizedlist>
-              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall support the AES_CM_128_HMAC_SHA1_80 algorithm as defined in RFC 3711.
+              If the device supports SRTP streaming through the SecureRTSPStreaming parameter and does not list any supported SRTP cryptographic algorithms through the SecureStreamingProtocolAlgorithms parameter, the device shall use the AES_CM_128_HMAC_SHA1_80 algorithm as defined in RFC 3711.
             </para>
 
             <para>
