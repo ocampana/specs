@@ -560,7 +560,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <para>
           <emphasis role="bold">SourceTag</emphasis>: If the received RTSP stream contains multiple tracks of the same type, the <emphasis role="bold">SourceTag</emphasis> differentiates between those Tracks.</para>
         <para>
-          <emphasis role="bold">Destination</emphasis>: The destination is the track token of the track to which the device shall store the received data. All tracks must belong to the recording identified by the RecordingToken.</para>
+          <emphasis role="bold">Destination</emphasis>: The destination is the track token of the track to which the device shall store the received data. All tracks shall belong to the recording identified by the RecordingToken.</para>
         <para>The TrackInformation field for a Track holds a single Source. In case multiple RecordingJobs with differing Source are recording to the same Track it is undefined which of them is reported in the corresponding TrackInformation of the the RecordingSearch API.</para>
       </section>
       <section>
@@ -2123,7 +2123,7 @@ SetRecordingJobMode(JobToken, Active)
         the open segment of this span and open a new segment for this span. When closing the open
         segment of a span and opening a new segment for this span, there shall be no time gap
         between the two segments. Note that the actual segment duration may vary and can be plus or 
-		minus one GOP size from the configured duration because a segment must start with an I-Frame.</para>
+        minus one GOP size from the configured duration because a segment shall start with an I-Frame.</para>
       <para>
         The device shall generate each segment as a fragmented MP4 file according to ISO/IEC 14496-12, the ISO base media file format.
         A segment shall contain recorded media for the time it was open.
@@ -2540,11 +2540,11 @@ secfrac = "." 1*6DIGIT</programlisting>
       <para>
         This annex describes the requirements for recording and exporting media streams in a cloud-friendly format.
         Device will need to record on their local storage when a <literal>StorageStrategy</literal> has been set to "Local" or "Both".
-        While the device can record locally using any format, segments can be queried at any time and the resulting list of segments MUST be stable.
+        While the device can record locally using any format, segments can be queried at any time and the resulting list of segments shall be stable.
         "Stable" here is defined in the sense that each frame will always be part of the same segment and the available segments are immutable.
       </para>
       <para>
-        Specific recorded segments can then be exported to the cloud on request and each exported segment MUST yield the same result (a CMAF or MP4 file 
+        Specific recorded segments can then be exported to the cloud on request and each exported segment shall yield the same result (a CMAF or MP4 file 
         containing all its frames) on a successful export operation.
       </para>
       <para>
@@ -2615,9 +2615,9 @@ secfrac = "." 1*6DIGIT</programlisting>
     <section xml:id="_refSegmentExportStability">
       <title>Segment stability</title>
       <para>
-        Segment stability is essential for this feature: each frame must be part of exactly one segment and each segment must always be immutable in time.
-        Additionnally, each segment must start with a keyframe to make it independent from the previous one. Some devices may record frames in a proprietary 
-        format, so the segments won't exist until exported to the cloud storage. Since the device must be able to list them beforehand, we suggest a simple
+        Segment stability is essential for this feature: each frame shall be part of exactly one segment and each segment shall always be immutable in time.
+        Additionally, each segment shall start with a keyframe to make it independent from the previous one. Some devices may record frames in a proprietary
+        format, so the segments won't exist until exported to the cloud storage. Since the device shall be able to list them beforehand, we suggest a simple
         algorithm to determine how many segments will be in each time range and which frames will be part of them.
       </para>
       <para>
