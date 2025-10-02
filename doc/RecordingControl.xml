@@ -2604,12 +2604,9 @@ secfrac = "." 1*6DIGIT</programlisting>
       <para>The <literal>ExportRecordedSegments</literal> command requests an export operation for
         a time-range of segments. A device shall accept multiple request but may queue and process
         them sequentially. Segments shall be uploaded in chronological order. Progress can be
-        tracked via the AsynchronousOperationStatus event and the method
-          <literal>GetExportRecordedSegmentState</literal>. Operations can be cancelled at any time
+        tracked via the AsynchronousOperationStatus event. Operations can be cancelled at any time
         with <literal>StopExportRecordedSegments</literal>. The segment names shall follow <xref
-          linkend="_refCloudRecordingSegmentObjects"/>, with <literal>counter</literal> starting at
-        zero for the first segment of each export operation, unless the OmitSequenceNumber is set to
-        True. </para>
+          linkend="_refCloudRecordingSegmentObjects"/>.</para>
       <para>
         Note: it is possible that the segments listed with <literal>ListRecordedSegments</literal> are not exactly the ones exported with <literal>ExportRecordedSegments</literal>
         as some segments could be deleted/added in-between the two commands being executed.
