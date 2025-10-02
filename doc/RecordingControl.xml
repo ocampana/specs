@@ -2539,7 +2539,7 @@ secfrac = "." 1*6DIGIT</programlisting>
       <title>Overview</title>
       <para>
         This annex describes the requirements for recording and exporting media streams in a cloud-friendly format.
-        Device will need to record on their local storage when a <literal>RecordingTargetConfiguration</literal> has its strategy set to "Local" or "Both".
+        Device will need to record on their local storage when a <literal>StorageStrategy</literal> has been set to "Local" or "Both".
         While the device can record locally using any format, segments can be queried at any time and the resulting list of segments MUST be stable.
         "Stable" here is defined in the sense that each frame will always be part of the same segment and the available segments are immutable.
       </para>
@@ -2555,13 +2555,15 @@ secfrac = "." 1*6DIGIT</programlisting>
     <section xml:id="_refSegmentExportRecording">
       <title>Recording segments</title>
       <para>
-        There are three possible recording strategies as defined for <literal>RecordingTargetConfiguration</literal>:
+        There are three possible recording <literal>StorageStrategy</literal> defined for <literal>RecordingTargetConfiguration</literal>:
         <variablelist>
           <varlistentry>
-            <term>Cloud (default)</term>
+            <term>External</term>
             <listitem>
               <para>
-                The device will automatically upload each recorded segment to the Cloud location as soon as possible. After completion or on error the data won't be kept locally on the device. 
+                The device will automatically upload each recorded segment to the Cloud location as soon as possible.
+                After completion or on error the data won't be kept locally on the device.
+                This is the default value if none has been set.
               </para>
             </listitem>
           </varlistentry>
