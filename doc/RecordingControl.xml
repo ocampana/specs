@@ -789,6 +789,8 @@ Change Request 2061, 2063, 2065, 2109</revremark>
             <para role="text">The RecordingToken does not reference an existing recording.</para>
             <para role="param">env:Receiver - ter:Action - ter:NoLocalRecording</para>
             <para role="text">Local recording not possible due to e.g. missing medium.</para>
+            <para role="param">env:Receiver - ter:Action - ter:UnsupportedStorageStrategy</para>
+            <para role="text">Storage strategy not supported.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
