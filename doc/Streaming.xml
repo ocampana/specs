@@ -645,8 +645,8 @@
               </itemizedlist> If the SecureStreamingProtocolAlgorithms parameter is present, the
               device shall support at least one of the following algorithms: <itemizedlist>
                 <listitem>
-                  <para>RTSP_ONLY (ONVIF specification)</para>
-                  <para>RTSP_ONLY is a special case, where the media is listed as RTP/AVP instead of
+                  <para>RTSPS_ONLY (ONVIF specification)</para>
+                  <para>RTSPS_ONLY is a special case, where the media is listed as RTP/AVP instead of
                       RTP/SAVP and where MIKEY is unused altogether.</para>
                   <para> This is to allow the use of RTSPS without using an SRTP encrypted media
                     stream. It can also be used for RTSPS interleaved where media is sent over the
