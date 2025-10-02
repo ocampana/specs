@@ -179,6 +179,15 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         </author>
         <revremark>Clarify delete interfaces for object storage.</revremark>
       </revision>
+      <revision>
+        <revnumber>25.12</revnumber>
+        <date>Dec-2025</date>
+        <author>
+          <personname>Jean-Francois Levesque</personname>
+          <personname>Jose Melancon</personname>
+        </author>
+        <revremark>Add support for listing and export of segments to an Object Storage.</revremark>
+      </revision>
     </revhistory>
   </info>
   <chapter>
