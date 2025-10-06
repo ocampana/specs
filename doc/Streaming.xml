@@ -757,27 +757,23 @@
                   <title>Stream Initialization</title>
                   <para>Key management extensions for SDP and RTSP (RFC 4567) defines stream
                   initialization. </para>
-                  <para>When the device is providing the key, the SDP is required to have a media of
-                  type RTP/SAVP and a MIKEY message. It's permitted to have two media fields, one
-                  with RTP/AVP and one with RTP/SAVP. The RTP/AVP track is used for an unencrypted
-                  stream. The device may advertise that it supports the key management defined in
-                  this specification by adding the <emphasis>onvif-keymgmt</emphasis> attribute to
-                  the SDP. (ONVIF specification)
-                  <programlisting><![CDATA[v=0
+                  <para>
+                      When the device is providing the key, the SDP is required to have a media of
+                      type RTP/SAVP and a MIKEY message, unless the device stream has been configured with RTSPS_ONLY.
+                      The MIKEY message shall contain the key information for the algorithm that was configured with SetAudioEncoderConfiguration, SetMetadataConfiguration and
+                      SetVideoEncoderConfiguration.
+                      If the device stream has been configured with RTSPS_ONLY, the media should be of type RTP/AVP and it should not contain a MIKEY message. (ONVIF specification)
+                      <programlisting><![CDATA[v=0
 o=actionmovie 2891092738 2891092738 IN IP4 movie.example.com
 s=Action Movie
 e=action@movie.example.com
 t=0 0
 c=IN IP4 movie.example.com
 a=control:rtsp://movie.example.com/action
-a=onvif-keymgmt
 m=video 0 RTP/SAVP 98
 a=rtpmap:98 H264/8000
 a=key-mgmt:mikey AQAFgM0XflABAAAAAAAAAAAAA...
 a=control:rtsp://movie.example.com/action/srtp_video
-m=video 0 RTP/AVP 99
-a=rtpmap:99 H264/90000
-a=control:rtsp://movie.example.com/action/rtp_video
 ]]></programlisting></para>
                   <para>When the client is providing the key, it will add a KeyMgmt header
                   containing the MIKEY with transport type RTP/SAVP in the SETUP. (RFC 4567)
