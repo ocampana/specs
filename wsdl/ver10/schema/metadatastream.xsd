@@ -452,7 +452,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 		<xs:sequence>
 			<xs:element name="Type" type="xs:string" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Value" type="xs:float" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Unit" type="xs:string" minOccurs="1" maxOccurs="1"/>
 			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> 
 		</xs:sequence>
 		<xs:attribute name="UtcTime" type="xs:dateTime" use="required"/>

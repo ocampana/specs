@@ -2501,13 +2501,10 @@
           <para>Sensor data is represented through the SensorData element, which contains the following information:</para>
           <itemizedlist>
             <listitem>
-              <para>Type: Type of sensor (e.g., Temperature, Humidity, etc.)</para>
+              <para>Type: Type of sensor (e.g., Temperature, RelativeHumidity, AbsoluteHumidity, etc.)</para>
             </listitem>
             <listitem>
-              <para>Value: Numerical value from the sensor</para>
-            </listitem>
-            <listitem>
-              <para>Unit: Unit of measurement (e.g., Celsius, Fahrenheit, Kelvin for temperature, RH (relative humidity) for humidity, etc.)</para>
+              <para>Value: Numerical value from the sensor. The unit of temperature is Kelvin, the unit of absolute humidity is g/m³, and the unit of relative humidity is %.</para>
             </listitem>
           </itemizedlist>
           
@@ -2523,17 +2520,13 @@
               <para>Type: Should be set to "temperature"</para>
             </listitem>
             <listitem>
-              <para>Unit: Typically "°C" or "°F" or "K" ("°C"(celsius) 、"°F"(fahrenheit) 、"K"(kelvin) for absolute temperature)</para>
-            </listitem>
-            <listitem>
-              <para>Value: Floating point value representing the temperature</para>
+              <para>Value: Floating point value representing the temperature in Kelvin</para>
             </listitem>
           </itemizedlist>
           
           <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="temp_001">
-  <tt:Type>temperature</tt:Type>
-  <tt:Value>25.5</tt:Value>
-  <tt:Unit>°C</tt:Unit>
+  <tt:Type>Temperature</tt:Type>
+  <tt:Value>298.65</tt:Value>
 </tt:SensorData>]]></programlisting>
         </section>
         
@@ -2542,24 +2535,25 @@
           <para>Humidity sensor data represents ambient humidity conditions. The metadata for humidity sensors follows the general sensor data structure with specific conventions:</para>
           <itemizedlist>
             <listitem>
-              <para>Type: Should be set to "humidity"</para>
+              <para>Type: Should be set to "RelativeHumidity" or "AbsoluteHumidity"</para>
             </listitem>
             <listitem>
-              <para>Value: Floating point value representing the humidity percentage</para>
-            </listitem>
-            <listitem>
-              <para>Unit: Typically "%RH" (Relative Humidity (RH))</para>
+              <para>Value: Floating point value representing the humidity percentage, either relative or absolute, units are %RH or g/m³</para>
             </listitem>
           </itemizedlist>
           
-          <para>Humidity sensors provide continuous percentage values, typically in the range of 0-100%RH, 
-          representing the amount of moisture in the air relative to what the air can hold at that temperature.</para>
-          
+          <para>Absolute humidity is the actual mass of water vapor per unit volume of air (unit: g/m³), while relative humidity is the percentage ratio of the current water vapor content to the saturated content at the same temperature (unit: %).</para>
+
           <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
-  <tt:Type>humidity</tt:Type>
-  <tt:Value>65.2</tt:Value>
-  <tt:Unit>%RH</tt:Unit>
+  <tt:Type>AbsoluteHumidity</tt:Type>
+  <tt:Value>10</tt:Value>
 </tt:SensorData>]]></programlisting>
+
+          <programlisting><![CDATA[<tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
+  <tt:Type>RelativeHumidity</tt:Type>
+  <tt:Value>65.2</tt:Value>
+</tt:SensorData>]]></programlisting>
+
         </section>
         
         <section>
@@ -2571,14 +2565,16 @@
     <tt:Extension>
       <tt:SensorDataStream>
         <tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="temp_001">
-          <tt:Type>temperature</tt:Type>
-          <tt:Value>25.5</tt:Value>
-          <tt:Unit>°C</tt:Unit>
+          <tt:Type>Temperature</tt:Type>
+          <tt:Value>298.65</tt:Value>
         </tt:SensorData>
         <tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
-          <tt:Type>humidity</tt:Type>
+          <tt:Type>RelativeHumidity</tt:Type>
           <tt:Value>65.2</tt:Value>
-          <tt:Unit>%RH</tt:Unit>
+        </tt:SensorData>
+        <tt:SensorData UtcTime="2025-07-15T14:30:00Z" SensorID="humidity_001">
+          <tt:Type>AbsoluteHumidity</tt:Type>
+          <tt:Value>10</tt:Value>
         </tt:SensorData>
       </tt:SensorDataStream>
     </tt:Extension>
@@ -2766,7 +2762,7 @@
             </listitem>
 
             <listitem>
-              <para>Type = The type of sensor (e.g., "temperature", "humidity")</para>
+              <para>Type = The type of sensor (e.g., "Temperature", "RelativeHumidity", "AbsoluteHumidity")</para>
             </listitem>
           </itemizedlist></para>
       </section>
@@ -2966,14 +2962,13 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
         "@SensorID": "temp_001",
-        "Value": 25.5,
-        "Unit": "°C"
+        "Value": 298.65
       }
     }</programlisting>
 
-      <para>Humidity data will be published under this topic. For devices with multiple humidity sensors, each sensor will publish data with a unique SensorID in the payload:</para>
+      <para>Relative Humidity data will be published under this topic. For devices with multiple humidity sensors, each sensor will publish data with a unique SensorID in the payload:</para>
       
-      <programlisting>MyDevice/onvif-mj/SensorData/Humidity</programlisting>
+      <programlisting>MyDevice/onvif-mj/SensorData/RelativeHumidity</programlisting>
       
       <para>Shown below is how the sample humidity sensor data is formatted in JSON:</para>
       
@@ -2981,10 +2976,24 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       "SensorData": {
         "@UtcTime": "2025-07-15T14:30:00Z",
         "@SensorID": "humidity_001",
-        "Value": 65.2,
-        "Unit": "%RH"
+        "Value": 65.2
       }
     }</programlisting>
+
+      <para>Absolute Humidity data will be published under this topic. For devices with multiple humidity sensors, each sensor will publish data with a unique SensorID in the payload:</para>
+      
+      <programlisting>MyDevice/onvif-mj/SensorData/AbsoluteHumidity</programlisting>
+      
+      <para>Shown below is how the sample humidity sensor data is formatted in JSON:</para>
+      
+      <programlisting>{
+      "SensorData": {
+        "@UtcTime": "2025-07-15T14:30:00Z",
+        "@SensorID": "humidity_001",
+        "Value": 10
+      }
+    }</programlisting>
+
     </section>
     </section>
   </chapter>

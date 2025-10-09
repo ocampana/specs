@@ -6731,10 +6731,16 @@ Event description:
             <para>tns1:Device/Sensor/Temperature/Low - Temperature too low event</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/Humidity/High - Humidity too high event</para>
+            <para>tns1:Device/Sensor/RelativeHumidity/High - Relative Humidity too high event</para>
           </listitem>
           <listitem>
-            <para>tns1:Device/Sensor/Humidity/Low - Humidity too low event</para>
+            <para>tns1:Device/Sensor/RelativeHumidity/Low - Relative Humidity too low event</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/AbsoluteHumidity/High - Absolute Humidity too high event</para>
+          </listitem>
+          <listitem>
+            <para>tns1:Device/Sensor/AbsoluteHumidity/Low - Absolute Humidity too low event</para>
           </listitem>
         </itemizedlist>
         
@@ -6748,7 +6754,6 @@ Event description:
   </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
@@ -6762,13 +6767,12 @@ Event description:
   </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a humidity sensor detects a value exceeding the configured high threshold.</para>
+        <para>The following event should be generated with true value when a relative humidity sensor detects a value exceeding the configured high threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/High
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/RelativeHumidity/High
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
@@ -6776,13 +6780,12 @@ Event description:
   </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a humidity sensor detects a value below the configured low threshold.</para>
+        <para>The following event should be generated with true value when a relative humidity sensor detects a value below the configured low threshold.</para>
         
-        <programlisting><![CDATA[Topic: tns1:Device/Sensor/Humidity/Low
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/RelativeHumidity/Low
 Event description:
 <tt:MessageDescription IsProperty="false">
   <tt:Source>
@@ -6790,7 +6793,32 @@ Event description:
   </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
-    <tt:SimpleItemDescription Name="Unit" Type="xs:string"/>
+  </tt:Data>
+</tt:MessageDescription>]]></programlisting>
+
+        <para>The following event should be generated with true value when a absolute humidity sensor detects a value exceeding the configured high threshold.</para>
+        
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/AbsoluteHumidity/High
+Event description:
+<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
+  </tt:Data>
+</tt:MessageDescription>]]></programlisting>
+
+        <para>The following event should be generated with true value when a absolute humidity sensor detects a value below the configured low threshold.</para>
+        
+        <programlisting><![CDATA[Topic: tns1:Device/Sensor/AbsoluteHumidity/Low
+Event description:
+<tt:MessageDescription IsProperty="false">
+  <tt:Source>
+    <tt:SimpleItemDescription Name="SensorID" Type="xs:string"/>
+  </tt:Source>
+  <tt:Data>
+    <tt:SimpleItemDescription Name="Value" Type="xs:float"/>
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
@@ -8305,32 +8333,45 @@ http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet
           <para>Topic for temperature high event:</para>
           <programlisting>MyDevice/onvif-ej/Device/Sensor/Temperature/High</programlisting>
           
-          <para>Payload for temperature high event:</para>
+          <para>Temperature high event payload (Temperature unit: Kelvin):</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
   "Source": {
     "SensorID": "temp_001"
   },
   "Data": {
-    "Value": 35.5,
-    "Unit": "°C"
+    "Value": 298.65
   }
 }</programlisting>
 
-          <para>Topic for humidity high event:</para>
-          <programlisting>MyDevice/onvif-ej/Device/Sensor/Humidity/High</programlisting>
+          <para>Topic for relative humidity high event:</para>
+          <programlisting>MyDevice/onvif-ej/Device/Sensor/RelativeHumidity/High</programlisting>
           
-          <para>Payload for humidity high event:</para>
+          <para>Relative Humidity high event payload (Unit: %)</para>
           <programlisting>{
   "UtcTime": "2025-07-15T14:30:00Z",
   "Source": {
     "SensorID": "humidity_001"
   },
   "Data": {
-    "Value": 75.5,
-    "Unit": "%RH"
+    "Value": 348.65
   }
 }</programlisting>
+
+          <para>Topic for absolute humidity high event:</para>
+          <programlisting>MyDevice/onvif-ej/Device/Sensor/AbsoluteHumidity/High</programlisting>
+          
+          <para>Absolute Humidity high event payload (Unit: %)</para>
+          <programlisting>{
+  "UtcTime": "2025-07-15T14:30:00Z",
+  "Source": {
+    "SensorID": "humidity_001"
+  },
+  "Data": {
+    "Value": 10
+  }
+}</programlisting>
+
         </section>
       </section>
       <section>
