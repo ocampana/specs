@@ -6744,7 +6744,7 @@ Event description:
           </listitem>
         </itemizedlist>
         
-        <para>The following event should be generated with true value when a temperature sensor detects a value exceeding the configured high threshold.</para>
+        <para>The following event should be generated with true value when a temperature sensor detects a value exceeding the configured high threshold (Temperature unit: Kelvin).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/High
 Event description:
@@ -6757,7 +6757,7 @@ Event description:
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a temperature sensor detects a value below the configured low threshold.</para>
+        <para>The following event should be generated with true value when a temperature sensor detects a value below the configured low threshold (Temperature unit: Kelvin).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/Temperature/Low
 Event description:
@@ -6770,7 +6770,7 @@ Event description:
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a relative humidity sensor detects a value exceeding the configured high threshold.</para>
+        <para>The following event should be generated with true value when a relative humidity sensor detects a value exceeding the configured high threshold  (relative humidity unit: %).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/RelativeHumidity/High
 Event description:
@@ -6783,7 +6783,7 @@ Event description:
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a relative humidity sensor detects a value below the configured low threshold.</para>
+        <para>The following event should be generated with true value when a relative humidity sensor detects a value below the configured low threshold  (relative humidity unit: %).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/RelativeHumidity/Low
 Event description:
@@ -6796,7 +6796,7 @@ Event description:
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a absolute humidity sensor detects a value exceeding the configured high threshold.</para>
+        <para>The following event should be generated with true value when a absolute humidity sensor detects a value exceeding the configured high threshold (absolute humidity unit: g/m³).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/AbsoluteHumidity/High
 Event description:
@@ -6809,7 +6809,7 @@ Event description:
   </tt:Data>
 </tt:MessageDescription>]]></programlisting>
 
-        <para>The following event should be generated with true value when a absolute humidity sensor detects a value below the configured low threshold.</para>
+        <para>The following event should be generated with true value when a absolute humidity sensor detects a value below the configured low threshold (absolute humidity unit: g/m³).</para>
         
         <programlisting><![CDATA[Topic: tns1:Device/Sensor/AbsoluteHumidity/Low
 Event description:
