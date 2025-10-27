@@ -4008,6 +4008,14 @@
               </row>
               <row>
                 <entry>
+                  <para>KeyPairGeneration</para>
+                </entry>
+                <entry>
+                  <para>Indicates support for on-board key pair generation.</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
                   <para>RSAKeyLengths</para>
                 </entry>
                 <entry>
@@ -4880,6 +4888,11 @@
               <row>
                 <entry><para>AuthorizationServer.MaxConfigurations</para></entry>
                 <entry><para>If > 0, MaximumNumberOfCertificationPathValidationPolicies>=2</para></entry>
+              </row>
+              <row>
+                <entry><para>AuthorizationServer.MaxConfigurations</para></entry>
+                <entry><para>If > 0, MaximumNumberOfCertificationPathValidationPolicies>=2</para></entry>
+                <entry/>
               </row>
             </tbody>
           </tgroup>
