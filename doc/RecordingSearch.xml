@@ -1422,8 +1422,8 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
     </section>
     
     <section>
-      <title>SerachImagebyImage</title>
-      <para>SerachImagebyImage starts a search session, looking for video records based on a provided image. Results from the search are acquired using the GetImageSearchResults request, specifying the search token returned from this request.</para>
+      <title>SearchImagebyImage</title>
+      <para>SearchImagebyImage starts a search session, looking for video records based on a provided image. Results from the search are acquired using the GetImageSearchResults request, specifying the search token returned from this request.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
@@ -1466,7 +1466,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
     </section>    
     <section>
       <title>GetImageSearchResults</title>
-      <para>GetImageSearchResults acquires the results from an image-based search session previously initiated by a SerachImagebyImage operation. The response shall not include results already returned in previous requests for the same session.</para>
+      <para>GetImageSearchResults acquires the results from an image-based search session previously initiated by a SearchImagebyImage operation. The response shall not include results already returned in previous requests for the same session.</para>
       <variablelist role="op">
         <varlistentry>
           <term>request</term>
