@@ -657,6 +657,7 @@
 </tt:Frame>
 ]]></programlisting>
         </section>
+        </section>
         <section>
           <title>Aspect Ratio Dependant Transformation</title>
           <para>This section describes the transformation specific to a scene aspect ratio.</para>
