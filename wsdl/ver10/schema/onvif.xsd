@@ -9231,19 +9231,18 @@ If RectangleOnly is not set to true, this parameter is required.
 
     <xs:simpleType name="SNMPAuthenticationProtocol">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="HMAC_SHA_256"/> // usmHMACSHA256AuthProtocol
-        <xs:enumeration value="HMAC_SHA_384"/> // usmHMACSHA384AuthProtocol
-        <xs:enumeration value="HMAC_SHA_512"/> // usmHMACSHA512AuthProtocol
-        // Potentially others if supported
+      	<xs:enumeration value="HMAC_SHA_256"/> <!-- usmHMACSHA256AuthProtocol -->
+      	<xs:enumeration value="HMAC_SHA_384"/> <!-- usmHMACSHA384AuthProtocol -->
+      	<xs:enumeration value="HMAC_SHA_512"/> <!-- usmHMACSHA512AuthProtocol -->
       </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="SNMPPrivacyProtocol">
       <xs:restriction base="xs:string">
-        <xs:enumeration value="AES_128_CFB"/>  // usmAesCfb128Protocol
-        <xs:enumeration value="AES_192_CFB"/>  // usmAesCfb192Protocol (check OID)
-        <xs:enumeration value="AES_256_CFB"/>  // usmAesCfb256Protocol (check OID)
-        // Potentially others like AES_128_GCM, CHACHA20_POLY1305 if supported and standardized for SNMP
+      	<xs:enumeration value="AES_128_CFB"/>  <!-- usmAesCfb128Protocol -->
+      	<xs:enumeration value="AES_192_CFB"/>  <!-- usmAesCfb192Protocol (check OID) -->
+      	<xs:enumeration value="AES_256_CFB"/>  <!-- usmAesCfb256Protocol (check OID) -->
+      	<!-- Potentially others like AES_128_GCM, CHACHA20_POLY1305 if supported and standardized for SNMP -->
       </xs:restriction>
     </xs:simpleType>
 
