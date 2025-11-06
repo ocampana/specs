@@ -2460,7 +2460,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:element name="Enabled" type="xs:boolean"/>
 						<xs:element name="EngineID" type="xs:string"/>
 						<xs:element name="ListeningPort" type="xs:int" minOccurs="0"/>
-						<xs:element name="Uptime" type="" minOccurs="0"/>
+						<xs:element name="Uptime" type="xs:duration" minOccurs="0"/>
 						<xs:element name="ErrorCounters" type="xs:string" minOccurs="0"/>
 						<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
