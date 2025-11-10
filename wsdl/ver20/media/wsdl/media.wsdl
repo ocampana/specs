@@ -174,6 +174,11 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			<!--===============================-->
 			<xs:complexType name="AudioClipCapabilities">
 				<xs:sequence>
+                  <xs:element name="TTSCapabilities" type="tr2:TTSCapabilities" minOccurs="0">
+                     <xs:annotation>
+                        <xs:documentation>Indicates device has TTS capability.</xs:documentation>
+                     </xs:annotation>
+                  </xs:element>
 					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first ONVIF then Vendor -->
 				</xs:sequence>
 				<xs:attribute name="MaxAudioClipLimit" type="xs:int">
@@ -194,6 +199,46 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 				<xs:anyAttribute processContents="lax"/>
 			</xs:complexType>
 			<!--===============================-->
+            <xs:complexType name="TTSCapabilities">
+				<xs:sequence>
+					 <xs:attribute name="MaxContentLength" type="xs:int">
+                        <xs:annotation>
+                            <xs:documentation> Indicates the maximum length of content of a text for device to convert to an audio clip. </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                     <xs:attribute name="TTSLanguage" type="tt:StringAttrList">
+                        <xs:annotation>
+                           <xs:documentation> Indicates what language(s) the device supports for TTS funciton.</xs:documentation>
+                        </xs:annotation>
+                     </xs:attribute>
+                    <xs:attribute name="TTSVoiceType" type="tt:StringAttrList">
+                       <xs:annotation>
+                          <xs:documentation> Indicates the voice type for TTS funciton.</xs:documentation>     
+                       </xs:annotation>
+                    </xs:attribute>
+                </xs:sequence>
+            </xs:complexType>
+            <!--===============================-->
+            <xs:simpleType name="TTSLanguage">
+              <xs:restriction base="xs:string">
+              <xs:enumeration value="english"/>
+              <xs:enumeration value="chinese"/>
+              <xs:enumeration value="spanish"/>
+              <xs:enumeration value="japanese"/>
+              <xs:enumeration value="thai"/>
+              <xs:enumeration value="korean"/>
+              <xs:enumeration value="french"/>
+              <xs:enumeration value="brazilianPortuguese"/>
+              </xs:restriction>
+            </xs:simpleType>
+          <!--===============================-->
+          <xs:simpleType name="TTSVoiceType">
+              <xs:restriction base="xs:string">
+              <xs:enumeration value="male"/>
+              <xs:enumeration value="female"/>
+              </xs:restriction>
+          </xs:simpleType>
+         <!--===============================-->
 			<xs:simpleType name="SupportedAudioClipFormat">
 				<xs:restriction base="xs:string">
 					<xs:enumeration value="audio/vnd.wave;codec=1"/>
@@ -1417,8 +1462,31 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 				</xs:sequence>
 				<xs:anyAttribute processContents="lax"/>
 			</xs:complexType>
-			
+
+         <!--===============================-->
+			 <xs:complexType name="TTSAudio">
+				<xs:sequence>					
+					 <xs:element name="Content" type="xs:string">
+                     <xs:annotation>
+                     <xs:documentation>Content of the audio clip.</xs:documentation>
+                     </xs:annotation>
+                     </xs:element>
+                     <xs:element name="Language" type="xs:string">
+                     <xs:annotation>
+                     <xs:documentation>Language for the audio clip content, it is the same as the language during playback.</xs:documentation>
+                     </xs:annotation>
+                     </xs:element>
+                     <xs:element name="VoiceType" type="xs:string">
+                     <xs:annotation>
+                     <xs:documentation>The voice type of audio clip playback.</xs:documentation>
+                     </xs:annotation>
+                     </xs:element>
+					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>   <!-- first ONVIF then Vendor -->
+				</xs:sequence>
+				<xs:anyAttribute processContents="lax"/>
+			</xs:complexType>
 			<!--===============================-->
+
 			<xs:complexType name="GetAudioClipsResponseItem">
 				<xs:sequence>
 					<xs:element name="Token" type="tt:ReferenceToken">
@@ -1551,7 +1619,40 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-				
+
+         <xs:element name="AddTTSAudioClip">
+				<xs:complexType>				
+					<xs:sequence>
+						<xs:element name="Token" type="tt:ReferenceToken" minOccurs="0">				
+							<xs:annotation>
+								<xs:documentation>Optional token associated with the audio clip.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Configuration" type="tr2:AudioClip">
+							<xs:annotation>
+								<xs:documentation>Audio clip configuration to add.</xs:documentation>
+							</xs:annotation>
+					    </xs:element>
+                        <xs:element name="TTSConfiguration" type="tr2:TTSAudio">
+                        <xs:annotation>
+                        <xs:documentation>The configuration for the TTS audio clip to add.</xs:documentation>
+                        </xs:annotation>
+                       </xs:element>        
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>			
+			<xs:element name="AddTTSAudioClipResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Token" type="tt:ReferenceToken">						
+							<xs:annotation>
+								<xs:documentation>Unique token of the TTS audio clip to be uploaded.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>				
+			</xs:element>
+
 			<xs:element name="DeleteAudioClip">
 				<xs:complexType>
 					<xs:sequence>
@@ -1934,6 +2035,12 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 	<wsdl:message name="AddAudioClipResponse">
 		<wsdl:part name="parameters" element="tr2:AddAudioClipResponse"/>
 	</wsdl:message>
+    <wsdl:message name="AddTTSAudioClipRequest">
+		<wsdl:part name="parameters" element="tr2:AddTTSAudioClip"/>
+	</wsdl:message>
+	<wsdl:message name="AddTTSAudioClipResponse">
+		<wsdl:part name="parameters" element="tr2:AddTTSAudioClipResponse"/>
+	</wsdl:message>
 	<wsdl:message name="SetAudioClipRequest">
 		<wsdl:part name="parameters" element="tr2:SetAudioClip"/>
 	</wsdl:message>
@@ -2310,6 +2417,12 @@ image will be updated automatically and independent from calls to GetSnapshotUri
 			<wsdl:input message="tr2:AddAudioClipRequest"/>
 			<wsdl:output message="tr2:AddAudioClipResponse"/>
 		</wsdl:operation>
+        <wsdl:operation name="AddTTSAudioClip">
+			<wsdl:documentation>This operation sends a text and its configuartion to device that supports TTS function, so that device could convert the text into an audio clip and play it according to audio clip Configuration and TTS Configuration.</wsdl:documentation>
+			<wsdl:input message="tr2:AddTTSAudioClipRequest"/>
+			<wsdl:output message="tr2:AddTTSAudioClipResponse"/>
+		</wsdl:operation>
+
 		<wsdl:operation name="SetAudioClip">
 			<wsdl:documentation>This operation modifies the existing audio clip configuration on the device.</wsdl:documentation>
 			<wsdl:input message="tr2:SetAudioClipRequest"/>
@@ -2814,6 +2927,15 @@ image will be updated automatically and independent from calls to GetSnapshotUri
 		</wsdl:operation>
 		<wsdl:operation name="AddAudioClip">
 			<soap:operation soapAction="http://www.onvif.org/ver20/media/wsdl/AddAudioClip"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+        <wsdl:operation name="AddTTSAudioClip">
+			<soap:operation soapAction="http://www.onvif.org/ver20/media/wsdl/AddTTSAudioClip"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
