@@ -2355,7 +2355,65 @@
             <para>When the size of the audio clip upload exceeds the MaxAudioClipSize parameter in KB, the device should return an HTTP 413, Request Entity Too Large error to the client.</para>
           </listitem>
         </itemizedlist>              
-      </section>    
+      </section>  
+	  <section xml:id="section_wvd_dzg_rye">
+        <title>AddTTSAudioClip</title>
+        <para>This operation adds a text and its configuartion to the device so that device could convert the text to an audio clip and play it based on the configuration. 
+        The response to the command includes a unique token for this converted audio clip. 
+        If the device is unable to support certain language,then returns error message.</para>
+        <variablelist role="op">
+          <varlistentry>
+            <term>request</term>
+            <listitem>
+      <para role="param">Token - optional[tt:ReferenceToken]</para>
+              <para role="text"> Optional token associated with the audio clip.</para>
+              <para role="param">Configuration - 
+                [tr2:AudioClip]</para>
+              <para role="text"> Audio clip configuration to add.</para>
+      <para role="param">TTSConfiguration - 
+                [tr2:TTSAudio]</para>
+              <para role="text"> TTS configuration to add.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>response</term>
+            <listitem>
+              <para role="param">Token - [tt:ReferenceToken]</para>
+              <para role="text">Unique token of the TTS audio clip to be uploaded.</para>             
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>faults</term>
+            <listitem>
+              <para role="param">env:Receiver - ter:Action - ter:MaxAudioClipLimit</para>
+              <para role="text">The maximum number of audio clip configurations supported by the device has been reached.</para>
+              <para role="param">env:Sender - ter:InvalidArgVal - ter:InvalidConfig</para>
+              <para role="text">The configuration parameters are not possible to set.</para>  
+              <para role="param">env:Sender - ter:InvalidArgVal - ter:InvalidLanguage</para>
+              <para role="text">The language is not supported.</para>  
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>access class</term>
+            <listitem>
+              <para role="access">WRITE_SYSTEM</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para></para>
+        <para><emphasis role="bold">Note:</emphasis> Audio clip uploads to the device can fail in the following scenarios, and a specific HTTP error code should be returned to the client when an upload fails.</para>
+        <itemizedlist>
+          <listitem>
+            <para>When the upload URL has expired, the device should return an HTTP 410 error to the client.</para>
+          </listitem>
+          <listitem>
+            <para>When the format of the audio clip upload does not match the Type parameter in the audio clip configuration, the device should return an HTTP 415 Unsupported Media Type error to the client.</para>
+          </listitem>
+          <listitem>
+            <para>When the size of the audio clip upload exceeds the MaxAudioClipSize parameter in KB, the device should return an HTTP 413, Request Entity Too Large error to the client.</para>
+          </listitem>
+        </itemizedlist>              
+      </section>       
 	  <section xml:id="section_wvd_dzg_rye">
         <title>SetAudioClip</title>
         <para>This operation modifies the existing audio clip configuration on the device.</para>
@@ -2637,6 +2695,10 @@
       </variablelist>    
     <para>The following audio clip Capabilities are available:</para>
 	<variablelist>
+		<varlistentry>
+          <term>TTSCapabilities</term>
+          <listitem><para>Indicates device supports TTS function and corresponding configuration.</para></listitem>
+        </varlistentry>
         <varlistentry>
           <term>MaxAudioClipLimit</term>
           <listitem><para>Indicates the maximum number of audio clips that can be uploaded to the device.</para></listitem>
