@@ -3735,7 +3735,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 		</wsdl:operation>
 
 		<wsdl:operation name="GetSNMPConfiguration">
-			<wsdl:documentation>Returns the current SNMPv3 service status, engine ID (RFC 3411), and configuration parameters, including supported authentication and privacy protocols as required in Core.xml. The response reflects the requirements for HMAC-SHA-256 (RFC 7860) or stronger for authentication, and AES-128-CFB (RFC 3826) or stronger for privacy.</wsdl:documentation>
+			<wsdl:documentation>Returns the current SNMPv3 service status, engine ID (RFC 3411), and configuration parameters, including supported authentication and privacy protocols as required in Core.xml. The response reflects the requirements for HMAC-SHA-256 (RFC 7860) or stronger for authentication, and CFB-AES-128 (RFC 3826) or stronger for privacy.</wsdl:documentation>
 			<wsdl:input message="tds:GetSNMPConfigurationRequest"/>
 			<wsdl:output message="tds:GetSNMPConfigurationResponse"/>
 		</wsdl:operation>

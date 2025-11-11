@@ -9494,9 +9494,9 @@ If RectangleOnly is not set to true, this parameter is required.
 
     <xs:simpleType name="SNMPPrivacyProtocol">
       <xs:restriction base="xs:string">
-      	<xs:enumeration value="AES_128_CFB"/>  <!-- usmAesCfb128Protocol -->
-      	<xs:enumeration value="AES_192_CFB"/>  <!-- usmAesCfb192Protocol (check OID) -->
-      	<xs:enumeration value="AES_256_CFB"/>  <!-- usmAesCfb256Protocol (check OID) -->
+      	<xs:enumeration value="CFB_AES_128"/>  <!-- usmAesCfb128PrivProtocol -->
+      	<xs:enumeration value="CFB_AES_192"/>  <!-- usmAesCfb192PrivProtocol (check OID) -->
+      	<xs:enumeration value="CFB_AES_256"/>  <!-- usmAesCfb256PrivProtocol (check OID) -->
       	<!-- Potentially others like AES_128_GCM, CHACHA20_POLY1305 if supported and standardized for SNMP -->
       </xs:restriction>
     </xs:simpleType>

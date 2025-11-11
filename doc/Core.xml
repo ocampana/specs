@@ -5431,7 +5431,7 @@ onvif://www.onvif.org/name/ARV-453
       This section defines an optional extension to the Device Management Service for supporting Simple Network Management Protocol version 3 (SNMPv3) as specified in [RFC 3410] and related standards. Devices supporting this extension shall indicate this capability via the <literal>SNMPv3</literal> flag in the <literal>DeviceServiceCapabilities</literal> (see Section <xref linkend="_Ref468447902"/>).
     </para>
     <para>
-      Only SNMPv3 is within the scope of this extension. SNMPv1 and SNMPv2c are explicitly not supported by this extension.
+      Only SNMPv3 is within the scope of this extension.
     </para>
     <section xml:id="s.snmpv3_service_control">
       <title>SNMPv3 Service Control</title>
@@ -5688,7 +5688,7 @@ onvif://www.onvif.org/name/ARV-453
         <itemizedlist>
           <listitem>
             <para>
-              <emphasis role="bold">AES-128-CFB:</emphasis> As specified in [RFC 3826] (OID: <literal>usmAesCfb128Protocol</literal>). This protocol is REQUIRED. The privacy key length is 16 octets.
+              <emphasis role="bold">CFB-AES-128:</emphasis> As specified in [RFC 3826] (OID: <literal>usmAesCfb128PrivProtocol</literal>). This protocol is REQUIRED. The privacy key length is 16 octets.
             </para>
           </listitem>
         </itemizedlist>
@@ -5699,7 +5699,7 @@ onvif://www.onvif.org/name/ARV-453
         <itemizedlist>
           <listitem>
             <para>
-              <emphasis role="bold">AES-192-CFB / AES-256-CFB:</emphasis> As specified in [RFC 3826] (OIDs: <literal>usmAesCfb192Protocol</literal>, <literal>usmAesCfb256Protocol</literal>). Key lengths are 24 and 32 octets respectively. Note: [RFC 3826] originally defined these with placeholder OIDs; check for official assignments if implementing.
+              <emphasis role="bold">CFB-AES-192 / CFB-AES-256:</emphasis> As specified in [RFC 3826] (OIDs: <literal>usmAesCfb192PrivProtocol</literal>, <literal>usmAesCfb256PrivProtocol</literal>). Key lengths are 24 and 32 octets respectively. Note: [RFC 3826] originally defined these with placeholder OIDs; check for official assignments if implementing.
             </para>
           </listitem>
           <listitem>
@@ -5710,7 +5710,7 @@ onvif://www.onvif.org/name/ARV-453
         </itemizedlist>
 -->
         <para>
-          The corresponding <literal>tt:SNMPPrivacyProtocol</literal> enumeration values would include <literal>AES_128_CFB</literal> <!--, and potentially others like <literal>AES_192_CFB</literal>, <literal>AES_256_CFB</literal>, etc.,--> based on Device support.
+          The corresponding <literal>tt:SNMPPrivacyProtocol</literal> enumeration values would include <literal>CFB_AES_128</literal> <!--, and potentially others like <literal>CFB_AES_192</literal>, <literal>CFB_AES_256</literal>, etc.,--> based on Device support.
         </para>
       </section>
     </section>
