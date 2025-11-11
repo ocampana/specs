@@ -213,7 +213,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
                  </xs:attribute>
                  <xs:attribute name="TTSLanguage" type="tt:StringAttrList">
                     <xs:annotation>
-                        <xs:documentation> Indicates what language(s) the device supports for TTS funciton.</xs:documentation>
+                        <xs:documentation> Indicates what language(s) the device supports for TTS function.</xs:documentation>
                    </xs:annotation>
                  </xs:attribute>
                  <xs:attribute name="TTSVoiceType" type="tt:StringAttrList">
