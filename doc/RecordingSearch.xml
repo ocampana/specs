@@ -1434,8 +1434,10 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="text">The point of time where the search will stop.</para>
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
             <para role="text">Token for the recording to search.</para>
-            <para role="param">TargetImageURI [xs:anyURI]</para>
-            <para role="text">The TargetImageURI is the result returned from SearchImageByNL.</para>
+            <para role="param">TargetImageURI - optional [xs:anyURI]</para>
+            <para role="text">The URI of the detected target object image. This can be either: - a local image stored in the NPL Target Image repository (LocalStorage format), or - an external image provided by the client for image search or feature matching.</para>
+            <para role="param">TargetImageData - optional [xs:base64Binary]</para>
+            <para role="text">Base64-encoded target object image used for visual search.</para>
             <para role="param">MaxMatches - optional [xs:int]</para>
             <para role="text">The search ends after MaxMatches.</para>
             <para role="param">KeepAliveTime [xs:duration]</para>
