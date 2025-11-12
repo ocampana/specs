@@ -671,19 +671,18 @@
   </xs:sequence>
 </xs:complexType>
 ]]></programlisting>
-          <para>For example, the coordinates of the scene description are given in a frame coordinate system, where the lower-left corner has coordinates (0,0) and the upper-right corner coordinates (320,240). The video source aspect is 4:3. The frame node resembles the following code, where the scale is set to crop the image to other supported aspect ratios:</para>
+          <para>For example, the coordinates of the scene description are given in a frame coordinate system, where the lower-left corner has coordinates (0,0) and the upper-right corner coordinates (320,240). The video source aspect ratio is 4:3. The frame node resembles the following code, where the scale is set to crop the image to other supported aspect ratios:</para>
           <programlisting><![CDATA[<tt:Frame UtcTime="2008-10-10T12:24:57.321">
   <tt:AspectRatioTransformation ratio="1.66666667">
-    <tt:Translate x="0" y="0"/>
     <tt:Scale x="1" y="1.25"/>
   </tt:AspectRatioTransformation>
   <tt:AspectRatioTransformation ratio="1.77777778>
-    <tt:Translate x="0" y="0"/>
     <tt:Scale x="1" y="1.33333333"/>
   </tt:AspectRatioTransformation>
   ...
 </tt:Frame>
 ]]></programlisting>
+      <para>In every Frame, the device must add the nodes for at least the currently configured aspect ratios. The node for the video source aspect ratio should be omitted.</para>
       </section>
       <section>
         <title>Scene Elements</title>
