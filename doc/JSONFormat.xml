@@ -143,7 +143,7 @@
     <title>XSD to JSON Schema Type Mapping Specification</title>
     <section>
       <title>Purpose and scope</title>
-      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
     </section>
   </chapter>
   <appendix>
