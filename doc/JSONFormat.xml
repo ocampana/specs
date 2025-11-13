@@ -101,6 +101,13 @@
       <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting WSDL (Web Services Description Language) service definitions into MCP tool descriptors.</para>
     </section>
   </chapter>
+  <chapter xml:id="_Ref744182239">
+    <title>XSD to JSON Schema Type Mapping Specification</title>
+    <section>
+      <title>Purpose and scope</title>
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
+    </section>
+  </chapter>
   <chapter>
     <title>MCP Format</title>
     <section>
@@ -126,24 +133,69 @@
           <para>Metadata preservation</para>
         </listitem>
       </itemizedlist>
+      <para>This specification relies on <xref linkend="_Ref744182239"/> for converting XSD type definitions in WSDL messages to JSON Schema.</para>
     </section>
     <section>
-      <title>Mapping</title>
-      <para>
-        <phrase>The SurveillanceExportBox is required</phrase>. It is recommended that the SurveillanceExportBox be placed as early as possible in files, for maximum utility.</para>
-      <para>In order to be able to associate the recording with a camera/microphone and the exporting system the following information shall be placed in the box:</para>
-      <para><literal>entry_count </literal>is an integer that provides the number of tracks.</para>
+      <title>WSDL Structure</title>
+      <para>WSDL files define web service interfaces with:</para>
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Types</emphasis>: XSD type definitions</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Messages</emphasis>: Input/output message definitions</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">PortType</emphasis>: Abstract operations (what gets converted to MCP tools)</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Binding</emphasis>: Protocol details (SOAP, HTTP)</para>
+        </listitem>
+        <listitem>
+          <para><emphasis role="bold">Service</emphasis>: Endpoint addresses</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>MCP Tool Descriptor</title>
+      <para>Each MCP tool is a JSON object that describes a single callable operation with structured input and output schemas.</para>
+    </section>
+    <section>
+      <title>MCP Tool Structure</title>
+      <section>
+        <title>Required Fields</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Field Descriptions</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>WSDL Operation Discovery</title>
+      <section>
+        <title>PortType Location</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Operation Extraction Process</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Documentation Extraction</title>
+      <section>
+        <title>Source Location</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Extraction Process</title>
+        <para>...</para>
+      </section>
     </section>
     <section>
       <title>Authentication and Authorization</title>
       <para>This topic must be addressed.</para>
-    </section>
-  </chapter>
-  <chapter>
-    <title>XSD to JSON Schema Type Mapping Specification</title>
-    <section>
-      <title>Purpose and scope</title>
-      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
     </section>
   </chapter>
   <appendix>
