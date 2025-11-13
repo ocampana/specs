@@ -418,8 +418,8 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 				<xs:element name="VideoAnalytics" type="tt:VideoAnalyticsStream"/>
 				<xs:element name="PTZ" type="tt:PTZStream"/>
 				<xs:element name="Event" type="tt:EventStream"/>
-				<xs:element name="SensorDataStream" type="tt:SensorDataStream"/>
 				<xs:element name="Extension" type="tt:MetadataStreamExtension"/>
+				<xs:element name="SensorData" type="tt:SensorData" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>	<!-- reserved for ONVIF -->
 			</xs:choice>
 		</xs:sequence>
@@ -438,16 +438,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 		</xs:sequence>
 		<xs:anyAttribute processContents="lax"/>
 	</xs:complexType>
-
-	<!-- Sensor data stream definition -->
-	<xs:complexType name="SensorDataStream">
-		<xs:sequence>
-			<xs:element name="SensorData" type="tt:SensorData" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:anyAttribute processContents="lax"/>
-	</xs:complexType>
-
 	<xs:complexType name="SensorData">
 		<xs:sequence>
 			<xs:element name="Type" type="xs:string" minOccurs="1" maxOccurs="1"/>
