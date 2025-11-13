@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="docbook.xsl" type="text/xsl" ?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <info>
+    <title>JSON Format Specification</title>
+    <titleabbrev>JSONFormat</titleabbrev>
+    <releaseinfo>24.12</releaseinfo>
+    <author>
+      <orgname>ONVIF™</orgname>
+      <uri>www.onvif.org</uri>
+    </author>
+    <pubdate>December, 2024</pubdate>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="media/logo.png" contentwidth="60mm"/>
+      </imageobject>
+    </mediaobject>
+    <copyright>
+      <year>2013-2024</year>
+      <holder>ONVIF™ All rights reserved.</holder>
+    </copyright>
+    <legalnotice>
+      <para>Recipients of this document may copy, distribute, publish, or display this document so
+        long as this copyright notice, license and disclaimer are retained with all copies of the
+        document. No license is granted to modify this document.</para>
+      <para>THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+        LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY PURPOSE;
+        OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS,
+        TRADEMARKS OR OTHER RIGHTS.</para>
+      <para>IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR ANY
+        DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR
+        RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR NOT (1) THE CORPORATION,
+        MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR (2)
+        SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND ARISING OUT OF OR RELATING TO ANY USE OR
+        DISTRIBUTION OF THIS DOCUMENT.  THE FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT
+        APPLY TO, INVALIDATE, OR LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR
+        RESPECTIVE AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF
+        THE CORPORATION.</para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>June 2026</date>
+        <author>
+          <personname>Peter Damm</personname>
+        </author>
+        <revremark>First release</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter>
+    <title>Scope</title>
+    <para>This document defines the ONVIF file format for exported media. The specification defines the mechanism necessary to support interoperable verification of the authenticity by the receiving party.</para>
+  </chapter>
+  <chapter>
+    <title>Normative references</title>
+    <para>ONVIF<superscript>TM</superscript> Core Specification</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.onvif.org/specs/core/ONVIF-Core-Specification.pdf"></link>&gt;</para>
+    <para>ONVIF<superscript>TM</superscript> Streaming Specification</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.onvif.org/specs/stream/ONVIF-Streaming-Spec.pdf"></link>&gt;</para>
+    <para>ISO/IEC 14496-12 Information technology — Coding of audiovisual objects – Part 12: ISO base media file format</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/83102.html"></link>&gt;</para>
+    <para>NIST FIPS 180-4 Secure Hash Standard</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://csrc.nist.gov/publications/detail/fips/180/4/final"></link>&gt;</para>
+    <para>ISO/IEC 14888-2 Information technology – Security techniques – Digital signatures with appendix – Part 2: Integer factorization based mechanisms</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/obp/ui/#iso:std:iso-iec:14888:-2:ed-2:v1:en"></link>&gt;</para>
+    <para>ETSI TS 126 244 3GPP file format </para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.etsi.org/deliver/etsi_ts/126200_126299/126244/16.01.00_60/ts_126244v160100p.pdf"></link>&gt;</para>
+    <para>PKCS#1, v2.1 RSA Cryptographic Standard</para>
+    <para>NIST FIPS 186 Digital Signature Standard (DSS)</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://csrc.nist.gov/publications/detail/fips/186/4/final"></link>&gt;</para>
+    <para>IETF RFC 3447 Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.1</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://tools.ietf.org/rfc/rfc3447.txt"></link>&gt;</para>
+    <para>ITU-T Recommendation X.690 (2008) | ISO/IEC 8825-1:2008, Information technology – ASN.1 encoding rules: Specification of Basic Encoding Rules (BER),Canonical Encoding Rules (CER)and Distinguished Encoding Rules (DER)</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.itu.int/rec/T-REC-X.690-200811-S"></link>&gt;</para>
+  </chapter>
+  <chapter>
+    <title>Terms and Definitions</title>
+    <section>
+      <title>Definitions</title>
+      <variablelist>
+        <varlistentry>
+          <term>Certificate</term>
+          <listitem><para>A certificate as used in this specification binds a public key to a subject entity. The certificate is digitally signed by the certificate issuer to allow for verifying its authenticity </para></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Signature</term>
+          <listitem><para>A digital signature or digital signature scheme is a mathematical scheme for demonstrating the authenticity of a digital message or document.</para></listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section>
+      <title>Abbreviations</title>
+      <informaltable>
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="24*" />
+          <colspec colname="c2" colwidth="76*" />
+          <tbody valign="top">
+            <row>
+              <entry valign="middle">
+                <para>SHA</para>
+              </entry>
+              <entry valign="middle">
+                <para>Secure Hashing Algorithm</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </chapter>
+  <chapter>
+    <title>Overview</title>
+    <section>
+      <title>General</title>
+      <para>This specification defines a mapping between the WSDL definitions for ONVIF and JSON-based protocols.</para>
+    </section>
+  </chapter>
+  <chapter>
+    <title>Model Context Protocol Format</title>
+    <section>
+      <title>Mapping</title>
+      <para>
+        <phrase>The SurveillanceExportBox is required</phrase>. It is recommended that the SurveillanceExportBox be placed as early as possible in files, for maximum utility.</para>
+      <para>In order to be able to associate the recording with a camera/microphone and the exporting system the following information shall be placed in the box:</para>
+      <para><literal>entry_count </literal>is an integer that provides the number of tracks.</para>
+    </section>
+    <section>
+      <title>Authentication and Authorization</title>
+      <para>This topic must be addressed.</para>
+    </section>
+  </chapter>
+  <appendix>
+    <title>Appendix placeholder (informative)</title>
+    <para>Lorem ipsum...</para>
+  </appendix>
+  <appendix role="revhistory">
+    <title>Revision History</title>
+    <para />
+  </appendix>
+</book>
