@@ -139,6 +139,13 @@
       <para>This topic must be addressed.</para>
     </section>
   </chapter>
+  <chapter>
+    <title>XSD to JSON Schema Type Mapping Specification</title>
+    <section>
+      <title>Purpose and scope</title>
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para
+    </section>
+  </chapter>
   <appendix>
     <title>Appendix placeholder (informative)</title>
     <para>Lorem ipsum...</para>
