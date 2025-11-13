@@ -58,23 +58,6 @@
     <title>Normative references</title>
     <para>ONVIF<superscript>TM</superscript> Core Specification</para>
     <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.onvif.org/specs/core/ONVIF-Core-Specification.pdf"></link>&gt;</para>
-    <para>ONVIF<superscript>TM</superscript> Streaming Specification</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.onvif.org/specs/stream/ONVIF-Streaming-Spec.pdf"></link>&gt;</para>
-    <para>ISO/IEC 14496-12 Information technology — Coding of audiovisual objects – Part 12: ISO base media file format</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/standard/83102.html"></link>&gt;</para>
-    <para>NIST FIPS 180-4 Secure Hash Standard</para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://csrc.nist.gov/publications/detail/fips/180/4/final"></link>&gt;</para>
-    <para>ISO/IEC 14888-2 Information technology – Security techniques – Digital signatures with appendix – Part 2: Integer factorization based mechanisms</para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.iso.org/obp/ui/#iso:std:iso-iec:14888:-2:ed-2:v1:en"></link>&gt;</para>
-    <para>ETSI TS 126 244 3GPP file format </para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.etsi.org/deliver/etsi_ts/126200_126299/126244/16.01.00_60/ts_126244v160100p.pdf"></link>&gt;</para>
-    <para>PKCS#1, v2.1 RSA Cryptographic Standard</para>
-    <para>NIST FIPS 186 Digital Signature Standard (DSS)</para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://csrc.nist.gov/publications/detail/fips/186/4/final"></link>&gt;</para>
-    <para>IETF RFC 3447 Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.1</para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://tools.ietf.org/rfc/rfc3447.txt"></link>&gt;</para>
-    <para>ITU-T Recommendation X.690 (2008) | ISO/IEC 8825-1:2008, Information technology – ASN.1 encoding rules: Specification of Basic Encoding Rules (BER),Canonical Encoding Rules (CER)and Distinguished Encoding Rules (DER)</para>
-    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.itu.int/rec/T-REC-X.690-200811-S"></link>&gt;</para>
   </chapter>
   <chapter>
     <title>Terms and Definitions</title>
@@ -115,11 +98,35 @@
     <title>Overview</title>
     <section>
       <title>General</title>
-      <para>This specification defines a mapping between the WSDL definitions for ONVIF and JSON-based protocols.</para>
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting WSDL (Web Services Description Language) service definitions into MCP tool descriptors.</para>
     </section>
   </chapter>
   <chapter>
     <title>MCP Format</title>
+    <section>
+      <title>Purpose and scope</title>
+      <para>This specification covers the conversion of WSDL service definitions to MCP tool descriptors, including:</para>
+      <itemizedlist>
+        <listitem>
+          <para>MCP tool structure and required fields</para>
+        </listitem>
+        <listitem>
+          <para>Operation discovery from WSDL portType definitions</para>
+        </listitem>
+        <listitem>
+          <para>Documentation extraction from WSDL annotations</para>
+        </listitem>
+        <listitem>
+          <para>Input/output message mapping to JSON Schema</para>
+        </listitem>
+        <listitem>
+          <para>Tool naming conventions</para>
+        </listitem>
+        <listitem>
+          <para>Metadata preservation</para>
+        </listitem>
+      </itemizedlist>
+    </section>
     <section>
       <title>Mapping</title>
       <para>
