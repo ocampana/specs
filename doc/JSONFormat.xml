@@ -58,6 +58,14 @@
     <title>Normative references</title>
     <para>ONVIF<superscript>TM</superscript> Core Specification</para>
     <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.onvif.org/specs/core/ONVIF-Core-Specification.pdf"></link>&gt;</para>
+    <para>XML Schema Specification</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-0/"></link>&gt;</para>
+    <para>XML Schema Part 1: Structures</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-1/"></link>&gt;</para>
+    <para>XML Schema Part 2: Datatypes</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-2/"></link>&gt;</para>
+    <para>JSON Schema Draft 7</para>
+    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://json-schema.org/draft-07/schema"></link>&gt;</para>
   </chapter>
   <chapter>
     <title>Terms and Definitions</title>
@@ -106,6 +114,48 @@
     <section>
       <title>Purpose and scope</title>
       <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
+      <para>This specification covers the conversion of XSD type definitions to JSON Schema, including:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Primitive type mapping (strings, numbers, booleans, dates, binary)</para>
+        </listitem>
+        <listitem>
+          <para>Simple type restrictions (enumerations, patterns, ranges)</para>
+        </listitem>
+        <listitem>
+          <para>Complex type structures (sequences, choices, attributes)</para>
+        </listitem>
+        <listitem>
+          <para>Type inheritance (extension and restriction)</para>
+        </listitem>
+        <listitem>
+          <para>Array handling and cardinality</para>
+        </listitem>
+        <listitem>
+          <para>Circular reference detection and handling</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section>
+      <title>XSD Primitive Type Mapping</title>
+    </section>
+    <section>
+      <title>XSD Simple Type Mapping</title>
+    </section>
+    <section>
+      <title>XSD Complex Type Mapping</title>
+    </section>
+    <section>
+      <title>Array Handling</title>
+    </section>
+    <section>
+      <title>Type References and Expansion</title>
+    </section>
+    <section>
+      <title>Validation rules</title>
+    </section>
+    <section>
+      <title>Error handling</title>
     </section>
   </chapter>
   <chapter>
@@ -192,6 +242,93 @@
         <title>Extraction Process</title>
         <para>...</para>
       </section>
+      <section>
+        <title>Fallback Description</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Message to Schema Conversion</title>
+      <section>
+        <title>WSDL Message Structure</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Element Resolution</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Conversion Process</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Empty Responses</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Type Expansion</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Tool Naming Convention</title>
+      <section>
+        <title>Name Format</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Service Name Mapping</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Naming Rules</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Metadata Annotations</title>
+      <section>
+        <title>Optional Metadata Fields</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>XSD Documentation Preservation</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Service Auto-Detection</title>
+      <section>
+        <title>Service Class Identification</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Common ONVIF Services</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Namespace Prefix Mapping</title>
+        <para>...</para>
+      </section>
+    </section>
+    <section>
+      <title>Error Handling</title>
+      <section>
+        <title>Missing WSDL Operations</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Missing Message Definitions</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Missing Element Definitions</title>
+        <para>...</para>
+      </section>
+      <section>
+        <title>Invalid WSDL Structure</title>
+        <para>...</para>
+      </section>
     </section>
     <section>
       <title>Authentication and Authorization</title>
@@ -199,7 +336,11 @@
     </section>
   </chapter>
   <appendix>
-    <title>Appendix placeholder (informative)</title>
+    <title>XSD conversion examples</title>
+    <para>Lorem ipsum...</para>
+  </appendix>
+  <appendix>
+    <title>WSDL conversion examples</title>
     <para>Lorem ipsum...</para>
   </appendix>
   <appendix role="revhistory">
