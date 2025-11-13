@@ -44,7 +44,7 @@
         <revnumber>26.12</revnumber>
         <date>Dec 2026</date>
         <author>
-          <personname>Peter Damm</personname>
+          <personname>Peter Damm, Ottavio Campana</personname>
         </author>
         <revremark>First release</revremark>
       </revision>
@@ -100,10 +100,10 @@
           <tbody valign="top">
             <row>
               <entry valign="middle">
-                <para>SHA</para>
+                <para>MCP</para>
               </entry>
               <entry valign="middle">
-                <para>Secure Hashing Algorithm</para>
+                <para>Model Context Protocol</para>
               </entry>
             </row>
           </tbody>
@@ -119,7 +119,7 @@
     </section>
   </chapter>
   <chapter>
-    <title>Model Context Protocol Format</title>
+    <title>MCP Format</title>
     <section>
       <title>Mapping</title>
       <para>
