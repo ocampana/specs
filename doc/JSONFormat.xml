@@ -1,350 +1,1253 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="docbook.xsl" type="text/xsl" ?>
+<?xml-stylesheet href="docbook.xsl" type="text/xsl"?>
 <book xmlns="http://docbook.org/ns/docbook" version="5.0">
   <info>
-    <title>JSON Format Specification</title>
-    <titleabbrev>JSONFormat</titleabbrev>
-    <releaseinfo>26.12</releaseinfo>
-    <author>
-      <orgname>ONVIF™</orgname>
-      <uri>www.onvif.org</uri>
-    </author>
-    <pubdate>December, 2026</pubdate>
-    <mediaobject>
-      <imageobject>
-        <imagedata fileref="media/logo.png" contentwidth="60mm"/>
-      </imageobject>
-    </mediaobject>
-    <copyright>
-      <year>2026</year>
-      <holder>ONVIF™ All rights reserved.</holder>
-    </copyright>
-    <legalnotice>
-      <para>Recipients of this document may copy, distribute, publish, or display this document so
-        long as this copyright notice, license and disclaimer are retained with all copies of the
-        document. No license is granted to modify this document.</para>
-      <para>THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
-        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-        LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY PURPOSE;
-        OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS,
-        TRADEMARKS OR OTHER RIGHTS.</para>
-      <para>IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR ANY
-        DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR
-        RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR NOT (1) THE CORPORATION,
-        MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR (2)
-        SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND ARISING OUT OF OR RELATING TO ANY USE OR
-        DISTRIBUTION OF THIS DOCUMENT.  THE FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT
-        APPLY TO, INVALIDATE, OR LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR
-        RESPECTIVE AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF
-        THE CORPORATION.</para>
-    </legalnotice>
+    <title>ONVIF MCP Conversion Specifications</title>
+    <titleabbrev>MCP Conversion Specs</titleabbrev>
+    <author><orgname>ONVIF™</orgname></author>
+    <pubdate>2025-11-13</pubdate>
     <revhistory>
       <revision>
-        <revnumber>26.12</revnumber>
-        <date>Dec 2026</date>
-        <author>
-          <personname>Peter Damm, Ottavio Campana</personname>
-        </author>
-        <revremark>First release</revremark>
+        <revnumber>0.0-skeleton</revnumber>
+        <date>2025-11-13</date>
+        <author><personname>Rebuild</personname></author>
+        <revremark>Skeleton structure created from scratch prior to incremental content reintroduction.</revremark>
       </revision>
     </revhistory>
   </info>
-  <chapter>
-    <title>Scope</title>
-    <para>This document defines the ONVIF file format for exported media. The specification defines the mechanism necessary to support interoperable verification of the authenticity by the receiving party.</para>
-  </chapter>
-  <chapter>
-    <title>Normative references</title>
-    <para>ONVIF<superscript>TM</superscript> Core Specification</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.onvif.org/specs/core/ONVIF-Core-Specification.pdf"></link>&gt;</para>
-    <para>XML Schema Specification</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-0/"></link>&gt;</para>
-    <para>XML Schema Part 1: Structures</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-1/"></link>&gt;</para>
-    <para>XML Schema Part 2: Datatypes</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.w3.org/TR/xmlschema-2/"></link>&gt;</para>
-    <para>JSON Schema Draft 7</para>
-    <para role="reference">&lt;​<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://json-schema.org/draft-07/schema"></link>&gt;</para>
-  </chapter>
-  <chapter>
-    <title>Terms and Definitions</title>
-    <section>
-      <title>Definitions</title>
-      <variablelist>
-        <varlistentry>
-          <term>Certificate</term>
-          <listitem><para>A certificate as used in this specification binds a public key to a subject entity. The certificate is digitally signed by the certificate issuer to allow for verifying its authenticity </para></listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>Signature</term>
-          <listitem><para>A digital signature or digital signature scheme is a mathematical scheme for demonstrating the authenticity of a digital message or document.</para></listitem>
-        </varlistentry>
-      </variablelist>
+  <!-- Chapter: XSD to JSON Schema Specification -->
+  <chapter xml:id="xsd_json_schema_spec">
+    <title>XSD to JSON Schema Type Mapping Specification</title>
+    <section xml:id="xsd_doc_purpose"><title>Document Purpose</title>
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
+      <para><emphasis role="bold">Conformance</emphasis>: All implementations claiming conformance to this specification MUST follow these rules exactly. Any deviation will produce incompatible output.</para>
+      <para><emphasis role="bold">Version</emphasis>: 2.1</para>
+      <para><emphasis role="bold">Date</emphasis>: November 13, 2025</para>
+      <para><emphasis role="bold">Scope</emphasis>: Complete XSD type system mapping to JSON Schema</para>
+      <para><emphasis role="bold">Status</emphasis>: Prescriptive (all implementations MUST conform)</para>
     </section>
-    <section>
-      <title>Abbreviations</title>
+    <section xml:id="xsd_doc_history"><title>Document History</title>
       <informaltable>
-        <tgroup cols="2">
-          <colspec colname="c1" colwidth="24*" />
-          <colspec colname="c2" colwidth="76*" />
-          <tbody valign="top">
+        <tgroup cols="3">
+          <thead>
             <row>
-              <entry valign="middle">
-                <para>MCP</para>
-              </entry>
-              <entry valign="middle">
-                <para>Model Context Protocol</para>
-              </entry>
+              <entry>Version</entry>
+              <entry>Date</entry>
+              <entry>Changes</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>2.1</entry>
+              <entry>2025-11-13</entry>
+              <entry>Added Section 6.4 Type Metadata Preservation (<code>title</code> and <code>x-onvif-type</code> fields) to preserve semantic type information in generated JSON Schemas</entry>
+            </row>
+            <row>
+              <entry>2.0</entry>
+              <entry>2025-11-13</entry>
+              <entry>Split from ONVIF_TO_MCP_CONVERSION_SPEC v1.3; focus on XSD→JSON Schema mapping only</entry>
+            </row>
+            <row>
+              <entry>1.3</entry>
+              <entry>2025-11-12</entry>
+              <entry>Made specification prescriptive; added mandatory format field mapping</entry>
+            </row>
+            <row>
+              <entry>1.0</entry>
+              <entry>2025-11-11</entry>
+              <entry>Initial specification with full XSD type mapping</entry>
             </row>
           </tbody>
         </tgroup>
       </informaltable>
     </section>
-  </chapter>
-  <chapter>
-    <title>Overview</title>
-    <section>
-      <title>General</title>
-      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting WSDL (Web Services Description Language) service definitions into MCP tool descriptors.</para>
+    <section xml:id="xsd_overview"><title>1. Overview</title>
+      <section xml:id="xsd_overview_purpose_scope"><title>1.1 Purpose and Scope</title>
+        <para>This specification covers the conversion of XSD type definitions to JSON Schema, including:</para>
+        <itemizedlist>
+          <listitem><para>Primitive type mapping (strings, numbers, booleans, dates, binary)</para></listitem>
+          <listitem><para>Complex type structures (sequences, choices, attributes)</para></listitem>
+          <listitem><para>Simple type restrictions (enumerations, patterns, ranges)</para></listitem>
+          <listitem><para>Type inheritance (extension and restriction)</para></listitem>
+          <listitem><para>Array handling and cardinality</para></listitem>
+          <listitem><para>Circular reference detection and handling</para></listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="xsd_overview_namespaces"><title>1.2 XML Schema Namespaces</title>
+        <para>XSD types are referenced using namespace prefixes:</para>
+        <itemizedlist>
+          <listitem><para><code>xs:</code> - XML Schema primitives (e.g., <code>xs:string</code>, <code>xs:int</code>, <code>xs:dateTime</code>)</para></listitem>
+          <listitem><para><emphasis role="bold">Custom namespaces</emphasis> - Application-specific types (e.g., <code>tt:VideoSource</code>, <code>tptz:PTZVector</code>)</para></listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="xsd_overview_target"><title>1.3 JSON Schema Target</title>
+        <para>All conversions MUST produce valid JSON Schema Draft 7 output with:</para>
+        <itemizedlist>
+          <listitem><para><code>type</code> field specifying the JSON type</para></listitem>
+          <listitem><para><code>properties</code> for object structures</para></listitem>
+          <listitem><para><code>required</code> array for mandatory fields</para></listitem>
+          <listitem><para>Appropriate constraints (<code>minimum</code>, <code>maximum</code>, <code>pattern</code>, <code>enum</code>, etc.)</para></listitem>
+          <listitem><para>Format hints for semantic types (<code>format</code>, <code>contentEncoding</code>)</para></listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="xsd_overview_goals"><title>1.4 Conversion Goals</title>
+        <itemizedlist>
+          <listitem><para><emphasis role="bold">Completeness</emphasis>: All XSD types MUST map to valid JSON Schema</para></listitem>
+          <listitem><para><emphasis role="bold">Validation</emphasis>: Generated schemas MUST enable runtime parameter validation</para></listitem>
+          <listitem><para><emphasis role="bold">Clarity</emphasis>: Complex types MUST be fully expanded to show structure</para></listitem>
+          <listitem><para><emphasis role="bold">Standards</emphasis>: MUST follow JSON Schema Draft 7 specification</para></listitem>
+          <listitem><para><emphasis role="bold">Semantics</emphasis>: MUST preserve type constraints and validation rules</para></listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="xsd_primitives"><title>2. XSD Primitive Type Mapping</title>
+      <section xml:id="xsd_primitive_strings"><title>2.1 String Types</title>
+        <table xml:id="xsd_table_string_types">
+          <title>String Types</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:string</code></entry><entry><code>{"type":"string"}</code></entry><entry>UTF-8 text</entry></row>
+              <row><entry><code>xs:token</code></entry><entry><code>{"type":"string"}</code></entry><entry>Whitespace-normalized string</entry></row>
+              <row><entry><code>xs:normalizedString</code></entry><entry><code>{"type":"string"}</code></entry><entry>Line breaks and tabs normalized to spaces</entry></row>
+              <row><entry><code>xs:anyURI</code></entry><entry><code>{"type":"string","format":"uri"}</code></entry><entry>URI reference (absolute or relative)</entry></row>
+              <row><entry><code>xs:QName</code></entry><entry><code>{"type":"string"}</code></entry><entry>Qualified name: prefix:localName</entry></row>
+              <row><entry><code>xs:NOTATION</code></entry><entry><code>{"type":"string"}</code></entry><entry>Notation type for declaring notation attributes</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para><emphasis role="bold">Format Field Rule</emphasis>:</para>
+        <table xml:id="xsd_table_string_format_rules">
+          <title>String Format Mapping Rules</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema Field</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:anyURI</code></entry><entry><code>format: "uri"</code></entry><entry>Populate <code>format</code> to convey URI semantic</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_primitive_numeric"><title>2.2 Numeric Types</title>
+        <table xml:id="xsd_table_numeric_types">
+          <title>Numeric Types</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:integer</code></entry><entry><code>{"type":"integer"}</code></entry><entry>Arbitrary precision</entry></row>
+              <row><entry><code>xs:int</code></entry><entry><code>{"type":"integer"}</code></entry><entry>32-bit signed</entry></row>
+              <row><entry><code>xs:long</code></entry><entry><code>{"type":"integer"}</code></entry><entry>64-bit signed</entry></row>
+              <row><entry><code>xs:short</code></entry><entry><code>{"type":"integer"}</code></entry><entry>16-bit signed</entry></row>
+              <row><entry><code>xs:byte</code></entry><entry><code>{"type":"integer"}</code></entry><entry>8-bit signed</entry></row>
+              <row><entry><code>xs:unsignedInt</code></entry><entry><code>{"type":"integer","minimum":0}</code></entry><entry>32-bit unsigned</entry></row>
+              <row><entry><code>xs:unsignedLong</code></entry><entry><code>{"type":"integer","minimum":0}</code></entry><entry>64-bit unsigned</entry></row>
+              <row><entry><code>xs:unsignedShort</code></entry><entry><code>{"type":"integer","minimum":0}</code></entry><entry>16-bit unsigned</entry></row>
+              <row><entry><code>xs:unsignedByte</code></entry><entry><code>{"type":"integer","minimum":0}</code></entry><entry>8-bit unsigned</entry></row>
+              <row><entry><code>xs:positiveInteger</code></entry><entry><code>{"type":"integer","minimum":1}</code></entry><entry>Positive only</entry></row>
+              <row><entry><code>xs:nonNegativeInteger</code></entry><entry><code>{"type":"integer","minimum":0}</code></entry><entry>Zero or positive</entry></row>
+              <row><entry><code>xs:negativeInteger</code></entry><entry><code>{"type":"integer","maximum":-1}</code></entry><entry>Negative only</entry></row>
+              <row><entry><code>xs:nonPositiveInteger</code></entry><entry><code>{"type":"integer","maximum":0}</code></entry><entry>Zero or negative</entry></row>
+              <row><entry><code>xs:float</code></entry><entry><code>{"type":"number"}</code></entry><entry>IEEE 754 single</entry></row>
+              <row><entry><code>xs:double</code></entry><entry><code>{"type":"number"}</code></entry><entry>IEEE 754 double</entry></row>
+              <row><entry><code>xs:decimal</code></entry><entry><code>{"type":"number"}</code></entry><entry>Arbitrary precision</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_primitive_boolean"><title>2.3 Boolean Type</title>
+        <table xml:id="xsd_table_boolean_type">
+          <title>Boolean Type</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Valid Values</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:boolean</code></entry><entry><code>{"type":"boolean"}</code></entry><entry><code>true</code>, <code>false</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_primitive_datetime"><title>2.4 Date/Time Types</title>
+        <table xml:id="xsd_table_datetime_types">
+          <title>Date/Time Types</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:dateTime</code></entry><entry><code>{"type":"string","format":"date-time"}</code></entry><entry>ISO 8601 date-time (e.g., 2025-11-13T14:30:00Z)</entry></row>
+              <row><entry><code>xs:date</code></entry><entry><code>{"type":"string","format":"date"}</code></entry><entry>ISO 8601 date (e.g., 2025-11-13)</entry></row>
+              <row><entry><code>xs:time</code></entry><entry><code>{"type":"string","format":"time"}</code></entry><entry>ISO 8601 time (e.g., 14:30:00)</entry></row>
+              <row><entry><code>xs:duration</code></entry><entry><code>{"type":"string","format":"duration"}</code></entry><entry>ISO 8601 duration (e.g., PT1H30M)</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para><emphasis role="bold">Format Field Rules</emphasis>:</para>
+        <table xml:id="xsd_table_datetime_format_rules">
+          <title>Date/Time Format Mapping Rules</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>Required JSON Schema Format</entry><entry>Example</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:dateTime</code></entry><entry><code>"date-time"</code></entry><entry><code>2025-11-13T14:30:00Z</code></entry></row>
+              <row><entry><code>xs:date</code></entry><entry><code>"date"</code></entry><entry><code>2025-11-13</code></entry></row>
+              <row><entry><code>xs:time</code></entry><entry><code>"time"</code></entry><entry><code>14:30:00</code></entry></row>
+              <row><entry><code>xs:duration</code></entry><entry><code>"duration"</code></entry><entry><code>PT1H30M</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_primitive_binary"><title>2.5 Binary Types</title>
+        <table xml:id="xsd_table_binary_types">
+          <title>Binary Types</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:base64Binary</code></entry><entry><code>{"type":"string","contentEncoding":"base64"}</code></entry><entry>Base64-encoded binary data</entry></row>
+              <row><entry><code>xs:hexBinary</code></entry><entry><code>{"type":"string"}</code></entry><entry>Hexadecimal-encoded binary data</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para><emphasis role="bold">Encoding Rule</emphasis>:</para>
+        <table xml:id="xsd_table_binary_encoding_rules">
+          <title>Binary Encoding Mapping Rules</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema Encoding</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:base64Binary</code></entry><entry><code>contentEncoding: "base64"</code></entry><entry>Set <code>contentEncoding</code> to indicate base64-encoded data</entry></row>
+              <row><entry><code>xs:hexBinary</code></entry><entry>(none)</entry><entry>No standard JSON Schema field; represented as plain string</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_primitive_other"><title>2.6 Other Primitives</title>
+        <table xml:id="xsd_table_other_primitives">
+          <title>Other Primitives</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Type</entry><entry>JSON Schema</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:anyType</code></entry><entry><code>{}</code></entry><entry>No constraints (any valid JSON)</entry></row>
+              <row><entry><code>xs:anySimpleType</code></entry><entry><code>{}</code></entry><entry>Any simple value (string, number, boolean)</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section xml:id="xsd_complex_types"><title>3. XSD Complex Type Mapping</title>
+      <section xml:id="xsd_complex_structure"><title>3.1 Complex Type Structure</title>
+        <para>XSD complex types define objects with attributes and child elements. They convert to JSON Schema objects:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": { /* ... */ },
+  "required": [ /* ... */ ]
+}</programlisting>
+      </section>
+      <section xml:id="xsd_complex_attributes"><title>3.2 Attributes</title>
+        <para>XSD attributes become JSON Schema properties. Attribute metadata controls conversion:</para>
+        <programlisting language="xml">&lt;xs:complexType name="VideoSource">
+  &lt;xs:attribute name="token" type="tt:ReferenceToken" use="required"/>
+  &lt;xs:attribute name="Framerate" type="xs:float" use="optional"/>
+&lt;/xs:complexType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "token": {"type": "string", "maxLength": 64},
+    "Framerate": {"type": "number"}
+  },
+  "required": ["token"]
+}</programlisting>
+        <para><emphasis role="bold">Attribute Mapping Rules</emphasis>:</para>
+        <table xml:id="xsd_table_attribute_mapping">
+          <title>Attribute Mapping Rules</title>
+          <tgroup cols="2">
+            <thead>
+              <row><entry>Attribute Condition</entry><entry>JSON Schema Action</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>use="required"</code></entry><entry>Add attribute name to <code>required</code> array</entry></row>
+              <row><entry><code>use="optional"</code> or omitted</entry><entry>Represent as optional property (omit from <code>required</code>)</entry></row>
+              <row><entry>Attribute name</entry><entry>Becomes property key</entry></row>
+              <row><entry>Attribute type</entry><entry>Resolve and convert per primitive/simple/complex rules</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_complex_sequence"><title>3.3 Sequence Elements</title>
+        <para><code>&lt;xs:sequence></code> defines ordered child elements. In JSON Schema, order is not enforced, so sequences become properties:</para>
+        <programlisting language="xml">&lt;xs:complexType name="PTZSpeed">
+  &lt;xs:sequence>
+    &lt;xs:element name="PanTilt" type="tt:Vector2D" minOccurs="0"/>
+    &lt;xs:element name="Zoom" type="tt:Vector1D" minOccurs="0"/>
+  &lt;/xs:sequence>
+&lt;/xs:complexType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "PanTilt": {
+      "type": "object",
+      "properties": {
+        "x": {"type": "number"},
+        "y": {"type": "number"}
+      },
+      "required": ["x", "y"]
+    },
+    "Zoom": {
+      "type": "object",
+      "properties": {
+        "x": {"type": "number"}
+      },
+      "required": ["x"]
+    }
+  },
+  "required": []
+}</programlisting>
+        <para><emphasis role="bold">Sequence Mapping Rules</emphasis>:</para>
+        <table xml:id="xsd_table_sequence_mapping">
+          <title>Sequence Element Occurrence Mapping</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Occurrence</entry><entry>Condition</entry><entry>JSON Schema Representation</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>minOccurs="0"</code></entry><entry>Element optional</entry><entry>Property omitted from <code>required</code></entry></row>
+              <row><entry><code>minOccurs="1"</code> (default)</entry><entry>Element mandatory</entry><entry>Property name added to <code>required</code></entry></row>
+              <row><entry><code>maxOccurs="1"</code> (default)</entry><entry>Single instance</entry><entry>Single property value</entry></row>
+              <row><entry><code>maxOccurs&gt;1</code></entry><entry>Multiple bounded</entry><entry><code>{"type":"array","maxItems":N}</code></entry></row>
+              <row><entry><code>maxOccurs="unbounded"</code></entry><entry>Multiple unbounded</entry><entry><code>{"type":"array"}</code> (no <code>maxItems</code>)</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_complex_inline"><title>3.3.1 Inline Complex Type Definitions</title>
+        <para>Elements can have inline (anonymous) complex type definitions instead of references:</para>
+        <programlisting language="xml">&lt;xs:element name="Configuration">
+  &lt;xs:complexType>
+    &lt;xs:sequence>
+      &lt;xs:element name="Name" type="xs:string"/>
+      &lt;xs:element name="UseCount" type="xs:int"/>
+    &lt;/xs:sequence>
+  &lt;/xs:complexType>
+&lt;/xs:element></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "Name": {"type": "string"},
+    "UseCount": {"type": "integer"}
+  },
+  "required": ["Name", "UseCount"]
+}</programlisting>
+        <para><emphasis role="bold">Inline Type Rule</emphasis>: Inline complex types are expanded directly in place.</para>
+      </section>
+      <section xml:id="xsd_complex_choice"><title>3.4 Choice Elements</title>
+        <para><code>&lt;xs:choice></code> represents mutually exclusive options. Convert to <code>anyOf</code>:</para>
+        <programlisting language="xml">&lt;xs:complexType name="MediaUri">
+  &lt;xs:choice>
+    &lt;xs:element name="Uri" type="xs:anyURI"/>
+    &lt;xs:element name="InvalidAfterConnect" type="xs:boolean"/>
+    &lt;xs:element name="InvalidAfterReboot" type="xs:boolean"/>
+  &lt;/xs:choice>
+&lt;/xs:complexType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {"Uri": {"type": "string", "format": "uri"}},
+      "required": ["Uri"]
+    },
+    {
+      "type": "object",
+      "properties": {"InvalidAfterConnect": {"type": "boolean"}},
+      "required": ["InvalidAfterConnect"]
+    },
+    {
+      "type": "object",
+      "properties": {"InvalidAfterReboot": {"type": "boolean"}},
+      "required": ["InvalidAfterReboot"]
+    }
+  ]
+}</programlisting>
+        <para><emphasis role="bold">Choice Mapping Rules</emphasis>:</para>
+        <table xml:id="xsd_table_choice_mapping">
+          <title>Choice Mapping Rules</title>
+          <tgroup cols="2">
+            <thead>
+              <row><entry>Aspect</entry><entry>Rule</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Mutual exclusivity</entry><entry>Represent with <code>anyOf</code></entry></row>
+              <row><entry>Each branch</entry><entry>Separate object schema variant</entry></row>
+              <row><entry>Property wrapping</entry><entry>Choice element becomes property inside its variant object</entry></row>
+              <row><entry>Required field</entry><entry>Chosen element listed in <code>required</code> for that variant</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_complex_all"><title>3.5 All Elements (Unordered)</title>
+        <para><code>&lt;xs:all></code> is similar to <code>&lt;xs:sequence></code> but elements can appear in any order:</para>
+        <programlisting language="xml">&lt;xs:complexType name="Capabilities">
+  &lt;xs:all>
+    &lt;xs:element name="XAddr" type="xs:anyURI" minOccurs="0"/>
+    &lt;xs:element name="RuleSupport" type="xs:boolean" minOccurs="0"/>
+  &lt;/xs:all>
+&lt;/xs:complexType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "XAddr": {"type": "string", "format": "uri"},
+    "RuleSupport": {"type": "boolean"}
+  },
+  "required": []
+}</programlisting>
+        <para><emphasis role="bold">All Elements Rule</emphasis>: Treat similar to <code>xs:sequence</code> (JSON has no ordering).</para>
+      </section>
+      <section xml:id="xsd_complex_extension"><title>3.6 Complex Content (Extension)</title>
+        <para><code>&lt;xs:extension></code> adds fields to a base type. Implementations MUST inline both base and extension properties:</para>
+        <programlisting language="xml">&lt;xs:complexType name="PTZConfiguration">
+  &lt;xs:complexContent>
+    &lt;xs:extension base="tt:ConfigurationEntity">
+      &lt;xs:sequence>
+        &lt;xs:element name="NodeToken" type="tt:ReferenceToken"/>
+        &lt;xs:element name="DefaultPTZSpeed" type="tt:PTZSpeed" minOccurs="0"/>
+      &lt;/xs:sequence>
+    &lt;/xs:extension>
+  &lt;/xs:complexContent>
+&lt;/xs:complexType>
+
+&lt;!-- Base type -->
+&lt;xs:complexType name="ConfigurationEntity">
+  &lt;xs:attribute name="token" type="tt:ReferenceToken" use="required"/>
+  &lt;xs:attribute name="Name" type="xs:string" use="required"/>
+&lt;/xs:complexType></programlisting>
+        <para>Converts to (base properties + extension properties):</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "token": {"type": "string", "maxLength": 64},
+    "Name": {"type": "string"},
+    "NodeToken": {"type": "string", "maxLength": 64},
+    "DefaultPTZSpeed": {
+      "type": "object",
+      "properties": { /* ... */ }
+    }
+  },
+  "required": ["token", "Name", "NodeToken"]
+}</programlisting>
+        <para><emphasis role="bold">Extension Rule</emphasis>: Merge base type properties with extension properties in a single flat object.</para>
+      </section>
+      <section xml:id="xsd_complex_restriction"><title>3.7 Complex Content (Restriction)</title>
+        <para><code>&lt;xs:restriction></code> limits or redefines a base type:</para>
+        <programlisting language="xml">&lt;xs:complexType name="IntRange">
+  &lt;xs:complexContent>
+    &lt;xs:restriction base="xs:anyType">
+      &lt;xs:sequence>
+        &lt;xs:element name="Min" type="xs:int"/>
+        &lt;xs:element name="Max" type="xs:int"/>
+      &lt;/xs:sequence>
+    &lt;/xs:restriction>
+  &lt;/xs:complexContent>
+&lt;/xs:complexType></programlisting>
+        <para><emphasis role="bold">Restriction Rule</emphasis>: Use the restricted definition, ignore the base type (restriction fully replaces base).</para>
+      </section>
+      <section xml:id="xsd_complex_mixed"><title>3.8 Mixed Content</title>
+        <para>Mixed content types allow text and elements. Rarely used in ONVIF:</para>
+        <programlisting language="xml">&lt;xs:complexType name="Description" mixed="true">
+  &lt;xs:sequence>
+    &lt;xs:element name="Link" type="xs:anyURI" minOccurs="0"/>
+  &lt;/xs:sequence>
+&lt;/xs:complexType></programlisting>
+        <para><emphasis role="bold">Mixed Content Rule</emphasis>: Treat as object with properties (ignore text content capability in JSON Schema).</para>
+      </section>
+    </section>
+    <section xml:id="xsd_simple_types"><title>4. XSD Simple Type Mapping</title>
+      <section xml:id="xsd_simple_enumerations"><title>4.1 Enumerations</title>
+        <para>XSD enumerations define allowed values. Convert to JSON Schema <code>enum</code>:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="AutoFocusMode">
+  &lt;xs:restriction base="xs:string">
+    &lt;xs:enumeration value="AUTO"/>
+    &lt;xs:enumeration value="MANUAL"/>
+  &lt;/xs:restriction>
+&lt;/xs:simpleType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "string",
+  "enum": ["AUTO", "MANUAL"]
+}</programlisting>
+        <para><emphasis role="bold">Enumeration Rules</emphasis>:</para>
+        <table xml:id="xsd_table_enumeration_rules">
+          <title>Enumeration Mapping Rules</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>Step / Aspect</entry><entry>Description</entry><entry>JSON Schema Impact</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Value extraction</entry><entry>Collect each <code>&lt;xs:enumeration value="..."/></code></entry><entry>Populate entries in <code>enum</code> array</entry></row>
+              <row><entry>Order preservation</entry><entry>Maintain source order</entry><entry>Display order retained (non-functional)</entry></row>
+              <row><entry>Base type retention</entry><entry>Use restriction base</entry><entry>Set <code>type</code> accordingly</entry></row>
+              <row><entry>Non-string enumerations</entry><entry>Support numeric or other bases</entry><entry><code>type</code> may be <code>integer</code>, <code>number</code>, etc.</entry></row>
+              <row><entry>Exact match enforcement</entry><entry>No additional values permitted</entry><entry>Validator restricts to listed <code>enum</code> members</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_simple_patterns"><title>4.2 String Patterns</title>
+        <para>XSD pattern restrictions define regex constraints:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="ReferenceToken">
+  &lt;xs:restriction base="xs:string">
+    &lt;xs:maxLength value="64"/>
+  &lt;/xs:restriction>
+&lt;/xs:simpleType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "string",
+  "maxLength": 64
+}</programlisting>
+        <para>With regex pattern:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="DNSName">
+  &lt;xs:restriction base="xs:token">
+    &lt;xs:pattern value="[A-Za-z0-9\-\.]+"/>
+  &lt;/xs:restriction>
+&lt;/xs:simpleType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "string",
+  "pattern": "^[A-Za-z0-9\\-\\.]+$"
+}</programlisting>
+        <para><emphasis role="bold">Pattern Mapping Rules</emphasis>:</para>
+        <table xml:id="xsd_table_pattern_mapping">
+          <title>Pattern and Length Restriction Mapping</title>
+          <tgroup cols="2">
+            <thead>
+              <row><entry>XSD Construct / Rule</entry><entry>JSON Schema Representation</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>&lt;xs:pattern value="..."/></code></entry><entry><code>"pattern"</code> field with the regex value</entry></row>
+              <row><entry>Regex anchoring</entry><entry>Add <code>^</code> and <code>$</code> if not present to ensure full-string match</entry></row>
+              <row><entry>Backslash escaping</entry><entry>Escape backslashes for JSON: <code>\\</code> becomes <code>\\\\</code></entry></row>
+              <row><entry><code>&lt;xs:maxLength value="N"/></code></entry><entry><code>"maxLength": N</code></entry></row>
+              <row><entry><code>&lt;xs:minLength value="N"/></code></entry><entry><code>"minLength": N</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_simple_lists"><title>4.3 List Types</title>
+        <para>XSD lists allow space-separated values of a base type:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="IntList">
+  &lt;xs:list itemType="xs:int"/>
+&lt;/xs:simpleType></programlisting>
+        <para><emphasis role="bold">List Rule</emphasis>: Convert to JSON array of the item type:</para>
+        <programlisting language="json">{
+  "type": "array",
+  "items": {"type": "integer"}
+}</programlisting>
+      </section>
+      <section xml:id="xsd_simple_numeric_ranges"><title>4.4 Numeric Ranges</title>
+        <para>XSD numeric restrictions define min/max constraints:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="FactorRange">
+  &lt;xs:restriction base="xs:float">
+    &lt;xs:minInclusive value="1.0"/>
+    &lt;xs:maxInclusive value="10.0"/>
+  &lt;/xs:restriction>
+&lt;/xs:simpleType></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "number",
+  "minimum": 1.0,
+  "maximum": 10.0
+}</programlisting>
+        <para><emphasis role="bold">Numeric Constraint Mapping</emphasis>:</para>
+        <table xml:id="xsd_table_numeric_constraints">
+          <title>Numeric Constraint Mapping</title>
+          <tgroup cols="2">
+            <thead>
+              <row><entry>XSD Restriction</entry><entry>JSON Schema Field</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>&lt;xs:minInclusive></code></entry><entry><code>"minimum"</code></entry></row>
+              <row><entry><code>&lt;xs:maxInclusive></code></entry><entry><code>"maximum"</code></entry></row>
+              <row><entry><code>&lt;xs:minExclusive></code></entry><entry><code>"exclusiveMinimum"</code></entry></row>
+              <row><entry><code>&lt;xs:maxExclusive></code></entry><entry><code>"exclusiveMaximum"</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_simple_union"><title>4.5 Union Types</title>
+        <para>XSD unions allow multiple possible types:</para>
+        <programlisting language="xml">&lt;xs:simpleType name="IntOrString">
+  &lt;xs:union memberTypes="xs:int xs:string"/>
+&lt;/xs:simpleType></programlisting>
+        <para><emphasis role="bold">Union Rule</emphasis>: Convert to <code>anyOf</code> with each member type:</para>
+        <programlisting language="json">{
+  "anyOf": [
+    {"type": "integer"},
+    {"type": "string"}
+  ]
+}</programlisting>
+      </section>
+    </section>
+    <section xml:id="xsd_arrays"><title>5. Array Handling</title>
+      <section xml:id="xsd_arrays_repeated_elements"><title>5.1 Repeated Elements</title>
+        <para>XSD elements with <code>maxOccurs &gt; 1</code> or <code>maxOccurs="unbounded"</code> become arrays:</para>
+        <programlisting language="xml">&lt;xs:element name="Profile" type="tt:Profile" minOccurs="0" maxOccurs="unbounded"/></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": { /* Profile type expanded */ }
+  }
+}</programlisting>
+        <para><emphasis role="bold">Array Mapping Rules</emphasis>:</para>
+        <table xml:id="xsd_table_array_mapping">
+          <title>Array Mapping Rules</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>XSD Attribute</entry><entry>Condition</entry><entry>JSON Schema Field</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>maxOccurs="unbounded"</code></entry><entry>Unlimited repetitions</entry><entry>(no <code>maxItems</code>)</entry><entry>Array has no size cap</entry></row>
+              <row><entry><code>maxOccurs="N"</code></entry><entry>Finite repetitions</entry><entry><code>maxItems: N</code></entry><entry>Upper bound enforced</entry></row>
+              <row><entry><code>minOccurs="M"</code></entry><entry>Minimum occurrences</entry><entry><code>minItems: M</code></entry><entry>Lower bound enforced</entry></row>
+              <row><entry>Item type</entry><entry>Element type reference</entry><entry><code>items: { ... }</code></entry><entry>Expand inline, no <code>$ref</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_arrays_cardinality"><title>5.2 Array Cardinality</title>
+        <para>Bounded arrays translate both minimum and maximum constraints:</para>
+        <programlisting language="xml">&lt;xs:element name="SupportedRules" type="xs:string" minOccurs="1" maxOccurs="100"/></programlisting>
+        <para>Converts to:</para>
+        <programlisting language="json">{
+  "type": "array",
+  "items": {"type": "string"},
+  "minItems": 1,
+  "maxItems": 100
+}</programlisting>
+        <para><emphasis role="bold">Cardinality Constraints</emphasis>:</para>
+        <table xml:id="xsd_table_array_cardinality">
+          <title>Array Cardinality Constraints</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>XSD Combination</entry><entry>JSON Schema</entry><entry>Interpretation</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>minOccurs=0, maxOccurs=1</code></entry><entry>Single optional value</entry><entry>Represent as optional property (not array)</entry></row>
+              <row><entry><code>minOccurs=1, maxOccurs=1</code></entry><entry>Single required value</entry><entry>Property in <code>required</code> (not array)</entry></row>
+              <row><entry><code>minOccurs=0, maxOccurs&gt;1</code></entry><entry><code>minItems</code> omitted; <code>maxItems</code> set</entry><entry>Optional bounded array</entry></row>
+              <row><entry><code>minOccurs&gt;0, maxOccurs&gt;1</code></entry><entry><code>minItems</code> and <code>maxItems</code> set</entry><entry>Required bounded array meeting min constraint</entry></row>
+              <row><entry><code>minOccurs=0, maxOccurs="unbounded"</code></entry><entry>No <code>minItems</code>, no <code>maxItems</code></entry><entry>Optional unbounded array</entry></row>
+              <row><entry><code>minOccurs&gt;0, maxOccurs="unbounded"</code></entry><entry><code>minItems</code> set; no <code>maxItems</code></entry><entry>Required unbounded array with minimum size</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section xml:id="xsd_type_expansion"><title>6. Type References &amp; Expansion</title>
+      <section xml:id="xsd_type_resolution"><title>6.1 Type Resolution Strategy</title>
+        <para><emphasis role="bold">Required Strategy</emphasis>: All types MUST be fully expanded inline at point of use. No JSON Schema <code>$ref</code> is used for type references.</para>
+        <para>Example - Instead of using references:</para>
+        <programlisting language="json">{
+  "properties": {
+    "Speed": {"$ref": "#/definitions/PTZSpeed"}
+  }
+}</programlisting>
+        <para>Implementations MUST expand inline:</para>
+        <programlisting language="json">{
+  "properties": {
+    "Speed": {
+      "type": "object",
+      "properties": {
+        "PanTilt": { /* expanded */ },
+        "Zoom": { /* expanded */ }
+      }
+    }
+  }
+}</programlisting>
+        <para><emphasis role="bold">Resolution Steps</emphasis>:</para>
+        <table xml:id="xsd_table_type_resolution">
+          <title>Type Resolution Steps</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>Step</entry><entry>Description</entry><entry>Outcome</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Locate</entry><entry>Find type definition by QName</entry><entry>Obtain source structure</entry></row>
+              <row><entry>Classify</entry><entry>Determine primitive / simple / complex</entry><entry>Select mapping path</entry></row>
+              <row><entry>Expand</entry><entry>Recursively inline nested types</entry><entry>No remaining references</entry></row>
+              <row><entry>Finalize</entry><entry>Add required arrays, properties, metadata</entry><entry>Complete inline JSON Schema object</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_type_namespace"><title>6.2 Namespace Handling</title>
+        <para>When expanding types from different namespaces (e.g., <code>tt:PTZVector</code> referencing <code>tt:Vector2D</code>):</para>
+        <table xml:id="xsd_table_namespace_handling">
+          <title>Namespace Handling Rules</title>
+          <tgroup cols="3">
+            <thead>
+              <row><entry>Rule</entry><entry>Description</entry><entry>Result</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Lookup</entry><entry>Resolve QName via prefix to namespace and registry</entry><entry>Access correct type definition</entry></row>
+              <row><entry>Recursive expansion</entry><entry>Continue until primitives reached</entry><entry>Flattened structure</entry></row>
+              <row><entry>Namespace preservation</entry><entry>Retain original prefix in metadata (see 6.4)</entry><entry>Traceability retained</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_type_circular"><title>6.3 Circular Reference Detection</title>
+        <para>Circular type references (A references B, B references A) MUST be detected and handled.</para>
+        <table xml:id="xsd_table_circular_detection">
+          <title>Circular Reference Handling</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>Aspect</entry><entry>Mechanism</entry><entry>Condition</entry><entry>Action</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Tracking</entry><entry>Maintain expansion call stack</entry><entry>Type appears twice</entry><entry>Mark circular</entry></row>
+              <row><entry>Depth limit</entry><entry>Max depth = 10</entry><entry>Depth exceeded</entry><entry>Treat as circular to prevent runaway expansion</entry></row>
+              <row><entry>Schema output</entry><entry>Replace nested object</entry><entry>Circular detected</entry><entry><code>{"type":"object","x-onvif-circular-ref":true}</code></entry></row>
+              <row><entry>Continuation</entry><entry>Stop deeper recursion</entry><entry>Circular encountered</entry><entry>Return current partial schema</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para>Example:</para>
+        <programlisting language="json">{
+  "type": "object",
+  "properties": {
+    "Parent": {
+      "type": "object",
+      "x-onvif-circular-ref": true
+    }
+  }
+}</programlisting>
+      </section>
+    </section>
+    <section xml:id="xsd_type_metadata"><title>6.4 Type Metadata Preservation</title>
+      <para><emphasis role="bold">Purpose</emphasis>: Preserve XSD type names in JSON Schema to maintain semantic meaning and readability.</para>
+      <para>Implementations MUST add metadata fields to preserve original type information:</para>
+      <table xml:id="xsd_table_type_metadata_rules">
+        <title>Type Metadata Fields</title>
+        <tgroup cols="4">
+          <thead>
+            <row><entry>Field</entry><entry>Source</entry><entry>Applicability</entry><entry>Notes</entry></row>
+          </thead>
+          <tbody>
+            <row><entry><code>title</code></entry><entry>Local name (drop prefix)</entry><entry>All complex &amp; simple named types</entry><entry>Human-readable name</entry></row>
+            <row><entry><code>x-onvif-type</code></entry><entry>Full QName (prefix:name)</entry><entry>All complex &amp; simple named types</entry><entry>Enables precise type tracking</entry></row>
+            <row><entry>(omit)</entry><entry>Primitives (e.g. xs:int)</entry><entry>Primitive types</entry><entry>No metadata added</entry></row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para><emphasis role="bold">Application Rules</emphasis>:</para>
+      <table xml:id="xsd_table_type_metadata_application">
+        <title>Metadata Application Rules</title>
+        <tgroup cols="3">
+          <thead>
+            <row><entry>Rule</entry><entry>Description</entry><entry>Example Impact</entry></row>
+          </thead>
+          <tbody>
+            <row><entry>No override</entry><entry>Do not overwrite if field already present</entry><entry>Existing <code>title</code> kept</entry></row>
+            <row><entry>Nested expansion</entry><entry>Apply to each nested named type</entry><entry><code>Vector2D</code> inside <code>PTZVector</code> receives metadata</entry></row>
+            <row><entry>Prefix retention</entry><entry>Keep original namespace prefix in <code>x-onvif-type</code></entry><entry><code>tt:PTZVector</code></entry></row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>Example - Complex Type:</para>
+      <programlisting language="json">{
+  "type": "object",
+  "title": "PTZVector",
+  "x-onvif-type": "tt:PTZVector",
+  "properties": {
+    "PanTilt": {
+      "type": "object",
+      "title": "Vector2D",
+      "x-onvif-type": "tt:Vector2D",
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}}
+    },
+    "Zoom": {
+      "type": "object",
+      "title": "Vector1D",
+      "x-onvif-type": "tt:Vector1D",
+      "properties": {"x": {"type": "number"}}
+    }
+  },
+  "required": ["PanTilt"]
+}</programlisting>
+      <para>Example - Simple Type Restriction:</para>
+      <programlisting language="json">{
+  "type": "string",
+  "title": "ReferenceToken",
+  "x-onvif-type": "tt:ReferenceToken",
+  "maxLength": 64
+}</programlisting>
+    </section>
+    <section xml:id="xsd_validation"><title>7. Validation Rules</title>
+      <section xml:id="xsd_validation_required_optional"><title>7.1 Required vs Optional Elements &amp; Attributes</title>
+        <para>XSD uses <code>minOccurs</code> (elements) and <code>use</code> (attributes) to indicate requiredness. These MUST be mapped to JSON Schema <code>required</code> array entries.</para>
+        <table xml:id="xsd_table_required_optional">
+          <title>Required vs Optional Mapping</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>XSD Construct</entry><entry>Condition</entry><entry>JSON Schema Representation</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Element</entry><entry><code>minOccurs="0"</code></entry><entry>Property NOT listed in <code>required</code></entry><entry>Optional element</entry></row>
+              <row><entry>Element</entry><entry><code>minOccurs</code> omitted OR <code>minOccurs="1"</code></entry><entry>Property name added to <code>required</code></entry><entry>Mandatory element</entry></row>
+              <row><entry>Attribute</entry><entry><code>use="optional"</code> or omitted</entry><entry>Property NOT listed in <code>required</code></entry><entry>Optional attribute</entry></row>
+              <row><entry>Attribute</entry><entry><code>use="required"</code></entry><entry>Property name added to <code>required</code></entry><entry>Mandatory attribute</entry></row>
+              <row><entry>Element</entry><entry><code>minOccurs&gt;1</code></entry><entry>Property name added; array may get <code>minItems</code></entry><entry>Minimum repeats enforced</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_validation_nillable"><title>7.2 Nillable Elements</title>
+        <para>XSD elements marked <code>nillable="true"</code> allow explicit NULL via <code>xsi:nil="true"</code>. In JSON Schema this MUST be represented as permitting <code>null</code> value in addition to the normal type.</para>
+        <table xml:id="xsd_table_nillable">
+          <title>Nillable Mapping Rules</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>XSD Attribute</entry><entry>JSON Schema Technique</entry><entry>Result Schema Fragment</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>nillable="true"</code></entry><entry><code>anyOf</code> combining real type + null</entry><entry><code>{"anyOf":[{"type":"string"},{"type":"null"}]}</code></entry><entry>Example for string type</entry></row>
+              <row><entry><code>nillable="false"</code> or omitted</entry><entry>Use normal mapping</entry><entry><code>{"type":"string"}</code></entry><entry>No null allowed</entry></row>
+              <row><entry>Complex type nillable</entry><entry>Wrap object schema in <code>anyOf</code> with <code>{"type":"null"}</code></entry><entry><code>{"anyOf":[{"type":"object","properties":{...}},{"type":"null"}]}</code></entry><entry>Preserves structure when non-null</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para>Example:</para>
+        <programlisting language="json">{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {"Token": {"type": "string"}},
+      "required": ["Token"]
+    },
+    {"type": "null"}
+  ]
+}</programlisting>
+      </section>
+      <section xml:id="xsd_validation_default"><title>7.3 Default Values</title>
+        <para>XSD <code>default</code> attribute supplies a value when absent. JSON Schema does not apply defaults during validation but MAY include a <code>default</code> field for tooling. Implementations MUST copy default values verbatim.</para>
+        <table xml:id="xsd_table_default_values">
+          <title>Default Value Mapping</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>XSD Construct</entry><entry>Example</entry><entry>JSON Schema Field</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Attribute with default</entry><entry><code>&lt;xs:attribute name="Mode" type="xs:string" default="AUTO"/></code></entry><entry><code>"default": "AUTO"</code></entry><entry>Property remains optional unless <code>use="required"</code></entry></row>
+              <row><entry>Element with default</entry><entry><code>&lt;xs:element name="Enabled" type="xs:boolean" default="true"/></code></entry><entry><code>"default": true</code></entry><entry>Will not auto-inject; consumer logic applies</entry></row>
+              <row><entry>Default + required</entry><entry><code>use="required" default="X"</code></entry><entry>Include in <code>required</code> AND keep <code>default</code></entry><entry>Default still informative</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_validation_fixed"><title>7.4 Fixed Values</title>
+        <para>XSD <code>fixed</code> attribute enforces a constant value. MUST map to JSON Schema <code>const</code> keyword.</para>
+        <table xml:id="xsd_table_fixed_values">
+          <title>Fixed Value Mapping</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>XSD Construct</entry><entry>Example</entry><entry>JSON Schema Field</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Attribute with fixed</entry><entry><code>&lt;xs:attribute name="Version" type="xs:string" fixed="2.0"/></code></entry><entry><code>"const": "2.0"</code></entry><entry>Value MUST match exactly</entry></row>
+              <row><entry>Element with fixed</entry><entry><code>&lt;xs:element name="ProfileType" type="xs:string" fixed="LIVE"/></code></entry><entry><code>"const": "LIVE"</code></entry><entry>No other values allowed</entry></row>
+              <row><entry>Fixed + enumeration</entry><entry>One enumeration value matches fixed</entry><entry>Prefer <code>const</code></entry><entry>Const is stricter and clearer</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section xml:id="xsd_error_handling"><title>8. Error Handling</title>
+      <section xml:id="xsd_error_unknown_type"><title>8.1 Unknown Type References</title>
+        <para>If a QName cannot be resolved in any loaded schema, the implementation MUST log an error and abort conversion of the parent type.</para>
+        <table xml:id="xsd_table_unknown_types">
+          <title>Unknown Type Handling</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>Condition</entry><entry>Detection</entry><entry>Action</entry><entry>Impact</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>QName prefix missing</entry><entry>Prefix not in namespace map</entry><entry>Error: "Unknown namespace prefix"</entry><entry>Stop current type expansion</entry></row>
+              <row><entry>Local name not found</entry><entry>No matching type with local name</entry><entry>Error: "Type not found"</entry><entry>Abort parent type</entry></row>
+              <row><entry>Ambiguous resolution</entry><entry>Multiple matches across schemas</entry><entry>Error: "Ambiguous type reference"</entry><entry>Abort conversion</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_error_unsupported"><title>8.2 Unsupported XSD Features</title>
+        <para>Rarely used XSD constructs (e.g., <code>xs:key</code>, <code>xs:notation</code>) are not mapped. Their presence MUST trigger a controlled error.</para>
+        <table xml:id="xsd_table_unsupported_features">
+          <title>Unsupported Feature Handling</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>Feature</entry><entry>Example</entry><entry>Action</entry><entry>Notes</entry></row>
+            </thead>
+            <tbody>
+              <row><entry><code>xs:key</code></entry><entry>Identity constraint</entry><entry>Log error; omit mapping</entry><entry>No JSON Schema equivalent</entry></row>
+              <row><entry><code>xs:keyref</code></entry><entry>Reference constraint</entry><entry>Log error; omit mapping</entry><entry>Referential integrity not supported</entry></row>
+              <row><entry><code>xs:assert</code></entry><entry>XPath-based constraint</entry><entry>Log error; abort type</entry><entry>Draft 7 lacks assertion support</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="xsd_error_invalid"><title>8.3 Invalid Schema Structures</title>
+        <para>Structural invalidity (malformed XML, contradictory constraints) MUST cause immediate termination.</para>
+        <table xml:id="xsd_table_invalid_structures">
+          <title>Invalid Structure Handling</title>
+          <tgroup cols="4">
+            <thead>
+              <row><entry>Condition</entry><entry>Example</entry><entry>Action</entry><entry>Output</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>Malformed XML</entry><entry>Unclosed tag</entry><entry>Abort process</entry><entry>No JSON produced</entry></row>
+              <row><entry>Conflicting occurrence</entry><entry><code>minOccurs=2</code>, <code>maxOccurs=1</code></entry><entry>Error; abort element</entry><entry>Parent type aborted</entry></row>
+              <row><entry>Infinite recursion potential</entry><entry>Depth &gt; 10 without cycle</entry><entry>Treat as circular</entry><entry>Emit circular marker</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section xml:id="xsd_conformance"><title>9. Conformance Requirements</title>
+      <para>Implementations MUST meet all requirements below to claim conformance. Each requirement maps to a section defining its rules.</para>
+      <table xml:id="xsd_table_conformance">
+        <title>XSD Mapping Conformance Checklist</title>
+        <tgroup cols="4">
+          <thead>
+            <row><entry>#</entry><entry>Requirement</entry><entry>Section</entry><entry>Verification</entry></row>
+          </thead>
+          <tbody>
+            <row><entry>1</entry><entry>Map all primitive types with correct JSON Schema type/format</entry><entry>2.1-2.6</entry><entry>Inspect generated primitives</entry></row>
+            <row><entry>2</entry><entry>Expand all complex types inline (no $ref)</entry><entry>6.1</entry><entry>Search for absence of "$ref"</entry></row>
+            <row><entry>3</entry><entry>Apply requiredness using minOccurs/use</entry><entry>7.1</entry><entry>Check required arrays</entry></row>
+            <row><entry>4</entry><entry>Represent choices via anyOf variants</entry><entry>3.4</entry><entry>Verify anyOf presence</entry></row>
+            <row><entry>5</entry><entry>Handle arrays with minItems/maxItems rules</entry><entry>5.1-5.2</entry><entry>Compare cardinality values</entry></row>
+            <row><entry>6</entry><entry>Include metadata fields title and x-onvif-type where applicable</entry><entry>6.4</entry><entry>Check object schemas for metadata</entry></row>
+            <row><entry>7</entry><entry>Detect circular references and mark appropriately</entry><entry>6.3</entry><entry>Find x-onvif-circular-ref flags</entry></row>
+            <row><entry>8</entry><entry>Map enumerations to enum arrays</entry><entry>4.1</entry><entry>Check enum presence</entry></row>
+            <row><entry>9</entry><entry>Map patterns and length facets correctly</entry><entry>4.2</entry><entry>Validate pattern/maxLength fields</entry></row>
+            <row><entry>10</entry><entry>Map numeric range facets to min/max fields</entry><entry>4.4</entry><entry>Validate minimum/maximum</entry></row>
+            <row><entry>11</entry><entry>Support union types with anyOf</entry><entry>4.5</entry><entry>Check anyOf usage</entry></row>
+            <row><entry>12</entry><entry>Represent nillable elements permitting null</entry><entry>7.2</entry><entry>Check anyOf null inclusion</entry></row>
+            <row><entry>13</entry><entry>Copy default values via default field</entry><entry>7.3</entry><entry>Inspect default fields</entry></row>
+            <row><entry>14</entry><entry>Enforce fixed values with const</entry><entry>7.4</entry><entry>Check const fields</entry></row>
+            <row><entry>15</entry><entry>Error on unsupported or invalid features</entry><entry>8.2-8.3</entry><entry>Review error log</entry></row>
+          </tbody>
+        </tgroup>
+      </table>
     </section>
   </chapter>
-  <chapter xml:id="_Ref744182239">
-    <title>XSD to JSON Schema Type Mapping Specification</title>
-    <section>
-      <title>Purpose and scope</title>
-      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting XML Schema Definition (XSD) types into JSON Schema (Draft 7) type definitions.</para>
-      <para>This specification covers the conversion of XSD type definitions to JSON Schema, including:</para>
-      <itemizedlist>
-        <listitem>
-          <para>Primitive type mapping (strings, numbers, booleans, dates, binary)</para>
-        </listitem>
-        <listitem>
-          <para>Simple type restrictions (enumerations, patterns, ranges)</para>
-        </listitem>
-        <listitem>
-          <para>Complex type structures (sequences, choices, attributes)</para>
-        </listitem>
-        <listitem>
-          <para>Type inheritance (extension and restriction)</para>
-        </listitem>
-        <listitem>
-          <para>Array handling and cardinality</para>
-        </listitem>
-        <listitem>
-          <para>Circular reference detection and handling</para>
-        </listitem>
-      </itemizedlist>
+  <!-- Chapter: WSDL to MCP Tools Specification -->
+  <chapter xml:id="wsdl_mcp_tools_spec">
+    <title>WSDL to MCP Tools Specification</title>
+    <section xml:id="wsdl_doc_purpose"><title>Document Purpose</title>
+      <para>This specification defines the <emphasis role="bold">mandatory</emphasis> and <emphasis role="bold">complete</emphasis> mapping rules for converting WSDL (Web Services Description Language) service definitions into Model Context Protocol (MCP) tool descriptors.</para>
+      <para><emphasis role="bold">Conformance</emphasis>: All implementations claiming conformance to this specification MUST follow these rules exactly. Any deviation will produce incompatible output.</para>
+      <para><emphasis role="bold">Version</emphasis>: 2.0</para>
+      <para><emphasis role="bold">Date</emphasis>: November 13, 2025</para>
+      <para><emphasis role="bold">Scope</emphasis>: WSDL service operations to MCP tool conversion</para>
+      <para><emphasis role="bold">Status</emphasis>: Prescriptive (all implementations MUST conform)</para>
     </section>
-    <section>
-      <title>XSD Primitive Type Mapping</title>
+    <section xml:id="wsdl_doc_history"><title>Document History</title>
+      <informaltable>
+        <tgroup cols="3">
+          <thead>
+            <row><entry>Version</entry><entry>Date</entry><entry>Changes</entry></row>
+          </thead>
+          <tbody>
+            <row><entry>2.0</entry><entry>2025-11-13</entry><entry>Split from ONVIF_TO_MCP_CONVERSION_SPEC v1.3; focus on WSDL→MCP mapping only</entry></row>
+            <row><entry>1.3</entry><entry>2025-11-12</entry><entry>Made specification prescriptive; removed all optional variations</entry></row>
+            <row><entry>1.0</entry><entry>2025-11-11</entry><entry>Initial specification</entry></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
     </section>
-    <section>
-      <title>XSD Simple Type Mapping</title>
+    <section xml:id="wsdl_overview"><title>1. Overview</title>
+      <section xml:id="wsdl_overview_purpose"><title>1.1 Purpose and Scope</title>
+        <para>This specification covers the conversion of WSDL service definitions to MCP tool descriptors, including:</para>
+        <itemizedlist>
+          <listitem><para>MCP tool structure and required fields</para></listitem>
+          <listitem><para>Operation discovery from WSDL portType definitions</para></listitem>
+          <listitem><para>Documentation extraction from WSDL annotations</para></listitem>
+          <listitem><para>Input/output message mapping to JSON Schema</para></listitem>
+          <listitem><para>Tool naming conventions</para></listitem>
+          <listitem><para>Metadata preservation</para></listitem>
+        </itemizedlist>
+        <para><emphasis role="bold">Dependency</emphasis>: Relies on the <code>XSD_TO_JSON_SCHEMA_SPEC.md</code> for converting XSD type definitions referenced by WSDL messages.</para>
+      </section>
+      <section xml:id="wsdl_overview_wsdl_structure"><title>1.2 WSDL Structure</title>
+        <para>WSDL files define web service interfaces with:</para>
+        <itemizedlist>
+          <listitem><para><emphasis role="bold">Types</emphasis>: XSD type definitions</para></listitem>
+          <listitem><para><emphasis role="bold">Messages</emphasis>: Input/output message definitions</para></listitem>
+          <listitem><para><emphasis role="bold">PortType</emphasis>: Abstract operations (converted to MCP tools)</para></listitem>
+          <listitem><para><emphasis role="bold">Binding</emphasis>: Protocol details (SOAP, HTTP)</para></listitem>
+          <listitem><para><emphasis role="bold">Service</emphasis>: Endpoint addresses</para></listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="wsdl_overview_mcp_descriptor"><title>1.3 MCP Tool Descriptor</title>
+        <para>Each MCP tool is a JSON object describing a single callable operation with structured input and output schemas.</para>
+      </section>
     </section>
-    <section>
-      <title>XSD Complex Type Mapping</title>
+    <section xml:id="wsdl_tool_structure"><title>2. MCP Tool Structure</title>
+      <section xml:id="wsdl_tool_structure_required"><title>2.1 Required Fields</title>
+        <para>Each MCP tool MUST define all of the following fields:</para>
+        <table xml:id="wsdl_table_required_fields">
+          <title>Required MCP Tool Fields</title>
+          <tgroup cols="4">
+            <thead><row><entry>Field</entry><entry>Type</entry><entry>Example</entry><entry>Notes</entry></row></thead>
+            <tbody>
+              <row><entry>name</entry><entry>string</entry><entry><code>onvif.ptz.AbsoluteMove</code></entry><entry>Unique identifier</entry></row>
+              <row><entry>service</entry><entry>string</entry><entry><code>PTZService</code></entry><entry>Service class name</entry></row>
+              <row><entry>wsdl</entry><entry>string (path)</entry><entry><code>wsdl/ver20/ptz/wsdl/ptz.wsdl</code></entry><entry>Relative source path</entry></row>
+              <row><entry>operation</entry><entry>string</entry><entry><code>AbsoluteMove</code></entry><entry>WSDL operation name</entry></row>
+              <row><entry>description</entry><entry>string</entry><entry>Operation to move pan,tilt or zoom...</entry><entry>Normalized, single-line</entry></row>
+              <row><entry>input_schema</entry><entry>object</entry><entry><code>{"type":"object",...}</code></entry><entry>Expanded request schema</entry></row>
+              <row><entry>output_schema</entry><entry>object</entry><entry><code>{"type":"object",...}</code></entry><entry>Expanded response schema</entry></row>
+              <row><entry>source</entry><entry>string</entry><entry><code>full-xsd</code></entry><entry>Fixed value</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_tool_structure_fields"><title>2.2 Field Descriptions</title>
+        <para>Detailed rules for each field:</para>
+        <table xml:id="wsdl_table_field_descriptions">
+          <title>Field Description Rules</title>
+          <tgroup cols="4">
+            <thead><row><entry>Field</entry><entry>Rule</entry><entry>Extraction Source</entry><entry>Validation</entry></row></thead>
+            <tbody>
+              <row><entry>name</entry><entry>Format: <code>onvif.&lt;service&gt;.&lt;operation&gt;</code></entry><entry>Service map + operation</entry><entry>Pattern match</entry></row>
+              <row><entry>service</entry><entry>Ends with Service</entry><entry>Auto-detected</entry><entry>Suffix check</entry></row>
+              <row><entry>wsdl</entry><entry>Relative path</entry><entry>Input parameter</entry><entry>No leading slash</entry></row>
+              <row><entry>operation</entry><entry>Exact case preserved</entry><entry><code>&lt;wsdl:operation name="..."/></code></entry><entry>Case-sensitive compare</entry></row>
+              <row><entry>description</entry><entry>Whitespace normalized</entry><entry><code>&lt;wsdl:documentation></code></entry><entry>No newlines / tabs</entry></row>
+              <row><entry>input_schema</entry><entry>Inline expansion</entry><entry>WSDL input message element</entry><entry>No <code>$ref</code></entry></row>
+              <row><entry>output_schema</entry><entry>Inline expansion</entry><entry>WSDL output message element</entry><entry>No <code>$ref</code></entry></row>
+              <row><entry>source</entry><entry>Literal <code>"full-xsd"</code></entry><entry>Fixed</entry><entry>Exact match</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_tool_structure_example"><title>2.3 Complete Example</title>
+        <programlisting language="json">{
+  "name": "onvif.ptz.AbsoluteMove",
+  "service": "PTZService",
+  "wsdl": "wsdl/ver20/ptz/wsdl/ptz.wsdl",
+  "operation": "AbsoluteMove",
+  "description": "Operation to move pan,tilt or zoom to a absolute destination.",
+  "input_schema": {"type":"object","properties":{}},
+  "output_schema": {"type":"object","properties":{}},
+  "source": "full-xsd"
+}</programlisting>
+      </section>
     </section>
-    <section>
-      <title>Array Handling</title>
+    <section xml:id="wsdl_operation_discovery"><title>3. WSDL Operation Discovery</title>
+      <section xml:id="wsdl_operation_porttype"><title>3.1 PortType Location</title>
+        <para>Operations are defined within <code>&lt;wsdl:portType></code> elements.</para>
+        <programlisting language="xml">&lt;wsdl:portType name="PTZ">
+  &lt;wsdl:operation name="AbsoluteMove">...</programlisting>
+      </section>
+      <section xml:id="wsdl_operation_extraction"><title>3.2 Operation Extraction Process</title>
+        <table xml:id="wsdl_table_operation_extraction">
+          <title>Operation Extraction Steps</title>
+          <tgroup cols="4">
+            <thead><row><entry>Step</entry><entry>Action</entry><entry>Output</entry><entry>Notes</entry></row></thead>
+            <tbody>
+              <row><entry>1</entry><entry>Extract operation name</entry><entry>String</entry><entry>Case preserved</entry></row>
+              <row><entry>2</entry><entry>Extract documentation</entry><entry>Normalized text</entry><entry>Fallback if absent</entry></row>
+              <row><entry>3</entry><entry>Resolve input message</entry><entry>Message QName</entry><entry>From &lt;wsdl:input></entry></row>
+              <row><entry>4</entry><entry>Resolve output message</entry><entry>Message QName</entry><entry>From &lt;wsdl:output></entry></row>
+              <row><entry>5</entry><entry>Convert messages</entry><entry>JSON Schemas</entry><entry>Inline expansion</entry></row>
+              <row><entry>6</entry><entry>Construct tool object</entry><entry>JSON object</entry><entry>Add all fields</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
     </section>
-    <section>
-      <title>Type References and Expansion</title>
+    <section xml:id="wsdl_documentation_extraction"><title>4. Documentation Extraction</title>
+      <section xml:id="wsdl_doc_source"><title>4.1 Source Location</title>
+        <para>Documentation MUST be extracted from <code>&lt;wsdl:documentation></code> elements within <code>&lt;wsdl:operation></code>.</para>
+      </section>
+      <section xml:id="wsdl_doc_process"><title>4.2 Extraction Process</title>
+        <table xml:id="wsdl_table_doc_extraction">
+          <title>Documentation Extraction Steps</title>
+          <tgroup cols="4">
+            <thead><row><entry>Step</entry><entry>Input</entry><entry>Transformation</entry><entry>Result</entry></row></thead>
+            <tbody>
+              <row><entry>1</entry><entry>Element node</entry><entry>Locate child</entry><entry>Node found</entry></row>
+              <row><entry>2</entry><entry>Raw text</entry><entry>Whitespace normalize</entry><entry>Single-line string</entry></row>
+              <row><entry>3</entry><entry>Text</entry><entry>Trim</entry><entry>Clean description</entry></row>
+              <row><entry>4</entry><entry>Result</entry><entry>Validate non-empty</entry><entry>Accepted or fallback</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_doc_fallback"><title>4.3 Fallback Description</title>
+        <para>Format: <code>"ONVIF operation {OperationName}"</code> used when documentation absent.</para>
+      </section>
     </section>
-    <section>
-      <title>Validation rules</title>
+    <section xml:id="wsdl_message_conversion"><title>5. Message to Schema Conversion</title>
+      <section xml:id="wsdl_message_structure"><title>5.1 WSDL Message Structure</title>
+        <para>Messages reference XSD elements via <code>&lt;wsdl:part element="prefix:ElementName"/></code>.</para>
+      </section>
+      <section xml:id="wsdl_message_element_resolution"><title>5.2 Element Resolution</title>
+        <para>Locate XSD element then expand its type inline.</para>
+      </section>
+      <section xml:id="wsdl_message_process"><title>5.3 Conversion Process</title>
+        <table xml:id="wsdl_table_message_conversion">
+          <title>Message Conversion Steps</title>
+          <tgroup cols="4">
+            <thead><row><entry>Step</entry><entry>Action</entry><entry>Result</entry><entry>Notes</entry></row></thead>
+            <tbody>
+              <row><entry>1</entry><entry>Resolve message</entry><entry>WSDL message node</entry><entry>Input or output</entry></row>
+              <row><entry>2</entry><entry>Extract element QName</entry><entry>QName</entry><entry>From part attribute</entry></row>
+              <row><entry>3</entry><entry>Find XSD element</entry><entry>Element node</entry><entry>Lookup in schemas</entry></row>
+              <row><entry>4</entry><entry>Expand type</entry><entry>JSON Schema</entry><entry>Inline conversion</entry></row>
+              <row><entry>5</entry><entry>Attach</entry><entry>Assign to tool field</entry><entry>input/output_schema</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_message_empty"><title>5.4 Empty Responses</title>
+        <para>Empty complexType sequence maps to <code>{"type":"object","properties":{}}</code>.</para>
+      </section>
+      <section xml:id="wsdl_message_type_expansion"><title>5.5 Type Expansion</title>
+        <para>All type references expanded inline, no <code>$ref</code>, circular detection per XSD spec Section 6.3.</para>
+      </section>
     </section>
-    <section>
-      <title>Error handling</title>
+    <section xml:id="wsdl_naming_convention"><title>6. Tool Naming Convention</title>
+      <section xml:id="wsdl_naming_format"><title>6.1 Name Format</title>
+        <para>Pattern: <code>onvif.&lt;service-name&gt;.&lt;operation&gt;</code></para>
+      </section>
+      <section xml:id="wsdl_naming_service_mapping"><title>6.2 Service Name Mapping</title>
+        <table xml:id="wsdl_table_service_name_mapping">
+          <title>Service Name Mapping</title>
+          <tgroup cols="3">
+            <thead><row><entry>Service Type</entry><entry>Service Name</entry><entry>Example Tool</entry></row></thead>
+            <tbody>
+              <row><entry>PTZ Service</entry><entry>ptz</entry><entry><code>onvif.ptz.AbsoluteMove</code></entry></row>
+              <row><entry>Device Management</entry><entry>device</entry><entry><code>onvif.device.GetDeviceInformation</code></entry></row>
+              <row><entry>Media Service</entry><entry>media</entry><entry><code>onvif.media.GetProfiles</code></entry></row>
+              <row><entry>Imaging Service</entry><entry>imaging</entry><entry><code>onvif.imaging.GetImagingSettings</code></entry></row>
+              <row><entry>Event Service</entry><entry>event</entry><entry><code>onvif.event.Subscribe</code></entry></row>
+              <row><entry>Analytics Service</entry><entry>analytics</entry><entry><code>onvif.analytics.GetSupportedAnalytics</code></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_naming_rules"><title>6.3 Naming Rules</title>
+        <table xml:id="wsdl_table_naming_rules">
+          <title>Naming Rules</title>
+          <tgroup cols="4">
+            <thead><row><entry>Rule</entry><entry>Condition</entry><entry>Enforcement</entry><entry>Example</entry></row></thead>
+            <tbody>
+              <row><entry>Service lowercase</entry><entry>Always</entry><entry>Convert service component to lowercase</entry><entry><code>ptz</code></entry></row>
+              <row><entry>Operation case preserved</entry><entry>Always</entry><entry>No transformation</entry><entry><code>AbsoluteMove</code></entry></row>
+              <row><entry>Prefix constant</entry><entry>Always</entry><entry>Prepend <code>onvif.</code></entry><entry><code>onvif.ptz.AbsoluteMove</code></entry></row>
+              <row><entry>Uniqueness</entry><entry>Across all tools</entry><entry>Assert not already used</entry><entry>Global check</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_naming_examples"><title>6.4 Examples</title>
+        <programlisting language="text">onvif.ptz.AbsoluteMove
+onvif.ptz.RelativeMove
+onvif.device.GetDeviceInformation
+onvif.media.GetProfiles
+onvif.imaging.GetImagingSettings</programlisting>
+      </section>
+    </section>
+    <section xml:id="wsdl_metadata"><title>7. Metadata Annotations</title>
+      <section xml:id="wsdl_metadata_optional"><title>7.1 Optional Metadata Fields</title>
+        <para>Implementations MAY include debugging metadata fields in JSON Schema objects (e.g. <code>x-onvif-type</code>, <code>x-onvif-namespace</code>).</para>
+      </section>
+      <section xml:id="wsdl_metadata_doc"><title>7.2 XSD Documentation Preservation</title>
+        <para>Extract <code>&lt;xs:documentation></code> from referenced types as <code>description</code> when available.</para>
+      </section>
+    </section>
+    <section xml:id="wsdl_service_auto_detection"><title>8. Service Auto-Detection</title>
+      <section xml:id="wsdl_service_identification"><title>8.1 Service Class Identification</title>
+        <para>Determine service via explicit config, WSDL analysis, or file path pattern.</para>
+      </section>
+      <section xml:id="wsdl_service_common"><title>8.2 Common ONVIF Services</title>
+        <table xml:id="wsdl_table_common_services">
+          <title>Common Service Class Names</title>
+          <tgroup cols="2">
+            <thead><row><entry>File Pattern</entry><entry>Service Class</entry></row></thead>
+            <tbody>
+              <row><entry><code>**/ptz.wsdl</code></entry><entry>PTZService</entry></row>
+              <row><entry><code>**/devicemgmt.wsdl</code></entry><entry>DeviceService</entry></row>
+              <row><entry><code>**/media.wsdl</code></entry><entry>MediaService</entry></row>
+              <row><entry><code>**/media2.wsdl</code></entry><entry>Media2Service</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="wsdl_service_namespace"><title>8.3 Namespace Prefix Mapping</title>
+        <table xml:id="wsdl_table_namespace_prefixes">
+          <title>Namespace Prefix Mapping</title>
+          <tgroup cols="2">
+            <thead><row><entry>Prefix</entry><entry>Service</entry></row></thead>
+            <tbody>
+              <row><entry>tptz</entry><entry>PTZ Service</entry></row>
+              <row><entry>tds</entry><entry>Device Service</entry></row>
+              <row><entry>trt</entry><entry>Media Service (v1)</entry></row>
+              <row><entry>tr2</entry><entry>Media Service (v2)</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+    <section xml:id="wsdl_error_handling"><title>9. Error Handling</title>
+      <section xml:id="wsdl_error_missing_ops"><title>9.1 Missing WSDL Operations</title>
+        <para>No operations → log warning and return empty array.</para>
+      </section>
+      <section xml:id="wsdl_error_missing_message"><title>9.2 Missing Message Definitions</title>
+        <para>Log error and skip operation if message undefined.</para>
+      </section>
+      <section xml:id="wsdl_error_missing_element"><title>9.3 Missing Element Definitions</title>
+        <para>Log error and skip operation if element undefined.</para>
+      </section>
+      <section xml:id="wsdl_error_invalid_wsdl"><title>9.4 Invalid WSDL Structure</title>
+        <para>Malformed WSDL → abort generation immediately.</para>
+      </section>
+    </section>
+    <section xml:id="wsdl_conformance"><title>10. Conformance Requirements</title>
+      <para>An implementation conforming to this specification MUST satisfy all listed requirements.</para>
+      <table xml:id="wsdl_table_conformance">
+        <title>WSDL→MCP Conformance Checklist</title>
+        <tgroup cols="4">
+          <thead><row><entry>#</entry><entry>Requirement</entry><entry>Section</entry><entry>Verification</entry></row></thead>
+          <tbody>
+            <row><entry>1</entry><entry>Generate all 8 required fields</entry><entry>2.1</entry><entry>Field count check</entry></row>
+            <row><entry>2</entry><entry>Name format compliance</entry><entry>6.1</entry><entry>Regex match</entry></row>
+            <row><entry>3</entry><entry>Documentation extraction or fallback</entry><entry>4.1-4.3</entry><entry>Non-empty description</entry></row>
+            <row><entry>4</entry><entry>Inline type expansion (no $ref)</entry><entry>5.5</entry><entry>Search absence of "$ref"</entry></row>
+            <row><entry>5</entry><entry>Empty responses mapped to empty object</entry><entry>5.4</entry><entry>Schema shape check</entry></row>
+            <row><entry>6</entry><entry>Relative WSDL path</entry><entry>2.2</entry><entry>No leading slash</entry></row>
+            <row><entry>7</entry><entry>Error handling rules applied</entry><entry>9</entry><entry>Log review</entry></row>
+          </tbody>
+        </tgroup>
+      </table>
     </section>
   </chapter>
-  <chapter>
-    <title>MCP Format</title>
-    <section>
-      <title>Purpose and scope</title>
-      <para>This specification covers the conversion of WSDL service definitions to MCP tool descriptors, including:</para>
-      <itemizedlist>
-        <listitem>
-          <para>MCP tool structure and required fields</para>
-        </listitem>
-        <listitem>
-          <para>Operation discovery from WSDL portType definitions</para>
-        </listitem>
-        <listitem>
-          <para>Documentation extraction from WSDL annotations</para>
-        </listitem>
-        <listitem>
-          <para>Input/output message mapping to JSON Schema</para>
-        </listitem>
-        <listitem>
-          <para>Tool naming conventions</para>
-        </listitem>
-        <listitem>
-          <para>Metadata preservation</para>
-        </listitem>
-      </itemizedlist>
-      <para>This specification relies on <xref linkend="_Ref744182239"/> for converting XSD type definitions in WSDL messages to JSON Schema.</para>
-    </section>
-    <section>
-      <title>WSDL Structure</title>
-      <para>WSDL files define web service interfaces with:</para>
-      <itemizedlist>
-        <listitem>
-          <para><emphasis role="bold">Types</emphasis>: XSD type definitions</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Messages</emphasis>: Input/output message definitions</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">PortType</emphasis>: Abstract operations (what gets converted to MCP tools)</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Binding</emphasis>: Protocol details (SOAP, HTTP)</para>
-        </listitem>
-        <listitem>
-          <para><emphasis role="bold">Service</emphasis>: Endpoint addresses</para>
-        </listitem>
-      </itemizedlist>
-    </section>
-    <section>
-      <title>MCP Tool Descriptor</title>
-      <para>Each MCP tool is a JSON object that describes a single callable operation with structured input and output schemas.</para>
-    </section>
-    <section>
-      <title>MCP Tool Structure</title>
-      <section>
-        <title>Required Fields</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Field Descriptions</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>WSDL Operation Discovery</title>
-      <section>
-        <title>PortType Location</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Operation Extraction Process</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Documentation Extraction</title>
-      <section>
-        <title>Source Location</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Extraction Process</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Fallback Description</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Message to Schema Conversion</title>
-      <section>
-        <title>WSDL Message Structure</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Element Resolution</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Conversion Process</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Empty Responses</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Type Expansion</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Tool Naming Convention</title>
-      <section>
-        <title>Name Format</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Service Name Mapping</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Naming Rules</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Metadata Annotations</title>
-      <section>
-        <title>Optional Metadata Fields</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>XSD Documentation Preservation</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Service Auto-Detection</title>
-      <section>
-        <title>Service Class Identification</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Common ONVIF Services</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Namespace Prefix Mapping</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Error Handling</title>
-      <section>
-        <title>Missing WSDL Operations</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Missing Message Definitions</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Missing Element Definitions</title>
-        <para>...</para>
-      </section>
-      <section>
-        <title>Invalid WSDL Structure</title>
-        <para>...</para>
-      </section>
-    </section>
-    <section>
-      <title>Authentication and Authorization</title>
-      <para>This topic must be addressed.</para>
-    </section>
-  </chapter>
-  <appendix>
-    <title>XSD conversion examples</title>
-    <para>Lorem ipsum...</para>
-  </appendix>
-  <appendix>
-    <title>WSDL conversion examples</title>
-    <para>Lorem ipsum...</para>
-  </appendix>
-  <appendix role="revhistory">
-    <title>Revision History</title>
-    <para />
-  </appendix>
 </book>
