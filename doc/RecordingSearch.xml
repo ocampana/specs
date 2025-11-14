@@ -1435,7 +1435,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
             <para role="param">RecordingToken - optional [tt:RecordingReference]</para>
             <para role="text">Token for the recording to search.</para>
             <para role="param">TargetImageURI - optional [xs:anyURI]</para>
-            <para role="text">The URI of the detected target object image. This can be either: - a local image stored in the NPL Target Image repository (LocalStorage format), or - an external image provided by the client for image search or feature matching.</para>
+            <para role="text">The URI of the detected target object image. This can be either: - a local image stored in the Target Image repository (LocalStorage format), or - an external image provided by the client for image search or feature matching.</para>
             <para role="param">TargetImageData - optional [xs:base64Binary]</para>
             <para role="text">Base64-encoded target object image used for visual search.</para>
             <para role="param">MaxMatches - optional [xs:int]</para>
