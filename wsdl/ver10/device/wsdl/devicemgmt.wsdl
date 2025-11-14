@@ -158,9 +158,9 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:documentation>Indicates support for Stateful IPv6 DHCP.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="SNMPv3" type="xs:boolean">
+				<xs:attribute name="SNMP" type="xs:boolean">
 				    <xs:annotation>
-        							<xs:documentation>Indicates support for SNMPv3 Device Management Extension.</xs:documentation>
+        							<xs:documentation>Indicates support for SNMP Device Management Extension. Only SNMPv3 is supported.</xs:documentation>
     				</xs:annotation>
 				</xs:attribute>
 				<xs:anyAttribute processContents="lax"/>
@@ -2428,7 +2428,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			</xs:element>	 		
 			<!--===============================-->
 			<!--===============================-->
-			<!-- SNMPv3 Device Management Extension (Optional) -->
+			<!-- SNMP Device Management Extension (Optional) - Only SNMPv3 is supported -->
 			<xs:element name="GetSNMPConfiguration">
 				<xs:complexType>
 					<xs:sequence/>
@@ -2449,8 +2449,16 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			<xs:element name="SetSNMPConfiguration">
 				<xs:complexType>
 					<xs:sequence>
-						<!-- CHECK! Is this the correcft way of doing this in ONVIF? -->
-						<xs:element name="SNMPConfiguration" type="tt:SNMPConfiguration"/>
+						<xs:element name="Enabled" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="EngineID" type="xs:hexBinary" minOccurs="0"/>
+						<xs:element name="ListeningPort" type="xs:int" minOccurs="0"/>
+						<xs:element name="InitialUserName" type="xs:string" minOccurs="0"/>
+						<xs:element name="SecurityLevel" type="tt:SNMPSecurityLevel" minOccurs="0"/>
+						<xs:element name="AuthenticationProtocol" type="tt:SNMPAuthenticationProtocol" minOccurs="0"/>
+						<xs:element name="AuthenticationKey" type="tt:BinaryData" minOccurs="0"/>
+						<xs:element name="PrivacyProtocol" type="tt:SNMPPrivacyProtocol" minOccurs="0"/>
+						<xs:element name="PrivacyKey" type="tt:BinaryData" minOccurs="0"/>
+						<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -3691,12 +3699,12 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 		</wsdl:operation>
 
 		<wsdl:operation name="GetSNMPConfiguration">
-			<wsdl:documentation>Returns the current SNMPv3 service status, engine ID (RFC 3411), and configuration parameters, including supported authentication and privacy protocols as required in Core.xml. The response reflects the requirements for HMAC-SHA-256 (RFC 7860) or stronger for authentication, and CFB-AES-128 (RFC 3826) or stronger for privacy.</wsdl:documentation>
+			<wsdl:documentation>Returns the current SNMP service status, engine ID (RFC 3411), and configuration parameters, including supported authentication and privacy protocols as required in Core.xml. Only SNMPv3 is supported. The response reflects the requirements for HMAC-SHA-256 (RFC 7860) or stronger for authentication, and CFB-AES-128 (RFC 3826) or stronger for privacy.</wsdl:documentation>
 			<wsdl:input message="tds:GetSNMPConfigurationRequest"/>
 			<wsdl:output message="tds:GetSNMPConfigurationResponse"/>
 		</wsdl:operation>
 		<wsdl:operation name="SetSNMPConfiguration">
-			<wsdl:documentation>Enables or disables the SNMPv3 service and allows configuration of global SNMP parameters such as engine ID and listening port, in accordance with Core.xml. Only secure protocols as specified in Core.xml are accepted.</wsdl:documentation>
+			<wsdl:documentation>Enables or disables the SNMP service and allows configuration of global SNMP parameters such as engine ID and listening port, in accordance with Core.xml. Only SNMPv3 is supported. Only secure protocols as specified in Core.xml are accepted.</wsdl:documentation>
 			<wsdl:input message="tds:SetSNMPConfigurationRequest"/>
 			<wsdl:output message="tds:SetSNMPConfigurationResponse"/>
 		</wsdl:operation>
