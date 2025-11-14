@@ -3091,10 +3091,10 @@ onvif://www.onvif.org/name/ARV-453
                 </row>
                 <row>
                   <entry>
-                    <para>SNMPv3</para>
+                    <para>SNMP</para>
                   </entry>
                   <entry>
-                    <para>Indicates if the device supports SNMPv3 Device Management Extension with service configuration and initial user setup as specified in Section <xref linkend="s.snmpv3_extension"/>.</para>
+                    <para>Indicates if the device supports SNMP Device Management Extension with service configuration and initial user setup as specified in Section <xref linkend="s.snmp_extension"/>. </para>
                   </entry>
                 </row>
                 <row>
@@ -5425,28 +5425,28 @@ onvif://www.onvif.org/name/ARV-453
       </section>
     </section>
 
-  <section xml:id="s.snmpv3_extension">
-    <title>SNMPv3 Configuration (Optional)</title>
+  <section xml:id="s.snmp_extension">
+    <title>SNMP Configuration (Optional)</title>
     <para>
-      This section defines an optional extension to the Device Management Service for supporting Simple Network Management Protocol version 3 (SNMPv3) as specified in [RFC 3410] and related standards. Devices supporting this extension shall indicate this capability via the <literal>SNMPv3</literal> flag in the <literal>DeviceServiceCapabilities</literal> (see Section <xref linkend="_Ref468447902"/>).
+      This section defines an optional extension to the Device Management Service for supporting Simple Network Management Protocol version 3 (SNMPv3) as specified in [RFC 3410] and related standards. Devices supporting this extension shall indicate this capability via the <literal>SNMP</literal> flag in the <literal>DeviceServiceCapabilities</literal> (see Section <xref linkend="_Ref468447902"/>).
     </para>
     <para>
       Only SNMPv3 is within the scope of this extension.
     </para>
-    <section xml:id="s.snmpv3_service_control">
-      <title>SNMPv3 Service Control</title>
+    <section xml:id="s.snmp_service_control">
+      <title>SNMP Service Control</title>
       <para>
-        Devices supporting this extension shall provide the following operations for managing the SNMPv3 service itself.
+        Devices supporting this extension shall provide the following operations for managing the SNMP service itself.
       </para>
       <para>
-        The SNMPv3 service shall be disabled by default unless explicitly enabled by a Client. When disabled, the Device should not listen on the SNMP port, and attempts to query via SNMP should fail.
+        The SNMP service shall be disabled by default unless explicitly enabled by a Client. When disabled, the Device should not listen on the SNMP port, and attempts to query via SNMP should fail.
       </para>
 
       <section xml:id="op.GetSNMPConfiguration">
         <title>GetSNMPConfiguration</title>
         <para>
-          This operation is used by a Client to retrieve the current SNMPv3 service status and global configuration parameters from a Device.
-          A Device supporting the SNMPv3 extension shall implement this command.
+          This operation is used by a Client to retrieve the current SNMP service status and global configuration parameters from a Device.
+          A Device supporting the SNMP extension shall implement this command.
         </para>
         <variablelist role="op">
           <varlistentry>
@@ -5459,7 +5459,7 @@ onvif://www.onvif.org/name/ARV-453
             <term>response</term>
             <listitem>
               <para role="param">SNMPConfiguration [tt:SNMPConfiguration]</para>
-              <para role="text">The current SNMPv3 service configuration.</para>
+              <para role="text">The current SNMP service configuration.</para>
               <informaltable frame="all">
                 <tgroup cols="3">
                   <colspec colname="c1" colwidth="1*"/>
@@ -5476,7 +5476,7 @@ onvif://www.onvif.org/name/ARV-453
                     <row>
                       <entry>Enabled</entry>
                       <entry>xs:boolean</entry>
-                      <entry>Indicates if the SNMPv3 service is currently enabled on the Device.</entry>
+                      <entry>Indicates if the SNMP service is currently enabled on the Device.</entry>
                     </row>
                     <row>
                       <entry>EngineID</entry>
@@ -5489,7 +5489,7 @@ onvif://www.onvif.org/name/ARV-453
                     <row>
                       <entry>ListeningPort</entry>
                       <entry>xs:unsignedInt</entry>
-                      <entry>The UDP port number on which the SNMPv3 agent is listening. The default SNMP port is 161.</entry>
+                      <entry>The UDP port number on which the SNMP agent is listening. The default SNMP port is 161.</entry>
                     </row>
                   </tbody>
                 </tgroup>
@@ -5514,9 +5514,9 @@ onvif://www.onvif.org/name/ARV-453
       <section xml:id="op.SetSNMPConfiguration">
         <title>SetSNMPConfiguration</title>
         <para>
-          This operation is used by a Client to enable or disable the SNMPv3 service and to configure its global parameters.
-          Additionally, this operation can optionally create an initial SNMPv3 user during service setup.
-          A Device supporting the SNMPv3 extension shall implement this command.
+          This operation is used by a Client to enable or disable the SNMP service and to configure its global parameters.
+          Additionally, this operation can optionally create an initial SNMP user during service setup (only SNMPv3 users are supported).
+          A Device supporting the SNMP extension shall implement this command.
         </para>
         <para>
           Some parameters, like the <literal>EngineID</literal>, may not be settable by a Client after initial determination by the Device, or may only be settable under specific conditions (e.g., when the service is disabled). If an attempt is made to set a non-settable <literal>EngineID</literal>, the Device shall return a <literal>ter:SNMPEngineIDNotSettable</literal> fault.
@@ -5530,7 +5530,7 @@ onvif://www.onvif.org/name/ARV-453
             <term>request</term>
             <listitem>
               <para role="param">SNMPConfiguration [tt:SNMPConfiguration]</para>
-              <para role="text">The SNMPv3 service configuration to be applied. Fields within this structure are individually optional for the set operation.</para>
+              <para role="text">The SNMP service configuration to be applied. Fields within this structure are individually optional for the set operation.</para>
               <informaltable frame="all">
                 <tgroup cols="4">
                   <colspec colname="c1" colwidth="1*"/>
@@ -5550,7 +5550,7 @@ onvif://www.onvif.org/name/ARV-453
                       <entry>Enabled</entry>
                       <entry>xs:boolean</entry>
                       <entry>optional</entry>
-                      <entry>Enables or disables the SNMPv3 service. If not provided, the current enabled state is maintained.</entry>
+                      <entry>Enables or disables the SNMP service. If not provided, the current enabled state is maintained.</entry>
                     </row>
                     <row>
                       <entry>EngineID</entry>
@@ -5566,7 +5566,7 @@ onvif://www.onvif.org/name/ARV-453
                       <entry>xs:unsignedInt</entry>
                       <entry>optional</entry>
                       <entry>
-                        The UDP port number for the SNMPv3 agent. If not provided, the current port is maintained.
+                        The UDP port number for the SNMP agent. If not provided, the current port is maintained.
                         Valid port range is typically 1-65535.
                       </entry>
                     </row>
@@ -5574,7 +5574,7 @@ onvif://www.onvif.org/name/ARV-453
                       <entry>InitialUserName</entry>
                       <entry>xs:string</entry>
                       <entry>optional</entry>
-                      <entry>Username for the initial SNMPv3 user. If provided, SecurityLevel must also be specified. Max length 32 octets per USM requirements.</entry>
+                      <entry>Username for the initial SNMP user. If provided, SecurityLevel must also be specified. Max length 32 octets per USM requirements.</entry>
                     </row>
                     <row>
                       <entry>SecurityLevel</entry>
@@ -5642,14 +5642,14 @@ onvif://www.onvif.org/name/ARV-453
       </section>
     </section>
 
-    <section xml:id="s.snmpv3_security_parameter_configuration">
+    <section xml:id="s.snmp_security_parameter_configuration">
       <title>Security Parameter Configuration</title>
       <para>
-        This section details the requirements for authentication and privacy protocols supported by the SNMPv3 extension.
+        This section details the requirements for authentication and privacy protocols supported by the SNMP extension.
         When an initial user is created via <literal>SetSNMPConfiguration</literal>, the Device shall securely store localized keys and apply them according to the specified security level.
         Keys for authentication and privacy shall be provided by the Client as base64-encoded binary data using the <literal>tt:BinaryData</literal> type. The Device shall localize these keys using its EngineID as per SNMPv3 USM specifications ([RFC 3414] Appendix A) before storing them internally.
       </para>
-      <section xml:id="s.snmpv3_auth_protocols">
+      <section xml:id="s.snmp_auth_protocols">
         <title>Authentication Protocols</title>
         <para>
           The following authentication protocols shall be supported:
@@ -5680,7 +5680,7 @@ onvif://www.onvif.org/name/ARV-453
           The corresponding <literal>tt:SNMPAuthenticationProtocol</literal> enumeration values would be <literal>HMAC_SHA_256</literal>, <literal>HMAC_SHA_384</literal>, and <literal>HMAC_SHA_512</literal>.
         </para>
       </section>
-      <section xml:id="s.snmpv3_priv_protocols">
+      <section xml:id="s.snmp_priv_protocols">
         <title>Privacy Protocols</title>
         <para>
           The following privacy protocols shall be supported:
