@@ -1401,7 +1401,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
         <varlistentry>
           <term>response</term>
           <listitem>
-            <para role="param">ResultList [tt:FindImageResultList]</para>
+            <para role="param">ResultList [tt:FindObjectImageResultList]</para>
             <para role="text">A structure containing the search results.</para>
           </listitem>
         </varlistentry>
@@ -1486,7 +1486,7 @@ http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace
         <varlistentry>
           <term>response</term>
           <listitem>
-            <para role="param">ResultList [tt:FindImageResultList]</para>
+            <para role="param">ResultList [tt:FindObjectImageResultList]</para>
             <para role="text">A structure containing the search results.</para>
           </listitem>
         </varlistentry>

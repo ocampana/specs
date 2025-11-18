@@ -7627,23 +7627,26 @@ and sample rate. </xs:documentation>
 		</xs:sequence>
 		<xs:anyAttribute processContents="lax"/>
 	</xs:complexType>
-	<!-- FindImageResultList -->
-	<xs:complexType name="FindImageResultList">
+	<!-- FindObjectImageResultList -->
+	<xs:complexType name="FindObjectImageResultList">
 		<xs:sequence>
 			<xs:element name="SearchState" type="tt:SearchState">
 				<xs:annotation>
 					<xs:documentation>The state of the search when the result is returned. Indicates if there can be more results, or if the search is completed.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Result" type="tt:FindImageResult" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation><xs:documentation>A FindImageResult structure for each found set of image matching the search.</xs:documentation></xs:annotation>
+			<xs:element name="Result" type="tt:FindObjectImageResult" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation><xs:documentation>A FindObjectImageResult structure for each found set of image matching the search.</xs:documentation></xs:annotation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
-	<!-- FindImageResult -->
-	<xs:complexType name="FindImageResult">
+	<!-- FindObjectImageResult -->
+	<xs:complexType name="FindObjectImageResult">
 		<xs:sequence>
+			<xs:element name="ObjectUUID" type="xs:string">
+				<xs:annotation><xs:documentation>Object unique identifier.</xs:documentation></xs:annotation>
+			</xs:element>
 			<xs:element name="TargetImageURI" type="xs:anyURI">
 				<xs:annotation><xs:documentation>The URI of the detected target object image. This can be either: - a local image stored in the Target Image repository (LocalStorage format), or - an external image provided by the client for image search or feature matching.</xs:documentation></xs:annotation>
 			</xs:element>
@@ -7651,7 +7654,7 @@ and sample rate. </xs:documentation>
 				<xs:annotation><xs:documentation>The time when the target was found. Users can use this as a reference point to search records that occurred before and after this specific time point.</xs:documentation></xs:annotation>
 			</xs:element>
 			<xs:element name="Likelihood" type="xs:float">
-				<xs:annotation><xs:documentation>Likelihood score of the target between 0~1.</xs:documentation></xs:annotation>
+				<xs:annotation><xs:documentation>Likelihood threshold of the target between 0~1.</xs:documentation></xs:annotation>
 			</xs:element>
 			<xs:element name="RecordingToken" type="tt:RecordingReference">
 				<xs:annotation><xs:documentation>The recording where this result was found.</xs:documentation></xs:annotation>
@@ -9229,8 +9232,8 @@ and sample rate. </xs:documentation>
 	<!--=========================================-->
 	<!--  End, StorageConfiguration              -->
 	<!--=========================================-->
-<xs:element name="FindImageResultList" type="tt:FindImageResultList"/>
-<xs:element name="FindImageResult" type="tt:FindImageResult"/>
+<xs:element name="FindObjectImageResultList" type="tt:FindObjectImageResultList"/>
+<xs:element name="FindObjectImageResult" type="tt:FindObjectImageResult"/>
 	
 <xs:element name="PolygonOptions" type="tt:PolygonOptions"/>
  
