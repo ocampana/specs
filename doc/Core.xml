@@ -5372,28 +5372,22 @@ onvif://www.onvif.org/name/ARV-453
     </section>
 
   <section xml:id="s.snmp_extension">
-    <title>SNMP Configuration (Optional)</title>
-    <para>
-      This section defines an optional extension to the Device Management Service for supporting Simple Network Management Protocol version 3 (SNMPv3) as specified in [RFC 3410] and related standards. Devices supporting this extension shall indicate this capability via the <literal>SNMP</literal> flag in the <literal>DeviceServiceCapabilities</literal> (see Section <xref linkend="_Ref468447902"/>).
-    </para>
-    <para>
-      Only SNMPv3 is within the scope of this extension.
-    </para>
+    <title>SNMP Configuration</title>
+    <para>This section defines a feature extension to the Device Management Service for supporting
+        Simple Network Management Protocol as specified in [RFC 3410] and related standards. Devices
+        supporting this extension shall indicate their capability via the SNMP flag in the
+        DeviceServiceCapabilities. (see Section <xref linkend="_Ref468447902"/>). </para>
+    <para>Only SNMPv3 is within the scope of this extension. </para>
     <section xml:id="s.snmp_service_control">
       <title>SNMP Service Control</title>
-      <para>
-        Devices supporting this extension shall provide the following operations for managing the SNMP service itself.
-      </para>
-      <para>
-        The SNMP service shall be disabled by default unless explicitly enabled by a Client. When disabled, the Device should not listen on the SNMP port, and attempts to query via SNMP should fail.
-      </para>
+      <para>The SNMP service shall be disabled by default. When enabled, the Device shall start to
+          listen for commands and queries on the configured SNMP port. </para>
 
       <section xml:id="op.GetSNMPConfiguration">
         <title>GetSNMPConfiguration</title>
-        <para>
-          This operation is used by a Client to retrieve the current SNMP service status and global configuration parameters from a Device.
-          A Device supporting the SNMP extension shall implement this command.
-        </para>
+        <para>This operation allows the client to retrieve the current SNMP service status along
+            with its configuration parameters. A device that signals support for SNMP via the SNMP
+            capability shall implement this command.</para>
         <variablelist role="op">
           <varlistentry>
             <term>request</term>
@@ -5427,10 +5421,10 @@ onvif://www.onvif.org/name/ARV-453
                     <row>
                       <entry>EngineID</entry>
                       <entry>xs:hexBinary</entry>
-                      <entry>
-                        The SNMP Engine ID of the Device, as defined in [RFC 3411]. This value is typically read-only after initial configuration or discovery by the SNMP engine itself.
-                        The Device <emphasis role="bold">should</emphasis> persist this EngineID across reboots.
-                      </entry>
+                      <entry> The SNMP Engine ID of the Device, as defined in [RFC 3411]. This value
+                          is typically read-only after initial configuration or discovery by the
+                          SNMP engine itself. The Device should persist this EngineID across
+                          reboots. </entry>
                     </row>
                     <row>
                       <entry>ListeningPort</entry>
@@ -5459,18 +5453,18 @@ onvif://www.onvif.org/name/ARV-453
 
       <section xml:id="op.SetSNMPConfiguration">
         <title>SetSNMPConfiguration</title>
-        <para>
-          This operation is used by a Client to enable or disable the SNMP service and to configure its global parameters.
-          Additionally, this operation can optionally create an initial SNMP user during service setup (only SNMPv3 users are supported).
-          A Device supporting the SNMP extension shall implement this command.
-        </para>
-        <para>
-          Some parameters, like the <literal>EngineID</literal>, may not be settable by a Client after initial determination by the Device, or may only be settable under specific conditions (e.g., when the service is disabled). If an attempt is made to set a non-settable <literal>EngineID</literal>, the Device shall return a <literal>ter:SNMPEngineIDNotSettable</literal> fault.
-          If an optional parameter is not present in the request, the Device shall not change the current value of that parameter.
-        </para>
-        <para>
-          For initial user creation: If <literal>InitialUserName</literal> is provided, then <literal>SecurityLevel</literal> must also be provided. Depending on the <literal>SecurityLevel</literal>, additional authentication and privacy parameters may be required as specified in the parameter descriptions. The Device shall validate that all required parameters for the chosen security level are provided and return appropriate fault codes if the configuration is incomplete or invalid.
-        </para>
+        <para>This operation allows the client to enable or disable the SNMP service and to
+            configure its parameters. This operation can optionally create an initial SNMP user
+            during service setup (only SNMPv3 users are supported). A device that signals support
+            for SNMP via the SNMP capability shall implement this command. </para>
+        <para>Some parameters, like the EngineID may only allowed to be set when the service is
+            disabled, while returning an error otherwise. If an optional parameter is missing in the
+            request, the device shall retain the current value of that parameter. </para>
+        <para>The operation request may include SecurityLevel along with InitialUserName for initial
+            user creation. Depending on the type of SecurityLevel input, additional authentication
+            and privacy parameters shall be required as specified in the parameter descriptions. The
+            device shall validate required parameters for the chosen security level and returns
+            appropriate fault codes if the configuration is incomplete or invalid. </para>
         <variablelist role="op">
           <varlistentry>
             <term>request</term>
@@ -5496,31 +5490,30 @@ onvif://www.onvif.org/name/ARV-453
                       <entry>Enabled</entry>
                       <entry>xs:boolean</entry>
                       <entry>optional</entry>
-                      <entry>Enables or disables the SNMP service. If not provided, the current enabled state is maintained.</entry>
+                      <entry>Enables or disables the SNMP service. If not provided, the current
+                          state is maintained.</entry>
                     </row>
                     <row>
                       <entry>EngineID</entry>
                       <entry>xs:hexBinary</entry>
                       <entry>optional</entry>
-                      <entry>
-                        The SNMP Engine ID. The ability to set this <emphasis role="bold">may</emphasis> be restricted by the Device.
-                        If not provided, the current EngineID is maintained.
-                      </entry>
+                      <entry>The SNMP Engine ID. The ability to set this <emphasis role="bold"
+                            >may</emphasis> be restricted by the Device. If not provided, the
+                          current EngineID is maintained. </entry>
                     </row>
                     <row>
                       <entry>ListeningPort</entry>
                       <entry>xs:unsignedInt</entry>
                       <entry>optional</entry>
-                      <entry>
-                        The UDP port number for the SNMP agent. If not provided, the current port is maintained.
-                        Valid port range is typically 1-65535.
-                      </entry>
+                      <entry>The UDP port number for the SNMP agent. If not provided, the current
+                          port is maintained. Valid port range is typically 1-65535. </entry>
                     </row>
                     <row>
                       <entry>InitialUserName</entry>
                       <entry>xs:string</entry>
                       <entry>optional</entry>
-                      <entry>Username for the initial SNMP user. If provided, SecurityLevel must also be specified. Max length 32 octets per USM requirements.</entry>
+                      <entry>Username for the initial SNMP user. If provided, SecurityLevel shall
+                          also be included. Max length 32 octets per USM requirements.</entry>
                     </row>
                     <row>
                       <entry>SecurityLevel</entry>
@@ -5567,11 +5560,15 @@ onvif://www.onvif.org/name/ARV-453
             <term>faults</term>
             <listitem>
               <para role="param">env:Sender - ter:InvalidArgVal - ter:InvalidSNMPPort</para>
-              <para role="text">The provided <literal>ListeningPort</literal> is outside the valid range or is otherwise unusable.</para>
+              <para role="text">The provided ListeningPort  is outside the valid range or is
+                  otherwise unusable.</para>
               <para role="param">env:Sender - ter:InvalidArgVal - ter:InvalidSNMPEngineID</para>
-              <para role="text">The provided <literal>EngineID</literal> is malformed or invalid according to [RFC 3411].</para>
-              <para role="param">env:Receiver - ter:ActionNotSupported - ter:SNMPEngineIDNotSettable</para>
-              <para role="text">The Device does not allow the <literal>EngineID</literal> to be set via this command, or under the current conditions.</para>
+              <para role="text">The provided EngineID is malformed or invalid according to [RFC
+                  3411].</para>
+              <para role="param">env:Receiver - ter:OperationProhibited -
+                  ter:SNMPEngineIDNotSettable</para>
+              <para role="text">The Device does not allow the EngineID to be set via this command
+                  under the current conditions.</para>
               <para role="param">env:Sender - ter:InvalidArgVal - ter:SNMPInitialUserIncomplete</para>
               <para role="text">Initial user configuration is incomplete (missing required fields for specified SecurityLevel).</para>
               <para role="param">env:Sender - ter:InvalidArgVal - ter:SNMPInvalidInitialUser</para>
