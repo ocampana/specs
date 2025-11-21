@@ -2448,7 +2448,7 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			</xs:element>	 		
 			<!--===============================-->
 			<!--===============================-->
-			<!-- SNMP Device Management Extension (Optional) - Only SNMPv3 is supported -->
+			<!-- SNMP Device Management Extension - Only SNMPv3 is supported -->
 			<xs:element name="GetSNMPConfiguration">
 				<xs:complexType>
 					<xs:sequence/>
@@ -2457,28 +2457,14 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 			<xs:element name="GetSNMPConfigurationResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Enabled" type="xs:boolean"/>
-						<xs:element name="EngineID" type="xs:string"/>
-						<xs:element name="ListeningPort" type="xs:int" minOccurs="0"/>
-						<xs:element name="Uptime" type="xs:duration" minOccurs="0"/>
-						<xs:element name="ErrorCounters" type="xs:string" minOccurs="0"/>
-						<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="SNMPConfiguration" type="tds:SNMPConfiguration" minOccurs="1"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="SetSNMPConfiguration">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Enabled" type="xs:boolean" minOccurs="0"/>
-						<xs:element name="EngineID" type="xs:hexBinary" minOccurs="0"/>
-						<xs:element name="ListeningPort" type="xs:int" minOccurs="0"/>
-						<xs:element name="InitialUserName" type="xs:string" minOccurs="0"/>
-						<xs:element name="SecurityLevel" type="tt:SNMPSecurityLevel" minOccurs="0"/>
-						<xs:element name="AuthenticationProtocol" type="tt:SNMPAuthenticationProtocol" minOccurs="0"/>
-						<xs:element name="AuthenticationKey" type="tt:BinaryData" minOccurs="0"/>
-						<xs:element name="PrivacyProtocol" type="tt:SNMPPrivacyProtocol" minOccurs="0"/>
-						<xs:element name="PrivacyKey" type="tt:BinaryData" minOccurs="0"/>
-						<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="SNMPConfiguration" type="tds:SNMPConfiguration" minOccurs="1"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -2487,6 +2473,53 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 					<xs:sequence/>
 				</xs:complexType>
 			</xs:element>
+			
+			<!--=========================================-->
+			<!--  Begin, SNMPConfiguration             -->
+			<!--=========================================-->
+			<xs:simpleType name="SNMPSecurityLevel">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="noAuthNoPriv"/>
+					<xs:enumeration value="authNoPriv"/>
+					<xs:enumeration value="authPriv"/>
+				</xs:restriction>
+			</xs:simpleType>
+			
+			<xs:simpleType name="SNMPAuthenticationProtocol">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="HMAC_SHA_256"/> <!-- usmHMACSHA256AuthProtocol -->
+					<xs:enumeration value="HMAC_SHA_384"/> <!-- usmHMACSHA384AuthProtocol -->
+					<xs:enumeration value="HMAC_SHA_512"/> <!-- usmHMACSHA512AuthProtocol -->
+				</xs:restriction>
+			</xs:simpleType>
+			
+			<xs:simpleType name="SNMPPrivacyProtocol">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="CFB_AES_128"/>  <!-- usmAesCfb128PrivProtocol -->
+					<xs:enumeration value="CFB_AES_192"/>  <!-- usmAesCfb192PrivProtocol (check OID) -->
+					<xs:enumeration value="CFB_AES_256"/>  <!-- usmAesCfb256PrivProtocol (check OID) -->
+				</xs:restriction>
+			</xs:simpleType>
+			
+			<xs:complexType name="SNMPConfiguration">
+				<xs:sequence>
+					<xs:element name="Enabled" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="EngineID" type="xs:hexBinary" minOccurs="0"/>
+					<xs:element name="ListeningPort" type="xs:unsignedInt" minOccurs="0"/>
+					<xs:element name="InitialUserName" type="xs:string" minOccurs="0"/>
+					<xs:element name="SecurityLevel" type="xs:string" minOccurs="0"/>
+					<xs:element name="AuthenticationProtocol" type="xs:string" minOccurs="0"/>
+					<xs:element name="AuthenticationKey" type="tt:BinaryData" minOccurs="0"/>
+					<xs:element name="PrivacyProtocol" type="xs:string" minOccurs="0"/>
+					<xs:element name="PrivacyKey" type="tt:BinaryData" minOccurs="0"/>
+					<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##any"/>
+			</xs:complexType>
+			
+			<!--=========================================-->
+			<!--  End, SNMPConfiguration               -->
+			<!--=========================================-->
 			<!--===============================-->
 		</xs:schema>
 	</wsdl:types>
