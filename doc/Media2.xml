@@ -2358,9 +2358,9 @@
       </section>  
 	  <section xml:id="section_wvd_dzg_rye">
         <title>AddTTSAudioClip</title>
-        <para>This operation adds a text and its configuartion to the device so that device could convert the text to an audio clip and play it based on the configuration. 
-        The response to the command includes a unique token for this converted audio clip. 
-        If the device is unable to support certain language,then returns error message.</para>
+        <para>This operation adds a text, audio clip configuration and TTS configuration to the device, for device converting the text to an audio clip based on the TTS configuration. 
+			The response to the command includes a unique token for this converted audio clip. 
+			If the device is unable to support language specified in the TTS configuration, the associated configuration will deleted from the device.</para>
         <variablelist role="op">
           <varlistentry>
             <term>request</term>
@@ -2814,7 +2814,7 @@
 	<variablelist>
 		<varlistentry>
           <term>TTSCapabilities</term>
-          <listitem><para>Indicates device supports TTS function and corresponding configuration.</para></listitem>
+          <listitem><para>Indicates device supports TTS function and TTS configuration.</para></listitem>
         </varlistentry>
         <varlistentry>
           <term>MaxAudioClipLimit</term>
