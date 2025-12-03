@@ -2372,7 +2372,7 @@
               <para role="text"> Audio clip configuration to add.</para>
       <para role="param">TTSConfiguration - 
                 [tr2:TTSAudio]</para>
-              <para role="text"> TTS configuration to add.</para>
+              <para role="text"> TTS configuration for converting a text to an audio clip.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2812,10 +2812,6 @@
       </variablelist>    
     <para>The following audio clip Capabilities are available:</para>
 	<variablelist>
-		<varlistentry>
-          <term>TTSCapabilities</term>
-          <listitem><para>Indicates device supports TTS function and TTS configuration.</para></listitem>
-        </varlistentry>
         <varlistentry>
           <term>MaxAudioClipLimit</term>
           <listitem><para>Indicates the maximum number of audio clips that can be uploaded to the device.</para></listitem>
@@ -2827,6 +2823,10 @@
 		<varlistentry>
           <term>SupportedAudioClipFormat</term>
           <listitem><para>Enumerates the supported audio clip formats. See tr2: SupportedAudioClipFormat.</para></listitem>
+        </varlistentry>
+		<varlistentry>
+          <term>TTSCapabilities</term>
+          <listitem><para>Indicates device supports TTS function and TTS configuration.See tr2: TTSCapabilities.</para></listitem>
         </varlistentry>
 	</variablelist>
 	</section>
