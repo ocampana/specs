@@ -195,6 +195,14 @@
           <personname>Tomasz Zajac, Tomasz Chmiel</personname>
         </author>
         <revremark>Add custom claims to JWTConfiguration. Add validation policy to Dot1X configuration.</revremark>
+	</revision>
+	<revision>
+        <revnumber>25.12</revnumber>
+        <date>Dec-2025</date>
+        <author>
+          <personname>Ottavio Campana</personname>
+        </author>
+	<revremark>Add support for user roles.</revremark>
       </revision>
     </revhistory>
   </info>
