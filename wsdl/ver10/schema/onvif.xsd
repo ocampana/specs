@@ -1415,17 +1415,6 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="SensorData" type="tt:SensorDataFilter" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Optional element to configure which sensor data is to include in the metadata stream. A client might be interested in receiving all, 
-								none or some of the sensor data produced by the device:<ul>
-									<li>To get all sensor data: Include the SensorData element but do not include any filter criteria.</li>
-									<li>To get no sensor data: Do not include the SensorData element.</li>
-									<li>To get only some sensor data: Include the SensorData element and specify filter criteria (SensorID list, Type list, etc.).</li>
-								</ul>
-							</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="Analytics" type="xs:boolean" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Defines whether the streamed metadata will include metadata from the analytics engines (video, cell motion, audio etc.)</xs:documentation>
@@ -1446,6 +1435,17 @@ IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FO
 						<xs:annotation>
 							<xs:documentation>Indication which AnalyticsModules shall output metadata.
 							Note that the streaming behavior is undefined if the list includes items that are not part of the associated AnalyticsConfiguration.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SensorData" type="tt:SensorDataFilter" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional element to configure which sensor data is to include in the metadata stream. A client might be interested in receiving all, 
+								none or some of the sensor data produced by the device:<ul>
+									<li>To get all sensor data: Include the SensorData element but do not include any filter criteria.</li>
+									<li>To get no sensor data: Do not include the SensorData element.</li>
+									<li>To get only some sensor data: Include the SensorData element and specify filter criteria (SensorID list, Type list, etc.).</li>
+								</ul>
+							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="Extension" type="tt:MetadataConfigurationExtension" minOccurs="0"/>
