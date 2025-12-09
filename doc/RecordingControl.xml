@@ -193,7 +193,7 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <author>
           <personname>Maxime Bédar, Jose Melancon, Hans Busch, Sriram Bhetanabottla</personname>
         </author>
-        <revremark>Add seektable and timescale attributes in cloud object metadata. Add fFrame Encryption for cloud recording.</revremark>
+        <revremark>Add seektable and timescale attributes in cloud object metadata. Add frame Encryption for cloud recording.</revremark>
       </revision>
     </revhistory>
   </info>
