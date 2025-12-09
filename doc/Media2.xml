@@ -225,10 +225,11 @@
         <revnumber>25.12</revnumber>
         <date>Dec-2025</date>
         <author>
-          <personname>Sujith Raman</personname>
+          <personname>Sujith Raman, Juyoung Jo, Venki Aravapalli</personname>
         </author>
-        <revremark>Add support for multicast audio decoder.</revremark>
-     </revision>
+        <revremark>Add support for multicast audio decoder. Add mirror feature. Aptional Reason
+          parameter added in Audio Clip State event.</revremark>
+      </revision>
     </revhistory>
   </info>
   <chapter xml:id="_Toc241999828">

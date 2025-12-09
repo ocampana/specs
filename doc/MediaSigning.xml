@@ -75,6 +75,12 @@
       signing feature, and also how an ONVIF client should validate the authenticity of a signed
       stream. Audio is outside of scope.</para>
   </chapter>
+  <chapter xml:id="chapter_spec_version">
+    <title>Specification version v1.0</title>
+    <para>This number should be updated when an update to the specification breaks the bitstream
+      format or when new features are added. Such features could be new ways of hashing or support
+      of more codecs.</para>
+  </chapter>
   <chapter xml:id="chapter_a3s_njq_bwb">
     <title>Normative references</title>
     <para>ITU-T Recommendation, H.264: Advanced video coding for generic audiovisual services</para>
@@ -564,8 +570,7 @@
         </figure>
         <para>Finally <xref linkend="smg07"/> and <xref linkend="smg08"/> provide an overview of
           which frames are secured by which SEI. In the case of <xref linkend="smg07"/> the SEIs
-          have been prepended to the same frame that triggered the SEI while in the case of <xref
-            linkend="smg08"/> the SEIs have been added to the stream on the next available
+          have been prepended to the same frame that triggered the SEI while in the case of <xref linkend="smg08"/> the SEIs have been added to the stream on the next available
           instance.</para>
         <figure xml:id="smg07">
           <title>Overview when SEIs are prepended.</title>

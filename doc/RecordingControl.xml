@@ -191,9 +191,9 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <revnumber>25.12</revnumber>
         <date>Dec-2025</date>
         <author>
-          <personname>Maxime Bédar, Jose Melancon</personname>
+          <personname>Maxime Bédar, Jose Melancon, Hans Busch, Sriram Bhetanabottla</personname>
         </author>
-        <revremark>Add seektable attribute in cloud object metadata.</revremark>
+        <revremark>Add seektable and timescale attributes in cloud object metadata. Add fFrame Encryption for cloud recording.</revremark>
       </revision>
     </revhistory>
   </info>

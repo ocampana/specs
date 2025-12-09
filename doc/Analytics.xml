@@ -295,7 +295,7 @@
         <revnumber>25.12</revnumber>
         <date>Dec-2025</date>
         <author>
-          <personname>Sriram Bhetanabottla</personname>
+          <personname>Sriram Bhetanabottla, Hans Busch</personname>
         </author>
         <revremark>Add object track aggregation.</revremark>
       </revision>

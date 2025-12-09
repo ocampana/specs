@@ -54,7 +54,7 @@
         <author>
           <personname>Ottavio Campana</personname>
         </author>
-        <revremark>Add support for cloud firmware upgrade</revremark>
+        <revremark>Add listing the available FW images for cloud firmware upgrade</revremark>
       </revision>
 
     </revhistory>

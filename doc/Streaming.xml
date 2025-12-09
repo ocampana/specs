@@ -272,6 +272,8 @@
     <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https:/tools.ietf.org/html/rfc5888"></link>&gt;</para>
     <para>IETF RFC 6455, The WebSocket Protocol</para>
     <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ietf.org/rfc/rfc6455.txt"></link>&gt;</para>
+    <para>IETF RFC 7714, AES-GCM Authenticated Encryption in the Secure Real-time Transport Protocol (SRTP)</para>
+    <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ietf.org/rfc/rfc7714.txt"></link>&gt;</para>
     <para>IETF RFC 7798, RTP Payload Format for High Efficiency Video Coding (HEVC)</para>
     <para role="reference">&lt;<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ietf.org/rfc/rfc7798.txt"></link>&gt;</para>
     <para>IETF RFC 7826, Real-Time Streaming Protocol Version 2.0</para>
@@ -2112,18 +2114,16 @@ Sec-WebSocket-Protocol: rtsp.onvif.org
       </section>
     </section>
   </chapter>
-<chapter>
-  <title>MulticastAudioDecoder SRTP Packet Format</title>
- <para>
-  The following diagram illustrates the structure of an SRTP packet used by the <code>MulticastAudioDecoder</code>.
-  It includes the RTP header, a header extension carrying the Roll-Over Counter (ROC), the encrypted RTP payload,
-  and the SRTP authentication tag. The header extension format adheres to the one-byte extension mechanism defined in
-  <ulink url="https://www.rfc-editor.org/rfc/rfc8285.html">RFC 8285</ulink>. Encryption and authentication are handled via SRTP, as specified in
-  <ulink url="https://www.rfc-editor.org/rfc/rfc3711.html">RFC 3711</ulink> for AES_CM_128_HMAC_SHA1_80, and in
-  <ulink url="https://www.rfc-editor.org/rfc/rfc7714.html">RFC 7714</ulink> for AEAD_AES_128_GCM and AEAD_AES_256_GCM modes.
-  </para>
-
-   <figure xml:id="_Ref474397193">
+  <chapter>
+    <title>MulticastAudioDecoder SRTP Packet Format</title>
+    <para>
+      The following diagram illustrates the structure of an SRTP packet used by the <code>MulticastAudioDecoder</code>.
+      It includes the RTP header, a header extension carrying the Roll-Over Counter (ROC), the encrypted RTP payload,
+      and the SRTP authentication tag. The header extension format adheres to the one-byte extension mechanism defined in RFC 8285.
+      Encryption and authentication are handled via SRTP, as specified in RFC 3711 for AES_CM_128_HMAC_SHA1_80,
+      and in RFC 7714 for AEAD_AES_128_GCM and AEAD_AES_256_GCM modes.
+    </para>
+    <figure xml:id="_Ref474397193">
       <title>Diagram of SRTP packet format with ROC extension</title>
       <mediaobject>
         <imageobject>
@@ -2131,7 +2131,7 @@ Sec-WebSocket-Protocol: rtsp.onvif.org
         </imageobject>
       </mediaobject>
     </figure>
-</chapter>
+  </chapter>
   <appendix role="revhistory">
     <title>Revision History</title>
     <para/>
