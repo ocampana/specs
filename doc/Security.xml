@@ -150,7 +150,7 @@
         <author>
           <personname>Hans Busch</personname>
         </author>
-        <revremark>Do not require to support multiple identical pathes. Remove CRL requirement on
+        <revremark>Do not require to support multiple identical paths. Remove CRL requirement on
           client authentication.</revremark>
       </revision>
       <revision>

@@ -193,7 +193,7 @@
         <revnumber>23.06</revnumber>
         <date>Jun-2023</date>
         <author>
-          <personname>Oksana Tuishkina</personname>
+          <personname>Oksana Tyushkina</personname>
         </author>
         <revremark>Clarify signaling rotation in video source configuration.</revremark>
       </revision>
@@ -209,9 +209,10 @@
         <revnumber>24.12</revnumber>
         <date>Dec-2024</date>
         <author>
-          <personname>Fredrik Svensson, Björn Volker, Jean-François Lévesque</personname>
+          <personname>Fredrik Svensson, Björn Völker, Jean-François Lévesque</personname>
         </author>
-        <revremark>Add media signing. Add recommendation to have LensDescription present when Fisheye view mode is present. </revremark>
+        <revremark>Add media signing. Add recommendation to have LensDescription present when
+          Fisheye view mode is present. </revremark>
       </revision>
       <revision>
         <revnumber>25.06</revnumber>
@@ -227,7 +228,7 @@
         <author>
           <personname>Sujith Raman, Juyoung Jo, Venki Aravapalli</personname>
         </author>
-        <revremark>Add support for multicast audio decoder. Add mirror feature. Aptional Reason
+        <revremark>Add support for multicast audio decoder. Add mirror feature. Optional Reason
           parameter added in Audio Clip State event.</revremark>
       </revision>
     </revhistory>

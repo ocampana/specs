@@ -317,7 +317,8 @@
         <author>
           <personname>Ottavio Campana, Tomasz Zajac</personname>
         </author>
-        <revremark>Add support for user roles and cloud firmware upgrade. Ffix mapping of namespaces in MQTT topics.</revremark>
+        <revremark>Add support for user roles and cloud firmware upgrade. Fix mapping of namespaces
+          in MQTT topics.</revremark>
       </revision>
     </revhistory>
   </info>

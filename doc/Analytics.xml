@@ -257,7 +257,8 @@
         <author>
           <personname>Fredrik Svensson, Sujith Raman, Venki Aravapalli</personname>
         </author>
-        <revremark>Addition of spherical coordinate descriptor, direction descriptor and barcode information. Rule additions for abondoned and removed objects.</revremark>
+        <revremark>Addition of spherical coordinate descriptor, direction descriptor and barcode
+          information. Rule additions for abandoned and removed objects.</revremark>
       </revision>
       <revision>
         <revnumber>23.12</revnumber>

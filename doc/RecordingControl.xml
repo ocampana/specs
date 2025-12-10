@@ -191,9 +191,10 @@ Change Request 2061, 2063, 2065, 2109</revremark>
         <revnumber>25.12</revnumber>
         <date>Dec-2025</date>
         <author>
-          <personname>Maxime Bédar, Jose Melancon, Hans Busch, Sriram Bhetanabottla</personname>
+          <personname>Maxime Bédard, Jose Melancon, Hans Busch, Sriram Bhetanabottla</personname>
         </author>
-        <revremark>Add seektable and timescale attributes in cloud object metadata. Add frame Encryption for cloud recording.</revremark>
+        <revremark>Add seektable and timescale attributes in cloud object metadata. Add frame
+          Encryption for cloud recording.</revremark>
       </revision>
     </revhistory>
   </info>
@@ -2306,8 +2307,8 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
       <table xml:id="_refCloudRecordingObjectAttributesTable">
         <title>Object attributes</title>
         <tgroup cols="3">
-          <colspec colwidth="20*" />
-          <colspec colwidth="60*" />
+          <colspec colwidth="30*" />
+          <colspec colwidth="50*" />
           <colspec colwidth="50*" />
           <thead>
             <row>
@@ -2521,7 +2522,7 @@ aligned(8) class AsymmetricKeySystemHeaderBox extends FullBox('pssh', version=1,
           <title>Typical structure of a Movie Fragment Random Access ('mfra') box</title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="media/RecordingControl/seekTableStructure.svg" contentwidth="130mm"/>
+              <imagedata fileref="media/RecordingControl/seekTableStructure.svg" contentwidth="150mm"/>
             </imageobject>
           </mediaobject>
         </figure>
