@@ -202,7 +202,7 @@
         <author>
           <personname>Ottavio Campana, Hans Busch</personname>
         </author>
-	      <revremark>Add support for user roles. Remove requirements on integrity password derivation.</revremark>
+	      <revremark>Add support for user roles. Remove requirements on integrity password derivation. Move algorithm requirements to Security Baseline. Add AutoDeleteKey. Deprecate PKCS8.</revremark>
       </revision>
     </revhistory>
   </info>
@@ -1142,8 +1142,8 @@
         <table xml:id="table_acv_rzq_swb">
           <title>Authorization server settings</title>
           <tgroup cols="2">
-            <colspec colname="c1" colwidth="20*"/>
-            <colspec colname="c2" colwidth="80*"/>
+            <colspec colname="c1" colwidth="35*"/>
+            <colspec colname="c2" colwidth="65*"/>
             <thead>
               <row>
                 <entry>
@@ -1275,6 +1275,7 @@
                 </entry>
                 <entry>
                   <para>OpenID Connect authorization code flow per Open ID Connect Core.</para>
+                  <para>The ServerUri is used as metadata URI, where you can retrieve the endpoint URIs for authorization, token and JWKS.</para>
                 </entry>
               </row>
             </tbody>
@@ -5208,8 +5209,8 @@
         <table xml:id="_Ref406569780">
           <title>Requirements implied by Capabilities</title>
           <tgroup cols="2">
-            <colspec colname="c1" colwidth="32*"/>
-            <colspec colname="c2" colwidth="68*"/>
+            <colspec colname="c1" colwidth="50*"/>
+            <colspec colname="c2" colwidth="50*"/>
             <thead>
               <row>
                 <entry>
