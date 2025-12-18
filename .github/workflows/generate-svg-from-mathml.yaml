@@ -8,6 +8,7 @@ on:
       - development
     paths:
       - doc/equations/*.xml
+      - doc/equations/*.mml
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
