@@ -1,4 +1,4 @@
-# Prerequisites on a local PC
+# Prerequisites on a local PC -> not currently necessary, since signing is disabled.
 #
 # $ sudo apt install gnupg
 # $ gpg --quick-gen-key help@onvif.org default default 2029-03-31
