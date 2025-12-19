@@ -4887,7 +4887,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
       <title>Motion region detector</title>
       <para>The region motion detector detects any motion against the specified motion region. The rule is configured for an area (region of interest on the image source) which can be armed or disarmed. The region shall be defined by a Polygon structure. Although this rule is defined within the context of the analytics service, it is intended to allow configuration of hardware motion detection as opposed to motion detection from scene description data. For a description of the parameters see <xref linkend="_Ref522789617" />.</para>
       <programlisting><![CDATA[<tt:RuleDescription Name="tt:MotionRegionDetector">
-  <tt:Parameters>     <tt:ElementItemDescription Name="MotionRegion" Type="axt:MotionRegionConfig"/>
+  <tt:Parameters>
+    <tt:ElementItemDescription Name="MotionRegion" Type="axt:MotionRegionConfig"/>
 </tt:Parameters>
 <tt:Messages IsProperty="true">
   <tt:Source>
@@ -4897,7 +4898,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
   <tt:Key/>
   <tt:Data>
     <tt:SimpleItemDescription	Name="State" Type="xs:boolean"/>
-  </tt:Data>     <tt:ParentTopic>tns1:RuleEngine/MotionRegionDetector/Motion</tt:ParentTopic>
+  </tt:Data>
+  <tt:ParentTopic>tns1:RuleEngine/MotionRegionDetector/Motion</tt:ParentTopic>
 </tt:Messages>
 </tt:RuleDescription>
 ]]></programlisting>
@@ -5183,12 +5185,14 @@ xmlns:acme="http://www.acme.com/schema"&gt;
         <para>As described in the introduction of this Annex, Spot Measurement Modules can be defined as “Screen” elements, points on the image, or as “Geo-referenced” elements, points in the PTZ space around the Device. The use of the “AbsoluteCoords” item will allow to differentiate this behaviour.</para>
         <programlisting><![CDATA[<tt:AnalyticsModuleDescription Name="ttr:RadiometrySpot">
   <tt:Parameters>
-    <tt:ElementItemDescription Name="RadiometrySpot" Type="ttr:RadiometrySpotModuleConfig"/>
+    <tt:ElementItemDescription Name="RadiometrySpot"
+                               Type="ttr:RadiometrySpotModuleConfig"/>
   </tt:Parameters>
   <tt:MessageDescription>
     <tt:Source>
       <tt:SimpleItemDescription Name="VideoSourceToken" Type="tt:ReferenceToken"/>
-      <tt:SimpleItemDescription Name="VideoAnalyticsConfigurationToken" Type="tt:ReferenceToken"/>
+      <tt:SimpleItemDescription Name="VideoAnalyticsConfigurationToken"
+                                Type="tt:ReferenceToken"/>
       <tt:SimpleItemDescription Name="AnalyticsModuleName" Type="xs:string"/>
     </tt:Source>
     <tt:Data>
@@ -5319,7 +5323,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
   <tt:MessageDescription>
     <tt:Source>
       <tt:SimpleItemDescription Name="VideoSourceToken" Type="tt:ReferenceToken"/>
-      <tt:SimpleItemDescription Name="VideoAnalyticsConfigurationToken" Type="tt:ReferenceToken"/>
+      <tt:SimpleItemDescription Name="VideoAnalyticsConfigurationToken"
+                                Type="tt:ReferenceToken"/>
       <tt:SimpleItemDescription Name="AnalyticsModuleName" Type="xs:string"/>
     </tt:Source>
     <tt:Data>
@@ -5335,7 +5340,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
         <para>The above analytics module description defines that a Box Module instance produces Measurement Events (when new temperature values are produced by the video source), attached to the topic <emphasis role="bold">tns1:</emphasis><emphasis role="bold">VideoAnalytics/Radiometry/BoxTemperatureReading</emphasis>. These <emphasis role="bold">Temperature Measurement Events</emphasis> shall contain the following data payload:</para>
         <programlisting><![CDATA[<xs:complexType name="BoxTemperatureReading">
   <xs:sequence>
-    <xs:element name="RadiometryParameters" type="ttr:RadiometryParameters" minOccurs="0">
+    <xs:element name="RadiometryParameters" type="ttr:RadiometryParameters"
+                minOccurs="0">
       <xs:annotation>
         <xs:documentation>
           Not present means Global Parameters from Thermal Service are being used.
@@ -5707,12 +5713,14 @@ xmlns:acme="http://www.acme.com/schema"&gt;
         <para>A Temperature Rule is the most basic rule in Radiometry. It evaluates one of the output temperature values of a single Analytics Module, to trigger Temperature Alarm events when it meets a certain condition. The Rule shall only apply when its associated Analytics Module is Active, and providing valid readings.</para>
         <programlisting><![CDATA[<xs:RuleDescription Name="ttr:RadiometryTemperatureRule">
   <xs:Parameters>
-    <xs:ElementItemDescription Name="RadiometryTemperatureRule" Type="ttr:RadiometryTemperatureRuleConfig"/>
+    <xs:ElementItemDescription Name="RadiometryTemperatureRule"
+                               Type="ttr:RadiometryTemperatureRuleConfig"/>
   </xs:Parameters>
   <xs:MessageDescription IsProperty="true">
     <xs:Source>
       <xs:SimpleItemDescription Name="VideoSourceToken" Type="tt:ReferenceToken"/>
-      <xs:SimpleItemDescription Name="VideoAnalyticsConfigurationToken" Type="tt:ReferenceToken"/>
+      <xs:SimpleItemDescription Name="VideoAnalyticsConfigurationToken"
+                                Type="tt:ReferenceToken"/>
       <xs:SimpleItemDescription Name="RuleName" Type="xs:string"/>
     </xs:Source>
     <xs:Key>
@@ -5721,7 +5729,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
     <xs:Data>
       <xs:SimpleItemDescription Name="AlarmActive" Type="xs:boolean"/>
       <tt:SimpleItemDescription Name="TimeStamp" Type="xs:dateTime"/>
-      <xs:ElementItemDescription Name="AlarmGeoLocation" Type="tt:GeoLocation" minOccurs=0/>
+      <xs:ElementItemDescription Name="AlarmGeoLocation" Type="tt:GeoLocation"
+                                 minOccurs=0/>
     </xs:Data>
     <xs:ParentTopic>
       tns1:RuleEngine/Radiometry/TemperatureAlarm
@@ -5870,7 +5879,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
     </xs:Source>
     <xs:Data>
       <xs:SimpleItemDescription Name="AlarmActive" Type="xs:boolean"/>
-      <xs:ElementItemDescription Name="AlarmGeoLocation" Type="tt:GeoLocation" minOccurs=0/>
+      <xs:ElementItemDescription Name="AlarmGeoLocation" Type="tt:GeoLocation"
+                                 minOccurs=0/>
     </xs:Data>
     <xs:ParentTopic>
       tns1:RuleEngine/Radiometry/TemperatureMeasurementAlarm
@@ -7649,7 +7659,8 @@ xmlns:acme="http://www.acme.com/schema"&gt;
     <tt:MessageDescription IsProperty="false">
       <tt:Source>
         <tt:SimpleItemDescription Name="AudioSource" Type="tt:ReferenceToken"/>
-        <tt:SimpleItemDescription Name="AnalyticsConfiguration" Type="tt:ReferenceToken"/>
+        <tt:SimpleItemDescription Name="AnalyticsConfiguration"
+                                  Type="tt:ReferenceToken"/>
         <tt:SimpleItemDescription Name="Rule" Type="xs:string"/>
       </tt:Source>
       <tt:Data>

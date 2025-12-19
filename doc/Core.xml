@@ -6861,14 +6861,15 @@ onvif://www.onvif.org/name/ARV-453
         <programlisting><![CDATA[Topic: tns1:Monitoring/AsynchronousOperationStatus
 <tt:MessageDescription IsProperty="true">
   <tt:Source>
-    <tt:SimpleItemDescription Name=“Token" Type=“tt:ReferenceToken"/>
-    <tt:SimpleItemDescription Name=“OperationName" Type=“xs:string"/>
-    <tt:SimpleItemDescription Name=“ServiceName" Type=“xs:string“/>
+    <tt:SimpleItemDescription Name="Token" Type="tt:ReferenceToken"/>
+    <tt:SimpleItemDescription Name="OperationName" Type="xs:string"/>
+    <tt:SimpleItemDescription Name="ServiceName" Type="xs:string"/>
   </tt:Source>
   <tt:Data>
-    <tt:SimpleItemDescription Name=“Progress" Type="xs:float"/> <!– [0.0,1.0] -- >
-    <tt:ElementItemDescription Name=“FileProgressStatus" Type=“tt:ArrayOfFileProgress"/> <!– optional ->
-    <tt:ElementItemDescription Name=“Error" Type=“soapenv:Fault"/> <!– optional ->
+    <tt:SimpleItemDescription Name="Progress" Type="xs:float"/> <!– [0.0,1.0] -- >
+    <tt:ElementItemDescription Name="FileProgressStatus"
+                               Type="tt:ArrayOfFileProgress"/> <!– optional -- >
+    <tt:ElementItemDescription Name="Error" Type="soapenv:Fault"/> <!– optional -- >
   </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>

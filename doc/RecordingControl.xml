@@ -1711,7 +1711,8 @@ Change Request 2061, 2063, 2065, 2109</revremark>
   </tt:Source>
   <tt:Data>
     <tt:SimpleItemDescription Name="State" Type="xs:String"/>
-    <tt:ElementItemDescription Name="Information" Type="tt:RecordingJobStateInformation"/>
+    <tt:ElementItemDescription Name="Information"
+                               Type="tt:RecordingJobStateInformation"/>
   </tt:Data>
 </tt:MessageDescription>
 ]]></programlisting>
@@ -2169,7 +2170,8 @@ secfrac = "." 1*6DIGIT</programlisting>
         <section>
           <title>Syntax</title>
         <programlisting><![CDATA[
-aligned(8) class ProtectionSystemSpecificHeaderBox extends FullBox('pssh', version=1, flags=0)
+aligned(8) class ProtectionSystemSpecificHeaderBox extends FullBox('pssh', version=1,
+                                                                   flags=0)
 {
   unsigned int(8)[16] SystemID;
   unsigned int(32) KID_count;
