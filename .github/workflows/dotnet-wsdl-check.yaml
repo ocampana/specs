@@ -46,7 +46,7 @@ jobs:
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver20/analytics/wsdl/analytics.wsdl -d . -o Analytics.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver20/imaging/wsdl/imaging.wsdl -d . -o Imaging.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver20/media/wsdl/media.wsdl -d . -o Media2.cs || /bin/true
-          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver20/ptz/wsdl/ptz.wsdl -d . -o PTZ || /bin/true
+          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver20/ptz/wsdl/ptz.wsdl -d . -o PTZ.cs || /bin/true
           ls *.cs
           count=$(ls -1 *.cs 2>/dev/null | wc -l)
           echo  "Number of generated files: $count"
