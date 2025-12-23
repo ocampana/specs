@@ -1,0 +1,35 @@
+name: gsoap-wsdl-check
+run-name: "WSDL files syntax check with xmlchecker"
+
+on:
+  push:
+    paths:
+      - '**.wsdl'
+      - '**.xsd'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gsoap-wsdl-check:
+    strategy:
+      fail-fast: true
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Install missing software
+        run: |
+          sudo add-apt-repository ppa:dotnet/backports
+          sudo apt update && sudo apt install dotnet-sdk-9.0
+      - name: Checkout tools repo
+        uses: actions/checkout@v6
+        with:
+          repository: onvif/xmlcompat-wsdl-checker
+          path: xmlcompat-wsdl-checker
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Compile xmlcompat
+        run: |
+          cd xmlcompat-wsdl-checker
+          dotnet tool instal --global dotnet-svcutil
+          dotnet build
+
