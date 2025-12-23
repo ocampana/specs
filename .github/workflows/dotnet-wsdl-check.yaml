@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Compile xmlcompat
         run: |
-          dotnet tool instal --global dotnet-svcutil
+          dotnet tool install --global dotnet-svcutil
           dotnet build  ${{ steps.branch-names.outputs.current_branch }}
           dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/accessrules/wsdl/accessrules.wsdl -d . -o AccessRules.cs
           dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/advancedsecurity/wsdl/advancedsecurity.wsdl -d . -o Security.cs
