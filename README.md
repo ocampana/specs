@@ -1,4 +1,4 @@
-# ONVIF Technical Specification Development
+# ONVIF Technical Specification Development 
 This repository is dedicated to future extensions of the ONVIF Network Interface Specifications which include
 
 - Network Interface Specification Documents
