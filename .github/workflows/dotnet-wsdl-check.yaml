@@ -24,7 +24,7 @@ jobs:
       - name: Get branch names.
         id: branch-names
         uses: tj-actions/branch-names@5250492686b253f06fa55861556d1027b067aeb5
-      - name: Compile xmlcompat
+      - name: Run dotnet-svcutil
         run: |
           dotnet new tool-manifest
           dotnet tool install dotnet-svcutil
@@ -32,8 +32,8 @@ jobs:
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/advancedsecurity/wsdl/advancedsecurity.wsdl -d . -o Security.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/appmgmt/wsdl/appmgmt.wsdl -d . -o AppMgmt.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/authenticationbehavior/wsdl/authenticationbehavior.wsdl -d . -o AuthenticationBehavior.cs || /bin/true
-          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/credential/wsdl/credential.wsdl -d . -o Credential || /bin/true
-          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/display/wsdl/index.htm -d . -o Credential.cs || /bin/true
+          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/credential/wsdl/credential.wsdl -d . -o Credential.cs || /bin/true
+          DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/display/wsdl/index.htm -d . -o Display.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/device/wsdl/devicemgmt.wsdl -d . -o Device.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/events/wsdl/event.wsdl -d . -o Event.cs || /bin/true
           DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1 dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/media/wsdl/media.wsdl -d . -o Media.cs || /bin/true
