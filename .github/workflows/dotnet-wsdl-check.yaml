@@ -24,11 +24,9 @@ jobs:
       - name: Get branch names.
         id: branch-names
         uses: tj-actions/branch-names@5250492686b253f06fa55861556d1027b067aeb5
-      - name: Checkout tools repo
-        uses: actions/checkout@v6
       - name: Compile xmlcompat
         run: |
-          dotnet tool install --global dotnet-svcutil
+          dotnet tool install dotnet-svcutil
           dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/accessrules/wsdl/accessrules.wsdl -d . -o AccessRules.cs
           dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/advancedsecurity/wsdl/advancedsecurity.wsdl -d . -o Security.cs
           dotnet tool run dotnet-svcutil https://raw.githubusercontent.com/onvif/specs/refs/heads/${{ steps.branch-names.outputs.current_branch }}/wsdl/ver10/appmgmt/wsdl/appmgmt.wsdl -d . -o AppMgmt.cs
