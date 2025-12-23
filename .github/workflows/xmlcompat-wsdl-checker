@@ -1,4 +1,4 @@
-name: gsoap-wsdl-check
+name: xmlcompat-wsdl-check
 run-name: "WSDL files syntax check with xmlchecker"
 
 on:
